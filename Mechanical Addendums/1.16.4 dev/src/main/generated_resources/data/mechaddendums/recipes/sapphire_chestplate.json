@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "a a",
+    "aaa",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "tag": "forge:gems/sapphire"
+    }
+  },
+  "result": {
+    "item": "mechaddendums:sapphire_chestplate"
+  }
+}

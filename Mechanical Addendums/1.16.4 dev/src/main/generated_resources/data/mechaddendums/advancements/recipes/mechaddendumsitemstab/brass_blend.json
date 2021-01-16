@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "mechaddendums:brass_blend"
+    ]
+  },
+  "criteria": {
+    "zinc_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mechaddendums:zinc_ingot"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "mechaddendums:brass_blend"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "zinc_ingot",
+      "has_the_recipe"
+    ]
+  ]
+}

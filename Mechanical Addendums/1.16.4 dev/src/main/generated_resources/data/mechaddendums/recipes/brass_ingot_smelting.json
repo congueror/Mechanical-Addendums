@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "mechaddendums:brass_blend"
+  },
+  "result": "mechaddendums:brass_ingot",
+  "experience": 1.7,
+  "cookingtime": 500
+}

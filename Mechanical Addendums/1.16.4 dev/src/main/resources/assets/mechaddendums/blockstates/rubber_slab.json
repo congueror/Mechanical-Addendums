@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "mechaddendums:block/rubber_slab"
+    },
+    "type=double": {
+      "model": "mechaddendums:block/rubber_planks"
+    },
+    "type=top": {
+      "model": "mechaddendums:block/rubber_slab_top"
+    }
+  }
+}

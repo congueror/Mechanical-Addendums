@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "mechaddendums:chromium_ingot_nuggets"
+    ]
+  },
+  "criteria": {
+    "chromium_nugget": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mechaddendums:chromium_nugget"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "mechaddendums:chromium_ingot_nuggets"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "chromium_nugget",
+      "has_the_recipe"
+    ]
+  ]
+}

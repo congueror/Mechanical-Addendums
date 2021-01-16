@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "mechaddendums:opal_ore"
+  },
+  "result": "mechaddendums:opal",
+  "experience": 0.7,
+  "cookingtime": 200
+}

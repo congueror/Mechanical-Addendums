@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "a",
+    "a",
+    "s"
+  ],
+  "key": {
+    "a": {
+      "tag": "forge:ingots/nickel"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "mechaddendums:nickel_sword"
+  }
+}

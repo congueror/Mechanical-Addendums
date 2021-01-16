@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "mechaddendums:invar_blend"
+  },
+  "result": "mechaddendums:invar_ingot",
+  "experience": 1.7,
+  "cookingtime": 400
+}

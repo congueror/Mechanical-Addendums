@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "mechaddendums:block/rubber_log",
+    "side": "mechaddendums:block/rubber_log"
+  }
+}

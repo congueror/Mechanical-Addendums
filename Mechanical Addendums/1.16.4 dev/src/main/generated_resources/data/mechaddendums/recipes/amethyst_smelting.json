@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "mechaddendums:amethyst_ore"
+  },
+  "result": "mechaddendums:amethyst",
+  "experience": 0.7,
+  "cookingtime": 200
+}

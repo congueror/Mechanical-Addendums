@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "mechaddendums:signalum_blend"
+  },
+  "result": "mechaddendums:signalum_ingot",
+  "experience": 1.7,
+  "cookingtime": 400
+}

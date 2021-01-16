@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "mechaddendums:chromium_dust_smelting"
+    ]
+  },
+  "criteria": {
+    "chromium_dust": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mechaddendums:chromium_dust"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "mechaddendums:chromium_dust_smelting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "chromium_dust",
+      "has_the_recipe"
+    ]
+  ]
+}

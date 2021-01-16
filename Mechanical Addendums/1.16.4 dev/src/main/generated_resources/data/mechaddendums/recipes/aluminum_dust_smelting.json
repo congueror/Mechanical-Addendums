@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "mechaddendums:aluminum_dust"
+  },
+  "result": "mechaddendums:aluminum_ingot",
+  "experience": 0.7,
+  "cookingtime": 200
+}

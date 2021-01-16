@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "mechaddendums:aluminum_ingot_block"
+    ]
+  },
+  "criteria": {
+    "aluminum_block": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mechaddendums:aluminum_block"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "mechaddendums:aluminum_ingot_block"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "aluminum_block",
+      "has_the_recipe"
+    ]
+  ]
+}

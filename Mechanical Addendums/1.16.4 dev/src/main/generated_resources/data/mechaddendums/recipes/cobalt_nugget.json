@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mechaddendums:cobalt_ingot"
+    }
+  ],
+  "result": {
+    "item": "mechaddendums:cobalt_nugget",
+    "count": 9
+  }
+}

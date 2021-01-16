@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mechaddendums:uranium_ingot"
+    },
+    {
+      "tag": "mechaddendums:hammers"
+    }
+  ],
+  "result": {
+    "item": "mechaddendums:uranium_dust"
+  }
+}

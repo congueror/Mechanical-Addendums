@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "mechaddendums:lead_ingot_blasting"
+    ]
+  },
+  "criteria": {
+    "lead_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mechaddendums:lead_ore"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "mechaddendums:lead_ingot_blasting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "lead_ore",
+      "has_the_recipe"
+    ]
+  ]
+}

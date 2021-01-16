@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "mechaddendums:sapphire_ore"
+  },
+  "result": "mechaddendums:sapphire",
+  "experience": 0.7,
+  "cookingtime": 400
+}

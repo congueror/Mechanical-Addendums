@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "mechaddendums:zinc_dust"
+    ]
+  },
+  "criteria": {
+    "zinc_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mechaddendums:zinc_ingot"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "mechaddendums:zinc_dust"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "zinc_ingot",
+      "has_the_recipe"
+    ]
+  ]
+}

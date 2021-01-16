@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "aaa",
+    " s ",
+    " s "
+  ],
+  "key": {
+    "a": {
+      "tag": "forge:ingots/silver"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "mechaddendums:silver_pickaxe"
+  }
+}

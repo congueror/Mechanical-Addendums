@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "aa",
+    "as",
+    " s"
+  ],
+  "key": {
+    "a": {
+      "tag": "forge:ingots/bronze"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "mechaddendums:bronze_axe"
+  }
+}

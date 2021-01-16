@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "mechaddendums:titanium_ore"
+  },
+  "result": "mechaddendums:titanium_scrap",
+  "experience": 6.9,
+  "cookingtime": 700
+}

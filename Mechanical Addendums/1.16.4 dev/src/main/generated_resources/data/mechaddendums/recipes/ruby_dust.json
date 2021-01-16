@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mechaddendums:ruby"
+    },
+    {
+      "tag": "mechaddendums:hammers/tier_2_hammers"
+    }
+  ],
+  "result": {
+    "item": "mechaddendums:ruby_dust"
+  }
+}

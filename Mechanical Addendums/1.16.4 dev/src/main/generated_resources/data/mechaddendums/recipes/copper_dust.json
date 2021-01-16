@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mechaddendums:copper_ingot"
+    },
+    {
+      "tag": "mechaddendums:hammers"
+    }
+  ],
+  "result": {
+    "item": "mechaddendums:copper_dust"
+  }
+}

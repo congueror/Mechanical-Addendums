@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "mechaddendums:sulfur_ore"
+  },
+  "result": "mechaddendums:sulfur_dust",
+  "experience": 0.7,
+  "cookingtime": 400
+}

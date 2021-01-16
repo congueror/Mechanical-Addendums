@@ -1,0 +1,8 @@
+{
+  "parent": "mechaddendums:block/outer_stairs",
+  "textures": {
+    "bottom": "mechaddendums:block/rubber_planks",
+    "top": "mechaddendums:block/rubber_planks",
+    "side": "mechaddendums:block/rubber_planks"
+  }
+}

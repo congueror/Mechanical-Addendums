@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "mechaddendums:saltpetre_ore"
+  },
+  "result": "mechaddendums:saltpetre_dust",
+  "experience": 0.7,
+  "cookingtime": 400
+}

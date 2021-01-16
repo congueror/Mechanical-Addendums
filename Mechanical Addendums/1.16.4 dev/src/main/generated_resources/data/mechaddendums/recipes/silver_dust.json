@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mechaddendums:silver_ingot"
+    },
+    {
+      "tag": "mechaddendums:hammers/tier_2_hammers"
+    }
+  ],
+  "result": {
+    "item": "mechaddendums:silver_dust"
+  }
+}

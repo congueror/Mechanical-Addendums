@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mechaddendums:chromium_ingot"
+    }
+  ],
+  "result": {
+    "item": "mechaddendums:chromium_nugget",
+    "count": 9
+  }
+}

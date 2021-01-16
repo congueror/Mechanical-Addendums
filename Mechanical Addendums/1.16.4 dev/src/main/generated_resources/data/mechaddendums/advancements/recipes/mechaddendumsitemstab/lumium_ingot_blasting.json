@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "mechaddendums:lumium_ingot_blasting"
+    ]
+  },
+  "criteria": {
+    "lumium_blend": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mechaddendums:lumium_blend"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "mechaddendums:lumium_ingot_blasting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "lumium_blend",
+      "has_the_recipe"
+    ]
+  ]
+}

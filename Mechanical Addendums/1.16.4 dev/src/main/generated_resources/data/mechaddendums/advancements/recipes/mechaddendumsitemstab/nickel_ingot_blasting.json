@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "mechaddendums:nickel_ingot_blasting"
+    ]
+  },
+  "criteria": {
+    "nickel_ore": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mechaddendums:nickel_ore"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "mechaddendums:nickel_ingot_blasting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "nickel_ore",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mechaddendums:thorium_ingot"
+    }
+  ],
+  "result": {
+    "item": "mechaddendums:thorium_nugget",
+    "count": 9
+  }
+}

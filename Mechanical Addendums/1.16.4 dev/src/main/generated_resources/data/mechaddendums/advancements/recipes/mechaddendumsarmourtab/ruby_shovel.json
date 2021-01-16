@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "mechaddendums:ruby_shovel"
+    ]
+  },
+  "criteria": {
+    "ruby_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:gems/ruby"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "mechaddendums:ruby_shovel"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "ruby_ingot",
+      "has_the_recipe"
+    ]
+  ]
+}

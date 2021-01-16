@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "st ",
+    "g  ",
+    "   "
+  ],
+  "key": {
+    "t": {
+      "tag": "forge:ingots/tin"
+    },
+    "s": {
+      "tag": "forge:ingots/silver"
+    },
+    "g": {
+      "tag": "forge:dusts/glowstone"
+    }
+  },
+  "result": {
+    "item": "mechaddendums:lumium_blend",
+    "count": 2
+  }
+}

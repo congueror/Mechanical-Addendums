@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "mechaddendums:nickel_ore"
+  },
+  "result": "mechaddendums:nickel_ingot",
+  "experience": 0.7,
+  "cookingtime": 400
+}

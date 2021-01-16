@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "aa",
+    " s",
+    " s"
+  ],
+  "key": {
+    "a": {
+      "tag": "forge:ingots/enderium"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "mechaddendums:enderium_hoe"
+  }
+}

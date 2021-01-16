@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mechaddendums:amethyst_block"
+    }
+  ],
+  "result": {
+    "item": "mechaddendums:amethyst",
+    "count": 9
+  }
+}

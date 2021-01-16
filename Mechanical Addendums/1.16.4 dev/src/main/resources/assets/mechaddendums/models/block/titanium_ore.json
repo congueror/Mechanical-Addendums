@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "mechaddendums:block/titanium_ore_top",
+    "side": "mechaddendums:block/titanium_ore_side"
+  }
+}

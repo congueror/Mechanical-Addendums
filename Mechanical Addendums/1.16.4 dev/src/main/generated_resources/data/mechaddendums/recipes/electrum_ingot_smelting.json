@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "mechaddendums:electrum_blend"
+  },
+  "result": "mechaddendums:electrum_ingot",
+  "experience": 1.7,
+  "cookingtime": 500
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " a ",
+    "a a",
+    " a "
+  ],
+  "key": {
+    "a": {
+      "item": "mechaddendums:opal"
+    }
+  },
+  "result": {
+    "item": "mechaddendums:opal_gear"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "mechaddendums:lead_dust"
+    ]
+  },
+  "criteria": {
+    "lead_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mechaddendums:lead_ingot"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "mechaddendums:lead_dust"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "lead_ingot",
+      "has_the_recipe"
+    ]
+  ]
+}

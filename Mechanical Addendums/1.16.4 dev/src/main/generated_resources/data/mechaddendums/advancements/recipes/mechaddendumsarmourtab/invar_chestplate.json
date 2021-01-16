@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "mechaddendums:invar_chestplate"
+    ]
+  },
+  "criteria": {
+    "invar_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/invar"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "mechaddendums:invar_chestplate"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "invar_ingot",
+      "has_the_recipe"
+    ]
+  ]
+}

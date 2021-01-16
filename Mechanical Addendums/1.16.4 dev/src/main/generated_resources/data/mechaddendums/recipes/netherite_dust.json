@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:netherite_ingot"
+    },
+    {
+      "item": "mechaddendums:netherite_hammer"
+    }
+  ],
+  "result": {
+    "item": "mechaddendums:netherite_dust"
+  }
+}

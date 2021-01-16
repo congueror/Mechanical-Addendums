@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "mechaddendums:lumium_blend"
+  },
+  "result": "mechaddendums:lumium_ingot",
+  "experience": 1.7,
+  "cookingtime": 400
+}

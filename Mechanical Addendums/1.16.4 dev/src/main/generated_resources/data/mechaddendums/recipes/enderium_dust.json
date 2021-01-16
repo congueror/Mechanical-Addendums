@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mechaddendums:enderium_ingot"
+    },
+    {
+      "item": "mechaddendums:netherite_hammer"
+    }
+  ],
+  "result": {
+    "item": "mechaddendums:enderium_dust"
+  }
+}

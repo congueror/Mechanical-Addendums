@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "mechaddendums:gold_dust_smelting"
+    ]
+  },
+  "criteria": {
+    "gold_dust": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mechaddendums:gold_dust"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "mechaddendums:gold_dust_smelting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "gold_dust",
+      "has_the_recipe"
+    ]
+  ]
+}

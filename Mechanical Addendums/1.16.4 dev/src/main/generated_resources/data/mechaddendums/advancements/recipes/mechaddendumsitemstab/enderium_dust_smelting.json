@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "mechaddendums:enderium_dust_smelting"
+    ]
+  },
+  "criteria": {
+    "enderium_dust": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mechaddendums:enderium_dust"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "mechaddendums:enderium_dust_smelting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "enderium_dust",
+      "has_the_recipe"
+    ]
+  ]
+}

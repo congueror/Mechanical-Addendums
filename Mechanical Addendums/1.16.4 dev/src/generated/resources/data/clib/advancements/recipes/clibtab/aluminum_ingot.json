@@ -2,16 +2,16 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "mechaddendums:netherite_hammer"
+      "clib:aluminum_ingot"
     ]
   },
   "criteria": {
-    "netherite_ingot": {
+    "aluminum_block": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "tag": "forge:ingots/netherite"
+            "item": "clib:aluminum_block"
           }
         ]
       }
@@ -19,13 +19,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "mechaddendums:netherite_hammer"
+        "recipe": "clib:aluminum_ingot"
       }
     }
   },
   "requirements": [
     [
-      "netherite_ingot",
+      "aluminum_block",
       "has_the_recipe"
     ]
   ]

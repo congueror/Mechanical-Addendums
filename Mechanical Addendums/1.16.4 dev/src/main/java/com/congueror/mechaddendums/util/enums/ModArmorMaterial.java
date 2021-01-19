@@ -1,4 +1,4 @@
-package com.congueror.mechaddendums.util;
+package com.congueror.mechaddendums.util.enums;
 
 import java.util.function.Supplier;
 

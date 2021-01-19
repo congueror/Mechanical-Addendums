@@ -1,14 +1,19 @@
 package com.congueror.mechaddendums.init;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.congueror.mechaddendums.MechAddendums;
 import com.congueror.mechaddendums.blocks.MetalBlock;
 import com.congueror.mechaddendums.blocks.ModOreBlock;
 import com.congueror.mechaddendums.blocks.RubberLeavesBlock;
-import com.congueror.mechaddendums.blocks.SolarGeneratorBlock;
+import com.congueror.mechaddendums.blocks.solargen.SolarGeneratorBlock;
 import com.congueror.mechaddendums.blocks.trees.RubberTree;
+import com.congueror.mechaddendums.util.enums.SolarGenTier;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.FenceGateBlock;
 import net.minecraft.block.RotatedPillarBlock;
 import net.minecraft.block.SaplingBlock;
 import net.minecraft.block.SlabBlock;
@@ -163,10 +168,16 @@ public class BlockInit
     		(BlockInit.RUBBER_PLANKS.get().getDefaultState(), Block.Properties.from(BlockInit.RUBBER_PLANKS.get())));
 	public static final RegistryObject<Block> RUBBER_SLAB = BLOCKS.register("rubber_slab", () -> new SlabBlock
 			(Block.Properties.from(BlockInit.RUBBER_PLANKS.get())));
+	public static final RegistryObject<Block> RUBBER_FENCE_GATE = BLOCKS.register("rubber_fence_gate", () -> new FenceGateBlock
+			(Block.Properties.from(BlockInit.RUBBER_PLANKS.get())));
 	
 	//Solar Gen
-	public static final RegistryObject<Block> SOLAR_GENERATOR = BLOCKS.register("solar_generator", () -> new SolarGeneratorBlock
-			(Block.Properties.from(BlockInit.ALUMINUM_BLOCK.get())));
+	public static final Map<SolarGenTier, RegistryObject<SolarGeneratorBlock>> SOLAR_GENERATOR = new HashMap<>();
+	public static void forLoop() {
+		for(SolarGenTier tier : SolarGenTier.values()) {
+			SOLAR_GENERATOR.put(tier, BLOCKS.register(tier.getSolarGenName(), () -> new SolarGeneratorBlock(tier)));
+		}
+	}
     
     //public static final RegistryObject<Block> ALLOY_SMELTER = BLOCKS.register("alloy_smelter", () -> new AlloySmelterBlock(Block.Properties.create(Material.IRON).hardnessAndResistance(5.5f, 6.5f).sound(SoundType.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(1).setRequiresTool()));
 }

@@ -8,9 +8,9 @@ import com.congueror.mechaddendums.items.LeadDustItem;
 import com.congueror.mechaddendums.items.RadioactiveMetalItem;
 import com.congueror.mechaddendums.items.TreeTapItem;
 import com.congueror.mechaddendums.items.UraniumDustItem;
-import com.congueror.mechaddendums.util.ModArmorMaterial;
 import com.congueror.mechaddendums.util.ModItemGroups;
-import com.congueror.mechaddendums.util.ModItemTier;
+import com.congueror.mechaddendums.util.enums.ModArmorMaterial;
+import com.congueror.mechaddendums.util.enums.ModItemTier;
 
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;

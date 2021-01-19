@@ -3,18 +3,19 @@ package com.congueror.mechaddendums;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.congueror.mechaddendums.blocks.SolarGeneratorScreen;
+import com.congueror.mechaddendums.blocks.solargen.SolarGeneratorScreen;
 import com.congueror.mechaddendums.init.BlockInit;
 import com.congueror.mechaddendums.init.ContainerInit;
 import com.congueror.mechaddendums.init.EffectInit;
 import com.congueror.mechaddendums.init.ItemInit;
 import com.congueror.mechaddendums.init.TileEntityInit;
-import com.congueror.mechaddendums.util.ClientEventBusSub;
-import com.congueror.mechaddendums.util.EventBusSub;
-import com.congueror.mechaddendums.util.IEventBusSub;
+import com.congueror.mechaddendums.network.PacketHandler;
 import com.congueror.mechaddendums.util.ModItemGroups;
-import com.congueror.mechaddendums.util.PacketHandler;
 import com.congueror.mechaddendums.util.Strippables;
+import com.congueror.mechaddendums.util.enums.SolarGenTier;
+import com.congueror.mechaddendums.util.eventbus.ClientEventBusSub;
+import com.congueror.mechaddendums.util.eventbus.EventBusSub;
+import com.congueror.mechaddendums.util.eventbus.IEventBusSub;
 import com.congueror.mechaddendums.world.gen.OreGen;
 import com.congueror.mechaddendums.world.gen.OreGenFeatures;
 import com.congueror.mechaddendums.world.gen.TreeGenFeatures;
@@ -104,7 +105,9 @@ public class MechAddendums
     	
     	RenderTypeLookup.setRenderLayer(BlockInit.RUBBER_SAPLING.get(), RenderType.getCutout());
     
-        ScreenManager.registerFactory(ContainerInit.BASIC_SOLAR_GENERATOR_CONTAINER.get(), SolarGeneratorScreen::new);
+    	for(SolarGenTier tier : SolarGenTier.values()) {
+            ScreenManager.registerFactory(ContainerInit.SOLAR_GENERATOR_CONTAINER.get(tier).get(), SolarGeneratorScreen::new);
+    	}
     }
     
     @SubscribeEvent

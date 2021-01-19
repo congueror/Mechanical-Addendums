@@ -1,5 +1,5 @@
 {
-  "parent": "mechaddendums:block/slab",
+  "parent": "minecraft:block/slab",
   "textures": {
     "bottom": "mechaddendums:block/rubber_planks",
     "top": "mechaddendums:block/rubber_planks",

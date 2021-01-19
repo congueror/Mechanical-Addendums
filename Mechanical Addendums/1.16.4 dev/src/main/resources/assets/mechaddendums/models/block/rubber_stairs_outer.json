@@ -1,5 +1,5 @@
 {
-  "parent": "mechaddendums:block/outer_stairs",
+  "parent": "minecraft:block/outer_stairs",
   "textures": {
     "bottom": "mechaddendums:block/rubber_planks",
     "top": "mechaddendums:block/rubber_planks",

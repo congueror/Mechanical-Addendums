@@ -1,4 +1,4 @@
-package com.congueror.mechaddendums.blocks;
+package com.congueror.mechaddendums.blocks.solargen;
 
 import com.congueror.mechaddendums.MechAddendums;
 import com.mojang.blaze3d.matrix.MatrixStack;

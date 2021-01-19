@@ -1502,6 +1502,34 @@ public class RecipeDataGen extends RecipeProvider
 		.addCriterion("stripped_rubber_log", hasItem(BlockInit.RUBBER_STRIPPED_LOG.get()))
 		.build(recipe);
 		
+		//rubber_stairs
+		ShapedRecipeBuilder.shapedRecipe(BlockInit.RUBBER_STAIRS.get(), 4)
+		.patternLine("a  ")
+		.patternLine("aa ")
+		.patternLine("aaa")
+		.key('a', BlockInit.RUBBER_PLANKS.get())
+		.addCriterion("rubber_planks", hasItem(BlockInit.RUBBER_PLANKS.get()))
+		.build(recipe);
+		
+		//rubber_slab
+		ShapedRecipeBuilder.shapedRecipe(BlockInit.RUBBER_SLAB.get(), 6)
+		.patternLine("   ")
+		.patternLine("   ")
+		.patternLine("aaa")
+		.key('a', BlockInit.RUBBER_PLANKS.get())
+		.addCriterion("rubber_planks", hasItem(BlockInit.RUBBER_PLANKS.get()))
+		.build(recipe);
+		
+		//rubber_fence_gate
+		ShapedRecipeBuilder.shapedRecipe(BlockInit.RUBBER_FENCE_GATE.get(), 1)
+		.patternLine("sas")
+		.patternLine("sas")
+		.patternLine("   ")
+		.key('a', BlockInit.RUBBER_PLANKS.get())
+		.key('s', Items.STICK)
+		.addCriterion("rubber_planks", hasItem(BlockInit.RUBBER_PLANKS.get()))
+		.build(recipe);
+		
 		//rubber
 		ShapelessRecipeBuilder.shapelessRecipe(ItemInit.RUBBER.get(), 1)
 		.addIngredient(ModTags.Items.RUBBER_LOGS)
@@ -1875,14 +1903,6 @@ public class RecipeDataGen extends RecipeProvider
 		        .key('a', Tags.Items.GEMS_DIAMOND)
 		        .key('s', Items.STICK)
 		        .addCriterion("diamond", hasItem(Tags.Items.GEMS_DIAMOND))
-		        .build(recipe);
-				ShapedRecipeBuilder.shapedRecipe(ItemInit.NETHERITE_HAMMER.get(), 1)
-		        .patternLine(" a ")
-		        .patternLine(" sa")
-		        .patternLine("s  ")
-		        .key('a', Tags.Items.INGOTS_NETHERITE)
-		        .key('s', Items.STICK)
-		        .addCriterion("netherite_ingot", hasItem(Tags.Items.INGOTS_NETHERITE))
 		        .build(recipe);
 				SmithingRecipeBuilder.smithingRecipe(Ingredient.fromItems(ItemInit.DIAMOND_HAMMER.get()), Ingredient.fromTag(Tags.Items.INGOTS_NETHERITE), ItemInit.NETHERITE_HAMMER.get()).addCriterion("netherite_ingot", hasItem(Tags.Items.INGOTS_NETHERITE)).build(recipe, new ResourceLocation(MechAddendums.MOD_ID, "netherite_hammer_smithing"));
 				

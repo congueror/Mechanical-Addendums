@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "mechaddendums:rubber_slab"
+    ]
+  },
+  "criteria": {
+    "rubber_planks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mechaddendums:rubber_planks"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "mechaddendums:rubber_slab"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "rubber_planks",
+      "has_the_recipe"
+    ]
+  ]
+}

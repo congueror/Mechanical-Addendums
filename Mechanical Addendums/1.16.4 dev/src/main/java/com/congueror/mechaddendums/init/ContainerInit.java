@@ -1,8 +1,12 @@
 package com.congueror.mechaddendums.init;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.congueror.mechaddendums.MechAddendums;
-import com.congueror.mechaddendums.blocks.SolarGeneratorContainer;
-import com.congueror.mechaddendums.blocks.SolarGeneratorTileEntity;
+import com.congueror.mechaddendums.blocks.solargen.SolarGeneratorContainer;
+import com.congueror.mechaddendums.blocks.solargen.SolarGeneratorTileEntity;
+import com.congueror.mechaddendums.util.enums.SolarGenTier;
 
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.tileentity.TileEntity;
@@ -16,15 +20,20 @@ public class ContainerInit {
 
 	public static final DeferredRegister<ContainerType<?>> CONTAINERS = DeferredRegister.create(ForgeRegistries.CONTAINERS, MechAddendums.MOD_ID);
 	
-	public static final RegistryObject<ContainerType<SolarGeneratorContainer>> BASIC_SOLAR_GENERATOR_CONTAINER = CONTAINERS.register("", () -> IForgeContainerType.create((windowId, inv, data) -> {
-        BlockPos pos = data.readBlockPos();
-        TileEntity te = inv.player.getEntityWorld().getTileEntity(pos);
-        if(!(te instanceof SolarGeneratorTileEntity))
-        {
-            MechAddendums.LOGGER.error("Wrong type of tile entity (expected TileEntitySolarPanel)!");
-            return null;
-        }
-        SolarGeneratorTileEntity tile = (SolarGeneratorTileEntity) te;
-        return new SolarGeneratorContainer(windowId, inv.player, tile);
-    }));
+    public static final Map<SolarGenTier, RegistryObject<ContainerType<SolarGeneratorContainer>>> SOLAR_GENERATOR_CONTAINER = new HashMap<>();
+    public static void forLoop() {
+    	for(SolarGenTier tier : SolarGenTier.values()) {
+    		SOLAR_GENERATOR_CONTAINER.put(tier, CONTAINERS.register(tier.getSolarGenName(), () -> IForgeContainerType.create((windowId, inv, data) -> {
+                BlockPos pos = data.readBlockPos();
+                TileEntity te = inv.player.getEntityWorld().getTileEntity(pos);
+                if(!(te instanceof SolarGeneratorTileEntity))
+                {
+                    MechAddendums.LOGGER.error("Wrong type of tile entity (expected TileEntitySolarPanel)!");
+                    return null;
+                }
+                SolarGeneratorTileEntity tile = (SolarGeneratorTileEntity) te;
+                return new SolarGeneratorContainer(windowId, inv.player, tile, tier);
+            })));
+    	}
+    }
 }

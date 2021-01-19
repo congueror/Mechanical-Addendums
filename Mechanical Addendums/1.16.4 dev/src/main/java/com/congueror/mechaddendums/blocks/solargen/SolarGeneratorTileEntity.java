@@ -1,4 +1,4 @@
-package com.congueror.mechaddendums.blocks;
+package com.congueror.mechaddendums.blocks.solargen;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -6,10 +6,11 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.congueror.mechaddendums.init.TileEntityInit;
-import com.congueror.mechaddendums.util.PacketHandler;
+import com.congueror.mechaddendums.network.PacketHandler;
+import com.congueror.mechaddendums.network.packet.UpdateSolarGenerator;
 import com.congueror.mechaddendums.util.energy.ModEnergyStorage;
 import com.congueror.mechaddendums.util.energy.SolarGenProduction;
-import com.congueror.mechaddendums.util.energy.UpdateSolarGenerator;
+import com.congueror.mechaddendums.util.enums.SolarGenTier;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -19,7 +20,6 @@ import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -36,19 +36,17 @@ public class SolarGeneratorTileEntity extends TileEntity implements ITickableTil
     private int energyGeneration, maxEnergyOutput;
     public int maxEnergy;
     
+    private SolarGenTier tier;
     public int energyClient, energyProductionClient;
 	
-	public SolarGeneratorTileEntity(TileEntityType<?> tileEntityTypeIn) {
-		super(tileEntityTypeIn);
-		energyGeneration = (int) Math.pow(8, 1);
+	public SolarGeneratorTileEntity(SolarGenTier tier) {
+		super(TileEntityInit.SOLAR_GENERATOR_TILE_ENTITY.get(tier).get());
+		this.tier = tier;
+		energyGeneration = (int) Math.pow(1, 1);
         maxEnergyOutput = energyGeneration * 2;
         maxEnergy = energyGeneration * 1000;
         energyClient = energyProductionClient = -1;
 	}
-
-	public SolarGeneratorTileEntity() {
-	    this(TileEntityInit.BASIC_SOLAR_GENERATOR_TILE_ENTITY.get());
-	  }
 	
 	private IEnergyStorage createEnergy()
     {
@@ -146,7 +144,7 @@ public class SolarGeneratorTileEntity extends TileEntity implements ITickableTil
     @Nullable
     @Override
 	public Container createMenu(int id, PlayerInventory playerInv, PlayerEntity playerEntity) {
-    	return new SolarGeneratorContainer(id, playerEntity, this);
+    	return new SolarGeneratorContainer(id, playerEntity, this, tier);
 	}
 
 	@Override

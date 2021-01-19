@@ -1,9 +1,9 @@
-package com.congueror.mechaddendums.util;
+package com.congueror.mechaddendums.network;
 
 import java.util.Optional;
 
 import com.congueror.mechaddendums.MechAddendums;
-import com.congueror.mechaddendums.util.energy.UpdateSolarGenerator;
+import com.congueror.mechaddendums.network.packet.UpdateSolarGenerator;
 
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.network.NetworkDirection;

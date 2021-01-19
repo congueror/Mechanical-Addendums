@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "   ",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "mechaddendums:rubber_planks"
+    }
+  },
+  "result": {
+    "item": "mechaddendums:rubber_slab",
+    "count": 6
+  }
+}

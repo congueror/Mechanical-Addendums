@@ -1,9 +1,9 @@
-package com.congueror.mechaddendums.util.energy;
+package com.congueror.mechaddendums.network.packet;
 
 import java.util.function.Supplier;
 
 import com.congueror.mechaddendums.MechAddendums;
-import com.congueror.mechaddendums.blocks.SolarGeneratorTileEntity;
+import com.congueror.mechaddendums.blocks.solargen.SolarGeneratorTileEntity;
 
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;

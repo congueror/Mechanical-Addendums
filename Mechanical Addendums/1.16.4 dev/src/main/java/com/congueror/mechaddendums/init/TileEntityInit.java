@@ -1,8 +1,12 @@
 package com.congueror.mechaddendums.init;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.congueror.mechaddendums.MechAddendums;
-import com.congueror.mechaddendums.blocks.SolarGeneratorBlock;
-import com.congueror.mechaddendums.blocks.SolarGeneratorTileEntity;
+import com.congueror.mechaddendums.blocks.solargen.SolarGeneratorBlock;
+import com.congueror.mechaddendums.blocks.solargen.SolarGeneratorTileEntity;
+import com.congueror.mechaddendums.util.enums.SolarGenTier;
 
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.fml.RegistryObject;
@@ -14,5 +18,10 @@ public class TileEntityInit {
 	
 	public static final DeferredRegister<TileEntityType<?>> TILE_ENTITIES = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, MechAddendums.MOD_ID);
 	
-	public static final RegistryObject<TileEntityType<SolarGeneratorTileEntity>> BASIC_SOLAR_GENERATOR_TILE_ENTITY = TILE_ENTITIES.register("basic_solar_generator", () -> TileEntityType.Builder.create(SolarGeneratorTileEntity::new, BlockInit.SOLAR_GENERATOR.get()).build(null));
+    public static final Map<SolarGenTier, RegistryObject<TileEntityType<SolarGeneratorTileEntity>>> SOLAR_GENERATOR_TILE_ENTITY = new HashMap<>();
+    public static void forLoop() {
+    	for(SolarGenTier tier : SolarGenTier.values()) {
+    		SOLAR_GENERATOR_TILE_ENTITY.put(tier, TILE_ENTITIES.register(tier.getSolarGenName(), () -> TileEntityType.Builder.create(() -> new SolarGeneratorTileEntity(tier), BlockInit.SOLAR_GENERATOR.get(tier).get()).build(null)));
+    	}
+    }
 }

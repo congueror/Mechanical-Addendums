@@ -1,19 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    " a ",
-    " sa",
-    "s  "
+    "sas",
+    "sas",
+    "   "
   ],
   "key": {
     "a": {
-      "tag": "forge:ingots/netherite"
+      "item": "mechaddendums:rubber_planks"
     },
     "s": {
       "item": "minecraft:stick"
     }
   },
   "result": {
-    "item": "mechaddendums:netherite_hammer"
+    "item": "mechaddendums:rubber_fence_gate"
   }
 }

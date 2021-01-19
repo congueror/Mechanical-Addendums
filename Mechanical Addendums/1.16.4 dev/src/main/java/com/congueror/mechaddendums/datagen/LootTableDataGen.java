@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import com.congueror.mechaddendums.MechAddendums;
 import com.congueror.mechaddendums.init.BlockInit;
 import com.congueror.mechaddendums.init.ItemInit;
+import com.congueror.mechaddendums.util.enums.SolarGenTier;
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
@@ -136,11 +137,14 @@ public class LootTableDataGen extends LootTableProvider implements IDataProvider
              });
             this.registerDropSelfLootTable(BlockInit.RUBBER_STAIRS.get());
             this.registerDropSelfLootTable(BlockInit.RUBBER_SLAB.get());
+            this.registerDropSelfLootTable(BlockInit.RUBBER_FENCE_GATE.get());
             this.registerDropSelfLootTable(BlockInit.RUBBER_SAPLING.get());
             this.registerDropSelfLootTable(BlockInit.BRASS_BLOCK.get());
             this.registerDropSelfLootTable(BlockInit.CHROMIUM_BLOCK.get());
             this.registerDropSelfLootTable(BlockInit.CHROMIUM_ORE.get());
             this.registerDropSelfLootTable(BlockInit.THORIUM_ORE.get());
+            for(SolarGenTier tier : SolarGenTier.values()) 
+            this.registerDropSelfLootTable(BlockInit.SOLAR_GENERATOR.get(tier).get());
         }
 
         @Override

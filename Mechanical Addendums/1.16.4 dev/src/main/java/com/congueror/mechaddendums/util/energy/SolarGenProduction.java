@@ -8,8 +8,8 @@ public class SolarGenProduction {
 	public static float computeSunIntensity(World world, BlockPos pos)
     {
         float sunIntensity = 0;
-
-        if(world.canBlockSeeSky(pos))
+        
+        if(world.canBlockSeeSky(pos.up()))
         {
             float multiplicator = 1.5f;
             float displacement = 1.2f;
@@ -26,14 +26,19 @@ public class SolarGenProduction {
 
             if(sunIntensity > 0)
             {
-                if(world.isRaining())
+            	if(!world.isRaining() && !world.isThundering()) {
+                    sunIntensity = 1;
+            	}
+            	
+                if(world.isRaining()) {
                     sunIntensity *= 0.4;
+                }
 
-                if(world.isThundering())
+                if(world.isThundering()) {
                     sunIntensity *= 0.2;
+                }      
             }
         }
-
         return sunIntensity;
     }
 }

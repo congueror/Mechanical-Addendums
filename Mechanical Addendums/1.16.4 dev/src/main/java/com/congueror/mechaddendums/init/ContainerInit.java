@@ -21,7 +21,7 @@ public class ContainerInit {
 	public static final DeferredRegister<ContainerType<?>> CONTAINERS = DeferredRegister.create(ForgeRegistries.CONTAINERS, MechAddendums.MOD_ID);
 	
     public static final Map<SolarGenTier, RegistryObject<ContainerType<SolarGeneratorContainer>>> SOLAR_GENERATOR_CONTAINER = new HashMap<>();
-    public static void forLoop() {
+    public static void init() {
     	for(SolarGenTier tier : SolarGenTier.values()) {
     		SOLAR_GENERATOR_CONTAINER.put(tier, CONTAINERS.register(tier.getSolarGenName(), () -> IForgeContainerType.create((windowId, inv, data) -> {
                 BlockPos pos = data.readBlockPos();

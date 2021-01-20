@@ -3,6 +3,8 @@ package com.congueror.mechaddendums.util;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import com.congueror.mechaddendums.util.enums.SolarGenTier;
+
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.text.ITextComponent;
@@ -11,26 +13,19 @@ import net.minecraft.util.text.TranslationTextComponent;
 public class Tooltip {
 	private static final Pattern COMPILE = Pattern.compile("@", Pattern.LITERAL);
 
-    public static void showInfoShift(List<ITextComponent> tooltip)
+    public static void showInfoShift(SolarGenTier tier ,List<ITextComponent> tooltip, int energy)
     {
         if(Screen.hasShiftDown())
         {
-            int generation = (int) Math.pow(1, 1);
+            int generation = tier.getNum();
             int transfer = generation * 2;
             int capacity = generation * 1000;
 
-            addInformationLocalized(tooltip, "tooltip.mechaddendums.shift_info", generation, transfer, capacity);
+            addInformationLocalized(tooltip, "tooltip.mechaddendums.solargen_hold_shift", generation, transfer, capacity);
+            addInformationLocalized(tooltip, "tooltip.mechaddendums.solargen_hold_shift2", energy);
         }
         else
-            addInformationLocalized(tooltip, "tooltip.mechaddendums.hold_shift");
-    }
-
-    public static void showInfoCtrl(int energy, List<ITextComponent> tooltip)
-    {
-        if(Screen.hasControlDown())
-            addInformationLocalized(tooltip, "tooltip.mechaddendums.ctrl_info", energy);
-        else
-            addInformationLocalized(tooltip, "tooltip.mechaddendums.hold_ctrl");
+            addInformationLocalized(tooltip, "tooltip.mechaddendums.solargen_shift_info");
     }
 
     private static void addInformationLocalized(List<ITextComponent> tooltip, String key, Object... parameters)

@@ -42,7 +42,7 @@ public class SolarGeneratorTileEntity extends TileEntity implements ITickableTil
 	public SolarGeneratorTileEntity(SolarGenTier tier) {
 		super(TileEntityInit.SOLAR_GENERATOR_TILE_ENTITY.get(tier).get());
 		this.tier = tier;
-		energyGeneration = (int) Math.pow(1, 1);
+		energyGeneration = tier.getNum();
         maxEnergyOutput = energyGeneration * 2;
         maxEnergy = energyGeneration * 1000;
         energyClient = energyProductionClient = -1;

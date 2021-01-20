@@ -1,10 +1,10 @@
 package com.congueror.mechaddendums.util.enums;
 
 public enum SolarGenTier {
-	BASIC("basic", 10),
-	ADVANCED("advanced", 100),
-	INDUSTRIAL("industrial", 1000),
-	ULTIMATE("ultimate", 10000);
+	BASIC("basic", 1),
+	ADVANCED("advanced", 16),
+	INDUSTRIAL("industrial", 48),
+	ULTIMATE("ultimate", 80);
 
 	private final String name;
 	private final int energyTier;
@@ -19,7 +19,7 @@ public enum SolarGenTier {
 	public String getName() { 
 		return name; 
 	}
-	public int getCapacity() { 
+	public int getNum() { 
 		return energyTier; 
 	}
 	

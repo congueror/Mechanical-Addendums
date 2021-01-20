@@ -66,6 +66,10 @@ public class MechAddendums
         TileEntityInit.TILE_ENTITIES.register(modEventBus);
         ContainerInit.CONTAINERS.register(modEventBus);
         
+        BlockInit.init();
+        ContainerInit.init();
+        TileEntityInit.init();
+        
         PacketHandler.init();
         
         MinecraftForge.EVENT_BUS.register(this);

@@ -196,7 +196,10 @@
 	"block.mechaddendums.chromium_ore": "Chromium Ore",
 	"block.mechaddendums.chromium_block": "Block of Chromium",
 	"block.mechaddendums.thorium_ore": "Thorium Ore",
-	"block.mechaddendums.tier_1_solar_generator": "Tier 1 Solar Generator",
+	"block.mechaddendums.solar_generator_basic": "Basic Solar Generator",
+	"block.mechaddendums.solar_generator_advanced": "Advanced Solar Generator",
+	"block.mechaddendums.solar_generator_industrial": "Industrial Solar Generator",
+	"block.mechaddendums.solar_generator_ultimate": "Ultimate Solar Generator",
 	
 	"tooltip.uraniumdamage": "Will give radiation when in inventory",
 	"tooltip.treetap": "Used to extract rubber from a certain tree",
@@ -205,10 +208,9 @@
 	"tooltip.leaddust": "Looks so tasty...",
 	"tooltip.uraniumdust": "Harmless, unless digested",
 	
-	"tooltip.mechaddendums.shift_info": "",
-	"tooltip.mechaddendums.ctrl_info": "",
-	"tooltip.mechaddendums.hold_shift": "",
-	"tooltip.mechaddendums.hold_ctrl": "",
+	"tooltip.mechaddendums.solargen_shift_info": "@7Hold @c@oShift @7for details",
+	"tooltip.mechaddendums.solargen_hold_shift": "@7Generation: @a%d @4FE/t\n@7Transfer: @a%d @4FE/t\n@7Capacity: @a%d @4FE",
+	"tooltip.mechaddendums.solargen_hold_shift2": "@7Energy stored: @a%d @4FE",
 	
 	"tooltip.aluminum_ore": "Spawns between Y= 0-64",
 	"tooltip.tin_ore": "Spawns between Y= 0-64",

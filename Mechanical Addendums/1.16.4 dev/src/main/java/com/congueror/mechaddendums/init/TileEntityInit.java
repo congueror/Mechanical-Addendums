@@ -19,7 +19,7 @@ public class TileEntityInit {
 	public static final DeferredRegister<TileEntityType<?>> TILE_ENTITIES = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, MechAddendums.MOD_ID);
 	
     public static final Map<SolarGenTier, RegistryObject<TileEntityType<SolarGeneratorTileEntity>>> SOLAR_GENERATOR_TILE_ENTITY = new HashMap<>();
-    public static void forLoop() {
+    public static void init() {
     	for(SolarGenTier tier : SolarGenTier.values()) {
     		SOLAR_GENERATOR_TILE_ENTITY.put(tier, TILE_ENTITIES.register(tier.getSolarGenName(), () -> TileEntityType.Builder.create(() -> new SolarGeneratorTileEntity(tier), BlockInit.SOLAR_GENERATOR.get(tier).get()).build(null)));
     	}

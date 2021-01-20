@@ -173,7 +173,7 @@ public class BlockInit
 	
 	//Solar Gen
 	public static final Map<SolarGenTier, RegistryObject<SolarGeneratorBlock>> SOLAR_GENERATOR = new HashMap<>();
-	public static void forLoop() {
+	public static void init() {
 		for(SolarGenTier tier : SolarGenTier.values()) {
 			SOLAR_GENERATOR.put(tier, BLOCKS.register(tier.getSolarGenName(), () -> new SolarGeneratorBlock(tier)));
 		}

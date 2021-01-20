@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "mechaddendums:tier_1_solar_generator",
+          "name": "mechaddendums:solar_generator_basic",
           "functions": [
             {
               "function": "minecraft:copy_name",

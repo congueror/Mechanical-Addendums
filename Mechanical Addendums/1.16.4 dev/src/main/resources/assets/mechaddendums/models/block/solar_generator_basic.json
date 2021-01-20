@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "mechaddendums:block/solar_generator_basic_top",
+    "bottom": "mechaddendums:block/solar_generator_basic_bottom",
+    "side": "mechaddendums:block/solar_generator_basic_side"
+  }
+}

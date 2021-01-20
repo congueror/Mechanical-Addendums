@@ -98,17 +98,18 @@ public class SolarGeneratorBlock extends Block
     }
 	
 	@Override
-    public boolean removedByPlayer(BlockState state, World world, BlockPos pos, PlayerEntity player, boolean willHarvest, FluidState fluid)
-    {
-        return willHarvest || super.removedByPlayer(state, world, pos, player, willHarvest, fluid);
-    }
+	public boolean removedByPlayer(BlockState state, World world, BlockPos pos, PlayerEntity player, boolean willHarvest, FluidState fluid)
+	{
+		
+	    return willHarvest || super.removedByPlayer(state, world, pos, player, willHarvest, fluid);
+	}
 
-    @Override
-    public void harvestBlock(World worldIn, PlayerEntity player, BlockPos pos, BlockState state, TileEntity te, ItemStack stack)
-    {
-        super.harvestBlock(worldIn, player, pos, state, te, stack);
-        worldIn.removeBlock(pos, false);
-    }
+	@Override
+	public void harvestBlock(World worldIn, PlayerEntity player, BlockPos pos, BlockState state, TileEntity te, ItemStack stack)
+	{
+	    super.harvestBlock(worldIn, player, pos, state, te, stack);
+	    worldIn.removeBlock(pos, false);
+	}
 
     @Override
     public boolean hasTileEntity(BlockState state)
@@ -133,8 +134,7 @@ public class SolarGeneratorBlock extends Block
             if(compoundnbt.contains("energy"))
                 energy = compoundnbt.getCompound("energy").getInt("value");
 
-        Tooltip.showInfoCtrl(energy, tooltip);
-        Tooltip.showInfoShift(tooltip);
+        Tooltip.showInfoShift(this.tier, tooltip, energy);
     }
     
     @Override

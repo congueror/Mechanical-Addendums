@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ggg",
+    "sfs",
+    "iii"
+  ],
+  "key": {
+    "g": {
+      "item": "mechaddendums:photovoltaic_cell_basic"
+    },
+    "f": {
+      "item": "mechaddendums:machine_frame_basic"
+    },
+    "s": {
+      "tag": "forge:ingots/steel"
+    },
+    "i": {
+      "tag": "forge:ingots/brass"
+    }
+  },
+  "result": {
+    "item": "mechaddendums:solar_generator_basic"
+  }
+}

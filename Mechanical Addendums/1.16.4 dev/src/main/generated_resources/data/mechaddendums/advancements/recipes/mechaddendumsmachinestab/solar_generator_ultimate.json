@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "mechaddendums:solar_generator_ultimate"
+    ]
+  },
+  "criteria": {
+    "machine_frame_ultimate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mechaddendums:machine_frame_ultimate"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "mechaddendums:solar_generator_ultimate"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "machine_frame_ultimate",
+      "has_the_recipe"
+    ]
+  ]
+}

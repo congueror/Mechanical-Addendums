@@ -946,6 +946,16 @@ public class ItemModelDataGen extends ItemModelProvider{
 		
 		singleTexture(ItemInit.CHROMIUM_BOOTS.get().getRegistryName().getPath(), new ResourceLocation("item/generated"),
                 "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/chromium_boots"));
+		
+		//Machines
+		singleTexture(ItemInit.BASIC_PHOTOVOLTAIC_CELL.get().getRegistryName().getPath(), new ResourceLocation("item/generated"),
+                "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/photovoltaic_cell_basic"));
+		singleTexture(ItemInit.ADVANCED_PHOTOVOLTAIC_CELL.get().getRegistryName().getPath(), new ResourceLocation("item/generated"),
+                "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/photovoltaic_cell_advanced"));
+		singleTexture(ItemInit.INDUSTRIAL_PHOTOVOLTAIC_CELL.get().getRegistryName().getPath(), new ResourceLocation("item/generated"),
+                "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/photovoltaic_cell_industrial"));
+		singleTexture(ItemInit.ULTIMATE_PHOTOVOLTAIC_CELL.get().getRegistryName().getPath(), new ResourceLocation("item/generated"),
+                "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/photovoltaic_cell_ultimate"));
 	}
 
 }

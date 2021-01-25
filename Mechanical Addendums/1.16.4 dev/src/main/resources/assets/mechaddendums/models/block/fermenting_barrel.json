@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "mechaddendums:block/fermenting_barrel_top",
+    "bottom": "mechaddendums:block/fermenting_barrel_bottom",
+    "side": "mechaddendums:block/fermenting_barrel_side"
+  }
+}

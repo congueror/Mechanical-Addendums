@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ggg",
+    "sfs",
+    "iii"
+  ],
+  "key": {
+    "g": {
+      "item": "mechaddendums:photovoltaic_cell_ultimate"
+    },
+    "f": {
+      "item": "mechaddendums:machine_frame_ultimate"
+    },
+    "s": {
+      "tag": "forge:ingots/steel"
+    },
+    "i": {
+      "tag": "forge:ingots/enderium"
+    }
+  },
+  "result": {
+    "item": "mechaddendums:solar_generator_ultimate"
+  }
+}

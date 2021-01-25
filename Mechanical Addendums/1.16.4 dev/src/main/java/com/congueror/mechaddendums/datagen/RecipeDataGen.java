@@ -5,6 +5,8 @@ import java.util.function.Consumer;
 import com.congueror.mechaddendums.MechAddendums;
 import com.congueror.mechaddendums.init.BlockInit;
 import com.congueror.mechaddendums.init.ItemInit;
+import com.congueror.mechaddendums.util.enums.MachineFrameTier;
+import com.congueror.mechaddendums.util.enums.SolarGenTier;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.data.CookingRecipeBuilder;
@@ -3544,6 +3546,130 @@ public class RecipeDataGen extends RecipeProvider
 		        .patternLine("   ")
 		        .key('a', ModTags.Items.INGOTS_CHROMIUM)
 		        .addCriterion("chromium_ingot", hasItem(ModTags.Items.INGOTS_CHROMIUM))
+		        .build(recipe);
+				
+				//Machine
+				ShapedRecipeBuilder.shapedRecipe(BlockInit.MACHINE_FRAME.get(), 1)
+		        .patternLine("aaa")
+		        .patternLine("a a")
+		        .patternLine("aaa")
+		        .key('a', ModTags.Items.INGOTS_STEEL)
+		        .addCriterion("steel_ingot", hasItem(ModTags.Items.INGOTS_STEEL))
+		        .build(recipe);
+				ShapedRecipeBuilder.shapedRecipe(BlockInit.MACHINE_FRAME_TIERED.get(MachineFrameTier.BASIC).get(), 1)
+		        .patternLine("aaa")
+		        .patternLine("gfg")
+		        .patternLine("aaa")
+		        .key('a', ModTags.Items.INGOTS_BRASS)
+		        .key('g', ModTags.Items.GEARS_TIN)
+		        .key('f', BlockInit.MACHINE_FRAME.get())
+		        .addCriterion("brass_ingot", hasItem(ModTags.Items.INGOTS_BRASS))
+		        .build(recipe);
+				ShapedRecipeBuilder.shapedRecipe(BlockInit.MACHINE_FRAME_TIERED.get(MachineFrameTier.ADVANCED).get(), 1)
+		        .patternLine("aaa")
+		        .patternLine("gfg")
+		        .patternLine("aaa")
+		        .key('a', ModTags.Items.INGOTS_SIGNALUM)
+		        .key('g', ModTags.Items.GEARS_INVAR)
+		        .key('f', BlockInit.MACHINE_FRAME_TIERED.get(MachineFrameTier.BASIC).get())
+		        .addCriterion("signalum_ingot", hasItem(ModTags.Items.INGOTS_SIGNALUM))
+		        .build(recipe);
+				ShapedRecipeBuilder.shapedRecipe(BlockInit.MACHINE_FRAME_TIERED.get(MachineFrameTier.INDUSTRIAL).get(), 1)
+		        .patternLine("aaa")
+		        .patternLine("gfg")
+		        .patternLine("aaa")
+		        .key('a', ModTags.Items.INGOTS_COBALT)
+		        .key('g', ModTags.Items.GEARS_CHROMIUM)
+		        .key('f', BlockInit.MACHINE_FRAME_TIERED.get(MachineFrameTier.ADVANCED).get())
+		        .addCriterion("cobalt_ingot", hasItem(ModTags.Items.INGOTS_COBALT))
+		        .build(recipe);
+				ShapedRecipeBuilder.shapedRecipe(BlockInit.MACHINE_FRAME_TIERED.get(MachineFrameTier.ULTIMATE).get(), 1)
+		        .patternLine("aaa")
+		        .patternLine("gfg")
+		        .patternLine("aaa")
+		        .key('a', ModTags.Items.INGOTS_ENDERIUM)
+		        .key('g', ModTags.Items.GEARS_OPAL)
+		        .key('f', BlockInit.MACHINE_FRAME_TIERED.get(MachineFrameTier.INDUSTRIAL).get())
+		        .addCriterion("enderium_ingot", hasItem(ModTags.Items.INGOTS_ENDERIUM))
+		        .build(recipe);
+				ShapedRecipeBuilder.shapedRecipe(ItemInit.BASIC_PHOTOVOLTAIC_CELL.get(), 1)
+		        .patternLine("ggg")
+		        .patternLine("ddd")
+		        .patternLine("sss")
+		        .key('g', Blocks.GLASS)
+		        .key('d', ModTags.Items.DUSTS_EMERALD)
+		        .key('s', ModTags.Items.INGOTS_STEEL)
+		        .addCriterion("emerald_dust", hasItem(ModTags.Items.DUSTS_EMERALD))
+		        .build(recipe);
+				ShapedRecipeBuilder.shapedRecipe(ItemInit.ADVANCED_PHOTOVOLTAIC_CELL.get(), 1)
+		        .patternLine("ggg")
+		        .patternLine("ddd")
+		        .patternLine("sps")
+		        .key('g', Blocks.GLASS)
+		        .key('d', ModTags.Items.DUSTS_DIAMOND)
+		        .key('s', ModTags.Items.INGOTS_STEEL)
+		        .key('p', ItemInit.BASIC_PHOTOVOLTAIC_CELL.get())
+		        .addCriterion("diamond_dust", hasItem(ModTags.Items.DUSTS_DIAMOND))
+		        .build(recipe);
+				ShapedRecipeBuilder.shapedRecipe(ItemInit.INDUSTRIAL_PHOTOVOLTAIC_CELL.get(), 1)
+		        .patternLine("ggg")
+		        .patternLine("ddd")
+		        .patternLine("sps")
+		        .key('g', Blocks.GLASS)
+		        .key('d', ModTags.Items.DUSTS_SAPPHIRE)
+		        .key('s', ModTags.Items.INGOTS_STEEL)
+		        .key('p', ItemInit.ADVANCED_PHOTOVOLTAIC_CELL.get())
+		        .addCriterion("sapphire_dust", hasItem(ModTags.Items.DUSTS_SAPPHIRE))
+		        .build(recipe);
+				ShapedRecipeBuilder.shapedRecipe(ItemInit.ULTIMATE_PHOTOVOLTAIC_CELL.get(), 1)
+		        .patternLine("ggg")
+		        .patternLine("ddd")
+		        .patternLine("sps")
+		        .key('g', Blocks.GLASS)
+		        .key('d', ModTags.Items.DUSTS_AMETHYST)
+		        .key('s', ModTags.Items.INGOTS_STEEL)
+		        .key('p', ItemInit.INDUSTRIAL_PHOTOVOLTAIC_CELL.get())
+		        .addCriterion("amethyst_dust", hasItem(ModTags.Items.DUSTS_AMETHYST))
+		        .build(recipe);
+				ShapedRecipeBuilder.shapedRecipe(BlockInit.SOLAR_GENERATOR.get(SolarGenTier.BASIC).get(), 1)
+		        .patternLine("ggg")
+		        .patternLine("sfs")
+		        .patternLine("iii")
+		        .key('g', ItemInit.BASIC_PHOTOVOLTAIC_CELL.get())
+		        .key('f', BlockInit.MACHINE_FRAME_TIERED.get(MachineFrameTier.BASIC).get())
+		        .key('s', ModTags.Items.INGOTS_STEEL)
+		        .key('i', ModTags.Items.INGOTS_BRASS)
+		        .addCriterion("machine_frame_basic", hasItem(BlockInit.MACHINE_FRAME_TIERED.get(MachineFrameTier.BASIC).get()))
+		        .build(recipe);
+				ShapedRecipeBuilder.shapedRecipe(BlockInit.SOLAR_GENERATOR.get(SolarGenTier.ADVANCED).get(), 1)
+		        .patternLine("ggg")
+		        .patternLine("sfs")
+		        .patternLine("iii")
+		        .key('g', ItemInit.ADVANCED_PHOTOVOLTAIC_CELL.get())
+		        .key('f', BlockInit.MACHINE_FRAME_TIERED.get(MachineFrameTier.ADVANCED).get())
+		        .key('s', ModTags.Items.INGOTS_STEEL)
+		        .key('i', ModTags.Items.INGOTS_SIGNALUM)
+		        .addCriterion("machine_frame_advanced", hasItem(BlockInit.MACHINE_FRAME_TIERED.get(MachineFrameTier.ADVANCED).get()))
+		        .build(recipe);
+				ShapedRecipeBuilder.shapedRecipe(BlockInit.SOLAR_GENERATOR.get(SolarGenTier.INDUSTRIAL).get(), 1)
+		        .patternLine("ggg")
+		        .patternLine("sfs")
+		        .patternLine("iii")
+		        .key('g', ItemInit.INDUSTRIAL_PHOTOVOLTAIC_CELL.get())
+		        .key('f', BlockInit.MACHINE_FRAME_TIERED.get(MachineFrameTier.INDUSTRIAL).get())
+		        .key('s', ModTags.Items.INGOTS_STEEL)
+		        .key('i', ModTags.Items.INGOTS_COBALT)
+		        .addCriterion("machine_frame_industrial", hasItem(BlockInit.MACHINE_FRAME_TIERED.get(MachineFrameTier.INDUSTRIAL).get()))
+		        .build(recipe);
+				ShapedRecipeBuilder.shapedRecipe(BlockInit.SOLAR_GENERATOR.get(SolarGenTier.ULTIMATE).get(), 1)
+		        .patternLine("ggg")
+		        .patternLine("sfs")
+		        .patternLine("iii")
+		        .key('g', ItemInit.ULTIMATE_PHOTOVOLTAIC_CELL.get())
+		        .key('f', BlockInit.MACHINE_FRAME_TIERED.get(MachineFrameTier.ULTIMATE).get())
+		        .key('s', ModTags.Items.INGOTS_STEEL)
+		        .key('i', ModTags.Items.INGOTS_ENDERIUM)
+		        .addCriterion("machine_frame_ultimate", hasItem(BlockInit.MACHINE_FRAME_TIERED.get(MachineFrameTier.ULTIMATE).get()))
 		        .build(recipe);
 	}
 }

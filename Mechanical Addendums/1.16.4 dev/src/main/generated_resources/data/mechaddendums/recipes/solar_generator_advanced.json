@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ggg",
+    "sfs",
+    "iii"
+  ],
+  "key": {
+    "g": {
+      "item": "mechaddendums:photovoltaic_cell_advanced"
+    },
+    "f": {
+      "item": "mechaddendums:machine_frame_advanced"
+    },
+    "s": {
+      "tag": "forge:ingots/steel"
+    },
+    "i": {
+      "tag": "forge:ingots/signalum"
+    }
+  },
+  "result": {
+    "item": "mechaddendums:solar_generator_advanced"
+  }
+}

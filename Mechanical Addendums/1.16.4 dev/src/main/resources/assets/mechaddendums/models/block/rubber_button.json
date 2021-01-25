@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button",
+  "textures": {
+    "texture": "mechaddendums:block/rubber_planks"
+  }
+}

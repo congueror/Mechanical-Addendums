@@ -4,12 +4,13 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import com.congueror.mechaddendums.init.BlockInit;
 import com.congueror.mechaddendums.util.Tooltip;
 import com.congueror.mechaddendums.util.enums.SolarGenTier;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -30,6 +31,7 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.ToolType;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.fml.network.NetworkHooks;
@@ -40,7 +42,7 @@ public class SolarGeneratorBlock extends Block
     private static final ResourceLocation WRENCH = new ResourceLocation("forge", "wrench");
 	
 	public SolarGeneratorBlock(SolarGenTier tier) {
-		super(Block.Properties.from(BlockInit.BRASS_BLOCK.get()));
+		super(Block.Properties.create(Material.IRON).hardnessAndResistance(5f, 6f).sound(SoundType.METAL).harvestTool(ToolType.PICKAXE).harvestLevel(2).setRequiresTool());
         this.tier = tier;
 	}
 	

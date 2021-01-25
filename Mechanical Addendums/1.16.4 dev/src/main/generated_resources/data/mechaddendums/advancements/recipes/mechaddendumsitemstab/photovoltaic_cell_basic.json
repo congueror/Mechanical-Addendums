@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "mechaddendums:photovoltaic_cell_basic"
+    ]
+  },
+  "criteria": {
+    "emerald_dust": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:dusts/emerald"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "mechaddendums:photovoltaic_cell_basic"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "emerald_dust",
+      "has_the_recipe"
+    ]
+  ]
+}

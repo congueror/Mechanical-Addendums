@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "mechaddendums:solar_generator_advanced"
+          "name": "mechaddendums:machine_frame_advanced"
         }
       ],
       "conditions": [

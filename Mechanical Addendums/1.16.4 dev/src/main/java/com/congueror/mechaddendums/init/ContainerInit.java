@@ -28,7 +28,7 @@ public class ContainerInit {
                 TileEntity te = inv.player.getEntityWorld().getTileEntity(pos);
                 if(!(te instanceof SolarGeneratorTileEntity))
                 {
-                    MechAddendums.LOGGER.error("Wrong type of tile entity (expected TileEntitySolarPanel)!");
+                    MechAddendums.LOGGER.error("Wrong type of tile entity (expected TileEntitySolarGenerator)!");
                     return null;
                 }
                 SolarGeneratorTileEntity tile = (SolarGeneratorTileEntity) te;

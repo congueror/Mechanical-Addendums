@@ -2,6 +2,7 @@ package com.congueror.mechaddendums.datagen;
 
 import com.congueror.mechaddendums.MechAddendums;
 import com.congueror.mechaddendums.init.BlockInit;
+import com.congueror.mechaddendums.util.enums.MachineFrameTier;
 import com.congueror.mechaddendums.util.enums.SolarGenTier;
 
 import net.minecraft.block.Block;
@@ -171,6 +172,8 @@ public class BlockModelDataGen extends BlockStateProvider
 		basicBlockItem(BlockInit.RUBBER_SLAB.get());
 		basicBlockItem(BlockInit.RUBBER_FENCE_GATE.get());
 		
+		basicBlockItem(BlockInit.FERMENTING_BARREL.get());
+		
 		//Brass
 		simpleBlock(BlockInit.BRASS_BLOCK.get());
 		basicBlockItem(BlockInit.BRASS_BLOCK.get());
@@ -185,7 +188,13 @@ public class BlockModelDataGen extends BlockStateProvider
 		simpleBlock(BlockInit.THORIUM_ORE.get());
 		basicBlockItem(BlockInit.THORIUM_ORE.get());
 		
+		simpleBlock(BlockInit.MACHINE_FRAME.get());
+		basicBlockItem(BlockInit.MACHINE_FRAME.get());
 		for(SolarGenTier tier : SolarGenTier.values()) 
 		basicBlockItem(BlockInit.SOLAR_GENERATOR.get(tier).get());
+		for(MachineFrameTier tier : MachineFrameTier.values()) {
+		simpleBlock(BlockInit.MACHINE_FRAME_TIERED.get(tier).get());
+		basicBlockItem(BlockInit.MACHINE_FRAME_TIERED.get(tier).get());
+		}
 	}
 }

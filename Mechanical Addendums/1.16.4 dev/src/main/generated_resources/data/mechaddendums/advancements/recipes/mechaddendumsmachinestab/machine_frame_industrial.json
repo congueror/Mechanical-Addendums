@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "mechaddendums:machine_frame_industrial"
+    ]
+  },
+  "criteria": {
+    "cobalt_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/cobalt"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "mechaddendums:machine_frame_industrial"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "cobalt_ingot",
+      "has_the_recipe"
+    ]
+  ]
+}

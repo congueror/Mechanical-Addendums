@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ggg",
+    "ddd",
+    "sps"
+  ],
+  "key": {
+    "g": {
+      "item": "minecraft:glass"
+    },
+    "d": {
+      "tag": "forge:dusts/sapphire"
+    },
+    "s": {
+      "tag": "forge:ingots/steel"
+    },
+    "p": {
+      "item": "mechaddendums:photovoltaic_cell_advanced"
+    }
+  },
+  "result": {
+    "item": "mechaddendums:photovoltaic_cell_industrial"
+  }
+}

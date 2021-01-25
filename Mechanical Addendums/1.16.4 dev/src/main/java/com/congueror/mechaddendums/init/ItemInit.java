@@ -1,7 +1,11 @@
 package com.congueror.mechaddendums.init;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.congueror.mechaddendums.MechAddendums;
 import com.congueror.mechaddendums.items.CoalNuggetItem;
+import com.congueror.mechaddendums.items.FermentingBarrelBlockItem;
 import com.congueror.mechaddendums.items.HammerItem;
 import com.congueror.mechaddendums.items.HazmatSuitItem;
 import com.congueror.mechaddendums.items.LeadDustItem;
@@ -9,15 +13,19 @@ import com.congueror.mechaddendums.items.RadioactiveMetalItem;
 import com.congueror.mechaddendums.items.TreeTapItem;
 import com.congueror.mechaddendums.items.UraniumDustItem;
 import com.congueror.mechaddendums.util.ModItemGroups;
+import com.congueror.mechaddendums.util.enums.MachineFrameTier;
 import com.congueror.mechaddendums.util.enums.ModArmorMaterial;
 import com.congueror.mechaddendums.util.enums.ModItemTier;
+import com.congueror.mechaddendums.util.enums.SolarGenTier;
 
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.AxeItem;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.HoeItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.PickaxeItem;
+import net.minecraft.item.Rarity;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.item.SwordItem;
 import net.minecraftforge.fml.RegistryObject;
@@ -33,6 +41,8 @@ public class ItemInit
     public static final RegistryObject<Item> TIN_NUGGET = ITEMS.register("tin_nugget", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> TIN_DUST = ITEMS.register("tin_dust", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> TIN_GEAR = ITEMS.register("tin_gear", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    public static final RegistryObject<BlockItem> TIN_BLOCK = ITEMS.register("tin_block", () -> new BlockItem(BlockInit.TIN_BLOCK.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    public static final RegistryObject<BlockItem> TIN_ORE = ITEMS.register("tin_ore", () -> new BlockItem(BlockInit.TIN_ORE.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     
     public static final RegistryObject<Item> TIN_SWORD = ITEMS.register("tin_sword", ()-> new SwordItem(ModItemTier.TIN, 3, -2.2f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
 	public static final RegistryObject<Item> TIN_PICKAXE = ITEMS.register("tin_pickaxe", ()-> new PickaxeItem(ModItemTier.TIN, 1, -2.8f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
@@ -55,6 +65,7 @@ public class ItemInit
     public static final RegistryObject<Item> STEEL_BLEND = ITEMS.register("steel_blend", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> STEEL_DUST = ITEMS.register("steel_dust", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> STEEL_GEAR = ITEMS.register("steel_gear", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    public static final RegistryObject<BlockItem> STEEL_BLOCK = ITEMS.register("steel_block", () -> new BlockItem(BlockInit.STEEL_BLOCK.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     
     public static final RegistryObject<Item> STEEL_SWORD = ITEMS.register("steel_sword", ()-> new SwordItem(ModItemTier.STEEL, 6, -2.4f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
 	public static final RegistryObject<Item> STEEL_PICKAXE = ITEMS.register("steel_pickaxe", ()-> new PickaxeItem(ModItemTier.STEEL, 4, -2.8f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
@@ -76,6 +87,8 @@ public class ItemInit
     public static final RegistryObject<Item> ALUMINUM_NUGGET = ITEMS.register("aluminum_nugget", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> ALUMINUM_DUST = ITEMS.register("aluminum_dust", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> ALUMINUM_GEAR = ITEMS.register("aluminum_gear", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    public static final RegistryObject<BlockItem> ALUMINUM_BLOCK = ITEMS.register("aluminum_block", () -> new BlockItem(BlockInit.ALUMINUM_BLOCK.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    public static final RegistryObject<BlockItem> ALUMINUM_ORE = ITEMS.register("aluminum_ore", () -> new BlockItem(BlockInit.ALUMINUM_ORE.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     
     public static final RegistryObject<Item> ALUMINUM_SWORD = ITEMS.register("aluminum_sword", ()-> new SwordItem(ModItemTier.ALUMINUM, 5, -2.4f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
 	public static final RegistryObject<Item> ALUMINUM_PICKAXE = ITEMS.register("aluminum_pickaxe", ()-> new PickaxeItem(ModItemTier.ALUMINUM, 3, -2.8f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
@@ -97,6 +110,8 @@ public class ItemInit
     public static final RegistryObject<Item> LEAD_NUGGET = ITEMS.register("lead_nugget", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
 	public static final RegistryObject<Item> LEAD_DUST = ITEMS.register("lead_dust", ()-> new LeadDustItem(new Item.Properties().group(ModItemGroups.ItemsIG.instance).food(MAFoods.LEAD_DUST)));
     public static final RegistryObject<Item> LEAD_GEAR = ITEMS.register("lead_gear", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    public static final RegistryObject<BlockItem> LEAD_BLOCK = ITEMS.register("lead_block", () -> new BlockItem(BlockInit.LEAD_BLOCK.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    public static final RegistryObject<BlockItem> LEAD_ORE = ITEMS.register("lead_ore", () -> new BlockItem(BlockInit.LEAD_ORE.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     
     public static final RegistryObject<Item> LEAD_SWORD = ITEMS.register("lead_sword", ()-> new SwordItem(ModItemTier.LEAD, 5, -2.4f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
 	public static final RegistryObject<Item> LEAD_PICKAXE = ITEMS.register("lead_pickaxe", ()-> new PickaxeItem(ModItemTier.LEAD, 3, -2.8f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
@@ -118,6 +133,8 @@ public class ItemInit
     public static final RegistryObject<Item> COPPER_NUGGET = ITEMS.register("copper_nugget", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> COPPER_DUST = ITEMS.register("copper_dust", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> COPPER_GEAR = ITEMS.register("copper_gear", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    public static final RegistryObject<BlockItem> COPPER_BLOCK = ITEMS.register("copper_block", () -> new BlockItem(BlockInit.COPPER_BLOCK.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    public static final RegistryObject<BlockItem> COPPER_ORE = ITEMS.register("copper_ore", () -> new BlockItem(BlockInit.COPPER_ORE.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     
     public static final RegistryObject<Item> COPPER_SWORD = ITEMS.register("copper_sword", ()-> new SwordItem(ModItemTier.COPPER, 4, -2.4f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
 	public static final RegistryObject<Item> COPPER_PICKAXE = ITEMS.register("copper_pickaxe", ()-> new PickaxeItem(ModItemTier.COPPER, 2, -2.8f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
@@ -138,6 +155,8 @@ public class ItemInit
     public static final RegistryObject<Item> RUBY = ITEMS.register("ruby", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> RUBY_DUST = ITEMS.register("ruby_dust", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> RUBY_GEAR = ITEMS.register("ruby_gear", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    public static final RegistryObject<BlockItem> RUBY_BLOCK = ITEMS.register("ruby_block", () -> new BlockItem(BlockInit.RUBY_BLOCK.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    public static final RegistryObject<BlockItem> RUBY_ORE = ITEMS.register("ruby_ore", () -> new BlockItem(BlockInit.RUBY_ORE.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     
     public static final RegistryObject<Item> RUBY_SWORD = ITEMS.register("ruby_sword", ()-> new SwordItem(ModItemTier.RUBY, 6, -2.4f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
 	public static final RegistryObject<Item> RUBY_PICKAXE = ITEMS.register("ruby_pickaxe", ()-> new PickaxeItem(ModItemTier.RUBY, 4, -2.8f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
@@ -159,6 +178,8 @@ public class ItemInit
     public static final RegistryObject<Item> SILVER_NUGGET = ITEMS.register("silver_nugget", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> SILVER_DUST = ITEMS.register("silver_dust", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> SILVER_GEAR = ITEMS.register("silver_gear", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    public static final RegistryObject<BlockItem> SILVER_BLOCK = ITEMS.register("silver_block", () -> new BlockItem(BlockInit.SILVER_BLOCK.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    public static final RegistryObject<BlockItem> SILVER_ORE = ITEMS.register("silver_ore", () -> new BlockItem(BlockInit.SILVER_ORE.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     
     public static final RegistryObject<Item> SILVER_SWORD = ITEMS.register("silver_sword", ()-> new SwordItem(ModItemTier.SILVER, 6, -2.4f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
 	public static final RegistryObject<Item> SILVER_PICKAXE = ITEMS.register("silver_pickaxe", ()-> new PickaxeItem(ModItemTier.SILVER, 4, -2.8f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
@@ -181,12 +202,15 @@ public class ItemInit
     public static final RegistryObject<Item> LUMIUM_BLEND = ITEMS.register("lumium_blend", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> LUMIUM_DUST = ITEMS.register("lumium_dust", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> LUMIUM_GEAR = ITEMS.register("lumium_gear", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    public static final RegistryObject<BlockItem> LUMIUM_BLOCK = ITEMS.register("lumium_block", () -> new BlockItem(BlockInit.LUMIUM_BLOCK.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     
     //Nickel
     public static final RegistryObject<Item> NICKEL_INGOT = ITEMS.register("nickel_ingot", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> NICKEL_NUGGET = ITEMS.register("nickel_nugget", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> NICKEL_DUST = ITEMS.register("nickel_dust", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> NICKEL_GEAR = ITEMS.register("nickel_gear", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    public static final RegistryObject<BlockItem> NICKEL_BLOCK = ITEMS.register("nickel_block", () -> new BlockItem(BlockInit.NICKEL_BLOCK.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    public static final RegistryObject<BlockItem> NICKEL_ORE = ITEMS.register("nickel_ore", () -> new BlockItem(BlockInit.NICKEL_ORE.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     
     public static final RegistryObject<Item> NICKEL_SWORD = ITEMS.register("nickel_sword", ()-> new SwordItem(ModItemTier.NICKEL, 4, -2.4f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
 	public static final RegistryObject<Item> NICKEL_PICKAXE = ITEMS.register("nickel_pickaxe", ()-> new PickaxeItem(ModItemTier.NICKEL, 2, -2.8f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
@@ -209,6 +233,7 @@ public class ItemInit
     public static final RegistryObject<Item> INVAR_BLEND = ITEMS.register("invar_blend", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> INVAR_DUST = ITEMS.register("invar_dust", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> INVAR_GEAR = ITEMS.register("invar_gear", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    public static final RegistryObject<BlockItem> INVAR_BLOCK = ITEMS.register("invar_block", () -> new BlockItem(BlockInit.INVAR_BLOCK.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     
     public static final RegistryObject<Item> INVAR_SWORD = ITEMS.register("invar_sword", ()-> new SwordItem(ModItemTier.INVAR, 4, -2.4f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
 	public static final RegistryObject<Item> INVAR_PICKAXE = ITEMS.register("invar_pickaxe", ()-> new PickaxeItem(ModItemTier.INVAR, 2, -2.8f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
@@ -231,6 +256,7 @@ public class ItemInit
     public static final RegistryObject<Item> ELECTRUM_BLEND = ITEMS.register("electrum_blend", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> ELECTRUM_DUST = ITEMS.register("electrum_dust", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> ELECTRUM_GEAR = ITEMS.register("electrum_gear", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    public static final RegistryObject<BlockItem> ELECTRUM_BLOCK = ITEMS.register("electrum_block", () -> new BlockItem(BlockInit.ELECTRUM_BLOCK.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     
     public static final RegistryObject<Item> ELECTRUM_SWORD = ITEMS.register("electrum_sword", ()-> new SwordItem(ModItemTier.ELECTRUM, 5, -2.4f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
 	public static final RegistryObject<Item> ELECTRUM_PICKAXE = ITEMS.register("electrum_pickaxe", ()-> new PickaxeItem(ModItemTier.ELECTRUM, 3, -2.8f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
@@ -252,6 +278,8 @@ public class ItemInit
     public static final RegistryObject<Item> PLATINUM_NUGGET = ITEMS.register("platinum_nugget", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> PLATINUM_DUST = ITEMS.register("platinum_dust", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> PLATINUM_GEAR = ITEMS.register("platinum_gear", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    public static final RegistryObject<BlockItem> PLATINUM_BLOCK = ITEMS.register("platinum_block", () -> new BlockItem(BlockInit.PLATINUM_BLOCK.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    public static final RegistryObject<BlockItem> PLATINUM_ORE = ITEMS.register("platinum_ore", () -> new BlockItem(BlockInit.PLATINUM_ORE.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     
     public static final RegistryObject<Item> PLATINUM_SWORD = ITEMS.register("platinum_sword", ()-> new SwordItem(ModItemTier.PLATINUM, 6, -2.4f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
 	public static final RegistryObject<Item> PLATINUM_PICKAXE = ITEMS.register("platinum_pickaxe", ()-> new PickaxeItem(ModItemTier.PLATINUM, 4, -2.8f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
@@ -274,6 +302,7 @@ public class ItemInit
     public static final RegistryObject<Item> ENDERIUM_BLEND = ITEMS.register("enderium_blend", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> ENDERIUM_DUST = ITEMS.register("enderium_dust", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> ENDERIUM_GEAR = ITEMS.register("enderium_gear", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    public static final RegistryObject<BlockItem> ENDERIUM_BLOCK = ITEMS.register("enderium_block", () -> new BlockItem(BlockInit.ENDERIUM_BLOCK.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     
     public static final RegistryObject<Item> ENDERIUM_SWORD = ITEMS.register("enderium_sword", ()-> new SwordItem(ModItemTier.ENDERIUM, 8, -2.4f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
 	public static final RegistryObject<Item> ENDERIUM_PICKAXE = ITEMS.register("enderium_pickaxe", ()-> new PickaxeItem(ModItemTier.ENDERIUM, 6, -2.8f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
@@ -296,12 +325,15 @@ public class ItemInit
     public static final RegistryObject<Item> SIGNALUM_BLEND = ITEMS.register("signalum_blend", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> SIGNALUM_DUST = ITEMS.register("signalum_dust", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> SIGNALUM_GEAR = ITEMS.register("signalum_gear", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    public static final RegistryObject<BlockItem> SIGNALUM_BLOCK = ITEMS.register("signalum_block", () -> new BlockItem(BlockInit.SIGNALUM_BLOCK.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     
     //Tungsten
     public static final RegistryObject<Item> TUNGSTEN_INGOT = ITEMS.register("tungsten_ingot", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> TUNGSTEN_NUGGET = ITEMS.register("tungsten_nugget", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> TUNGSTEN_DUST = ITEMS.register("tungsten_dust", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> TUNGSTEN_GEAR = ITEMS.register("tungsten_gear", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    public static final RegistryObject<BlockItem> TUNGSTEN_BLOCK = ITEMS.register("tungsten_block", () -> new BlockItem(BlockInit.TUNGSTEN_BLOCK.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    public static final RegistryObject<BlockItem> TUNGSTEN_ORE = ITEMS.register("tungsten_ore", () -> new BlockItem(BlockInit.TUNGSTEN_ORE.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     
     public static final RegistryObject<Item> TUNGSTEN_SWORD = ITEMS.register("tungsten_sword", ()-> new SwordItem(ModItemTier.TUNGSTEN, 5, -2.4f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
 	public static final RegistryObject<Item> TUNGSTEN_PICKAXE = ITEMS.register("tungsten_pickaxe", ()-> new PickaxeItem(ModItemTier.TUNGSTEN, 3, -2.8f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
@@ -324,6 +356,7 @@ public class ItemInit
     public static final RegistryObject<Item> BRONZE_BLEND = ITEMS.register("bronze_blend", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> BRONZE_DUST = ITEMS.register("bronze_dust", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> BRONZE_GEAR = ITEMS.register("bronze_gear", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    public static final RegistryObject<BlockItem> BRONZE_BLOCK = ITEMS.register("bronze_block", () -> new BlockItem(BlockInit.BRONZE_BLOCK.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     
     public static final RegistryObject<Item> BRONZE_SWORD = ITEMS.register("bronze_sword", ()-> new SwordItem(ModItemTier.BRONZE, 5, -2.4f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
 	public static final RegistryObject<Item> BRONZE_PICKAXE = ITEMS.register("bronze_pickaxe", ()-> new PickaxeItem(ModItemTier.BRONZE, 3, -2.8f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
@@ -344,6 +377,8 @@ public class ItemInit
     public static final RegistryObject<Item> AMETHYST = ITEMS.register("amethyst", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> AMETHYST_DUST = ITEMS.register("amethyst_dust", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> AMETHYST_GEAR = ITEMS.register("amethyst_gear", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    public static final RegistryObject<BlockItem> AMETHYST_BLOCK = ITEMS.register("amethyst_block", () -> new BlockItem(BlockInit.AMETHYST_BLOCK.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    public static final RegistryObject<BlockItem> AMETHYST_ORE = ITEMS.register("amethyst_ore", () -> new BlockItem(BlockInit.AMETHYST_ORE.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     
     public static final RegistryObject<Item> AMETHYST_SWORD = ITEMS.register("amethyst_sword", ()-> new SwordItem(ModItemTier.AMETHYST, 6, -2.4f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
 	public static final RegistryObject<Item> AMETHYST_PICKAXE = ITEMS.register("amethyst_pickaxe", ()-> new PickaxeItem(ModItemTier.AMETHYST, 4, -2.8f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
@@ -364,6 +399,8 @@ public class ItemInit
     public static final RegistryObject<Item> SAPPHIRE = ITEMS.register("sapphire", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> SAPPHIRE_DUST = ITEMS.register("sapphire_dust", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> SAPPHIRE_GEAR = ITEMS.register("sapphire_gear", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    public static final RegistryObject<BlockItem> SAPPHIRE_BLOCK = ITEMS.register("sapphire_block", () -> new BlockItem(BlockInit.SAPPHIRE_BLOCK.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    public static final RegistryObject<BlockItem> SAPPHIRE_ORE = ITEMS.register("sapphire_ore", () -> new BlockItem(BlockInit.SAPPHIRE_ORE.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     
     public static final RegistryObject<Item> SAPPHIRE_SWORD = ITEMS.register("sapphire_sword", ()-> new SwordItem(ModItemTier.SAPPHIRE, 6, -2.4f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
 	public static final RegistryObject<Item> SAPPHIRE_PICKAXE = ITEMS.register("sapphire_pickaxe", ()-> new PickaxeItem(ModItemTier.SAPPHIRE, 4, -2.8f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
@@ -384,6 +421,8 @@ public class ItemInit
     public static final RegistryObject<Item> OPAL = ITEMS.register("opal", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> OPAL_DUST = ITEMS.register("opal_dust", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> OPAL_GEAR = ITEMS.register("opal_gear", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    public static final RegistryObject<BlockItem> OPAL_BLOCK = ITEMS.register("opal_block", () -> new BlockItem(BlockInit.OPAL_BLOCK.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    public static final RegistryObject<BlockItem> OPAL_ORE = ITEMS.register("opal_ore", () -> new BlockItem(BlockInit.OPAL_ORE.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     
     //Titanium
     public static final RegistryObject<Item> TITANIUM_INGOT = ITEMS.register("titanium_ingot", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
@@ -391,6 +430,8 @@ public class ItemInit
     public static final RegistryObject<Item> TITANIUM_SCRAP = ITEMS.register("titanium_scrap", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> TITANIUM_DUST = ITEMS.register("titanium_dust", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> TITANIUM_GEAR = ITEMS.register("titanium_gear", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    public static final RegistryObject<BlockItem> TITANIUM_BLOCK = ITEMS.register("titanium_block", () -> new BlockItem(BlockInit.TITANIUM_BLOCK.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    public static final RegistryObject<BlockItem> TITANIUM_ORE = ITEMS.register("titanium_ore", () -> new BlockItem(BlockInit.TITANIUM_ORE.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     
     public static final RegistryObject<Item> TITANIUM_SWORD = ITEMS.register("titanium_sword", ()-> new SwordItem(ModItemTier.TITANIUM, 8, -2.4f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
 	public static final RegistryObject<Item> TITANIUM_PICKAXE = ITEMS.register("titanium_pickaxe", ()-> new PickaxeItem(ModItemTier.TITANIUM, 2, -2.8f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
@@ -411,12 +452,15 @@ public class ItemInit
     public static final RegistryObject<Item> URANIUM_INGOT = ITEMS.register("uranium_ingot", ()-> new RadioactiveMetalItem(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> URANIUM_NUGGET = ITEMS.register("uranium_nugget", ()-> new RadioactiveMetalItem(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> URANIUM_DUST = ITEMS.register("uranium_dust", ()-> new UraniumDustItem(new Item.Properties().group(ModItemGroups.ItemsIG.instance).food(MAFoods.URANIUM_DUST)));
+    public static final RegistryObject<BlockItem> URANIUM_ORE = ITEMS.register("uranium_ore", () -> new BlockItem(BlockInit.URANIUM_ORE.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     
     //Cobalt
     public static final RegistryObject<Item> COBALT_INGOT = ITEMS.register("cobalt_ingot", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> COBALT_NUGGET = ITEMS.register("cobalt_nugget", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> COBALT_DUST = ITEMS.register("cobalt_dust", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> COBALT_GEAR = ITEMS.register("cobalt_gear", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    public static final RegistryObject<BlockItem> COBALT_BLOCK = ITEMS.register("cobalt_block", () -> new BlockItem(BlockInit.COBALT_BLOCK.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    public static final RegistryObject<BlockItem> COBALT_ORE = ITEMS.register("cobalt_ore", () -> new BlockItem(BlockInit.COBALT_ORE.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     
     public static final RegistryObject<Item> COBALT_SWORD = ITEMS.register("cobalt_sword", ()-> new SwordItem(ModItemTier.COBALT, 8, -2.4f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
 	public static final RegistryObject<Item> COBALT_PICKAXE = ITEMS.register("cobalt_pickaxe", ()-> new PickaxeItem(ModItemTier.COBALT, 2, -2.8f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
@@ -438,6 +482,8 @@ public class ItemInit
     public static final RegistryObject<Item> ZINC_NUGGET = ITEMS.register("zinc_nugget", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> ZINC_DUST = ITEMS.register("zinc_dust", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> ZINC_GEAR = ITEMS.register("zinc_gear", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    public static final RegistryObject<BlockItem> ZINC_BLOCK = ITEMS.register("zinc_block", () -> new BlockItem(BlockInit.ZINC_BLOCK.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    public static final RegistryObject<BlockItem> ZINC_ORE = ITEMS.register("zinc_ore", () -> new BlockItem(BlockInit.ZINC_ORE.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     
     public static final RegistryObject<Item> ZINC_SWORD = ITEMS.register("zinc_sword", ()-> new SwordItem(ModItemTier.ZINC, 4, -2.4f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
 	public static final RegistryObject<Item> ZINC_PICKAXE = ITEMS.register("zinc_pickaxe", ()-> new PickaxeItem(ModItemTier.ZINC, 2, -2.8f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
@@ -460,6 +506,7 @@ public class ItemInit
     public static final RegistryObject<Item> BRASS_BLEND = ITEMS.register("brass_blend", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> BRASS_DUST = ITEMS.register("brass_dust", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> BRASS_GEAR = ITEMS.register("brass_gear", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    public static final RegistryObject<BlockItem> BRASS_BLOCK = ITEMS.register("brass_block", () -> new BlockItem(BlockInit.BRASS_BLOCK.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     
     public static final RegistryObject<Item> BRASS_SWORD = ITEMS.register("brass_sword", ()-> new SwordItem(ModItemTier.BRASS, 6, -2.4f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
 	public static final RegistryObject<Item> BRASS_PICKAXE = ITEMS.register("brass_pickaxe", ()-> new PickaxeItem(ModItemTier.BRASS, 0, -2.8f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
@@ -481,6 +528,8 @@ public class ItemInit
     public static final RegistryObject<Item> CHROMIUM_NUGGET = ITEMS.register("chromium_nugget", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> CHROMIUM_DUST = ITEMS.register("chromium_dust", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> CHROMIUM_GEAR = ITEMS.register("chromium_gear", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    public static final RegistryObject<BlockItem> CHROMIUM_BLOCK = ITEMS.register("chromium_block", () -> new BlockItem(BlockInit.CHROMIUM_BLOCK.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    public static final RegistryObject<BlockItem> CHROMIUM_ORE = ITEMS.register("chromium_ore", () -> new BlockItem(BlockInit.CHROMIUM_ORE.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     
     public static final RegistryObject<Item> CHROMIUM_SWORD = ITEMS.register("chromium_sword", ()-> new SwordItem(ModItemTier.CHROMIUM, 6, -2.4f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
 	public static final RegistryObject<Item> CHROMIUM_PICKAXE = ITEMS.register("chromium_pickaxe", ()-> new PickaxeItem(ModItemTier.CHROMIUM, 0, -2.8f, new Item.Properties().group(ModItemGroups.ArmourIG.instance)));
@@ -501,10 +550,13 @@ public class ItemInit
     public static final RegistryObject<Item> THORIUM_INGOT = ITEMS.register("thorium_ingot", ()-> new RadioactiveMetalItem(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> THORIUM_NUGGET = ITEMS.register("thorium_nugget", ()-> new RadioactiveMetalItem(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> THORIUM_DUST = ITEMS.register("thorium_dust", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    public static final RegistryObject<BlockItem> THORIUM_ORE = ITEMS.register("thorium_ore", () -> new BlockItem(BlockInit.THORIUM_ORE.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     
     //Other
     public static final RegistryObject<Item> COAL_NUGGET = ITEMS.register("coal_nugget", ()-> new CoalNuggetItem(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     
+    public static final RegistryObject<BlockItem> SULFUR_ORE = ITEMS.register("sulfur_ore", () -> new BlockItem(BlockInit.SULFUR_ORE.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    public static final RegistryObject<BlockItem> SALTPETRE_ORE = ITEMS.register("saltpetre_ore", () -> new BlockItem(BlockInit.SALTPETRE_ORE.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     public static final RegistryObject<Item> SALTPETRE_DUST = ITEMS.register("saltpetre_dust", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> SULFUR_DUST = ITEMS.register("sulfur_dust", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     
@@ -512,6 +564,17 @@ public class ItemInit
     
     public static final RegistryObject<Item> RUBBER = ITEMS.register("rubber", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> TREE_TAP = ITEMS.register("tree_tap", ()-> new TreeTapItem(new Item.Properties().group(ModItemGroups.ItemsIG.instance).maxStackSize(1)));
+    public static final RegistryObject<BlockItem> RUBBER_LOG = ITEMS.register("rubber_log", () -> new BlockItem(BlockInit.RUBBER_LOG.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    public static final RegistryObject<BlockItem> RUBBER_WOOD = ITEMS.register("rubber_wood", () -> new BlockItem(BlockInit.RUBBER_WOOD.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    public static final RegistryObject<BlockItem> RUBBER_STRIPPED_LOG = ITEMS.register("stripped_rubber_log", () -> new BlockItem(BlockInit.RUBBER_STRIPPED_LOG.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    public static final RegistryObject<BlockItem> RUBBER_STRIPPED_WOOD = ITEMS.register("stripped_rubber_wood", () -> new BlockItem(BlockInit.RUBBER_STRIPPED_WOOD.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    public static final RegistryObject<BlockItem> RUBBER_PLANKS = ITEMS.register("rubber_planks", () -> new BlockItem(BlockInit.RUBBER_PLANKS.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    public static final RegistryObject<BlockItem> RUBBER_LEAVES = ITEMS.register("rubber_leaves", () -> new BlockItem(BlockInit.RUBBER_LEAVES.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    public static final RegistryObject<BlockItem> RUBBER_SAPLING = ITEMS.register("rubber_sapling", () -> new BlockItem(BlockInit.RUBBER_SAPLING.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    public static final RegistryObject<BlockItem> RUBBER_STAIRS = ITEMS.register("rubber_stairs", () -> new BlockItem(BlockInit.RUBBER_STAIRS.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    public static final RegistryObject<BlockItem> RUBBER_SLAB = ITEMS.register("rubber_slab", () -> new BlockItem(BlockInit.RUBBER_SLAB.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    public static final RegistryObject<BlockItem> RUBBER_FENCE_GATE = ITEMS.register("rubber_fence_gate", () -> new BlockItem(BlockInit.RUBBER_FENCE_GATE.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    public static final RegistryObject<BlockItem> RUBBER_BUTTON = ITEMS.register("rubber_button", () -> new BlockItem(BlockInit.RUBBER_BUTTON.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     
     public static final RegistryObject<Item> HAZMAT_HELM = ITEMS.register("hazmat_scuba_helmet", ()-> new HazmatSuitItem(ModArmorMaterial.HAZMAT, EquipmentSlotType.HEAD, new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> HAZMAT_CHEST = ITEMS.register("hazmat_suit", ()-> new HazmatSuitItem(ModArmorMaterial.HAZMAT, EquipmentSlotType.CHEST, new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
@@ -539,4 +602,24 @@ public class ItemInit
     public static final RegistryObject<Item> DIAMOND_GEAR = ITEMS.register("diamond_gear", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> EMERALD_GEAR = ITEMS.register("emerald_gear", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> NETHERITE_GEAR = ITEMS.register("netherite_gear", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    
+    public static final RegistryObject<BlockItem> FERMENTING_BARREL = ITEMS.register("fermenting_barrel", () -> new FermentingBarrelBlockItem(BlockInit.FERMENTING_BARREL.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    
+    //Machines
+    public static final RegistryObject<BlockItem> MACHINE_FRAME = ITEMS.register("machine_frame", () -> new BlockItem(BlockInit.MACHINE_FRAME.get(), new Item.Properties().group(ModItemGroups.MachinesIG.instance)));
+    public static final Map<MachineFrameTier, RegistryObject<Item>> MACHINE_FRAME_TIERED = new HashMap<>();
+    
+    public static final RegistryObject<Item> BASIC_PHOTOVOLTAIC_CELL = ITEMS.register("photovoltaic_cell_basic", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    public static final RegistryObject<Item> ADVANCED_PHOTOVOLTAIC_CELL = ITEMS.register("photovoltaic_cell_advanced", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    public static final RegistryObject<Item> INDUSTRIAL_PHOTOVOLTAIC_CELL = ITEMS.register("photovoltaic_cell_industrial", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    public static final RegistryObject<Item> ULTIMATE_PHOTOVOLTAIC_CELL = ITEMS.register("photovoltaic_cell_ultimate", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    public static final Map<SolarGenTier, RegistryObject<Item>> SOLAR_GENERATOR = new HashMap<>();
+    public static void init() {
+    	for(SolarGenTier tier : SolarGenTier.values()) {
+    		SOLAR_GENERATOR.put(tier, ITEMS.register(tier.getSolarGenName(), () -> new BlockItem(BlockInit.SOLAR_GENERATOR.get(tier).get(), new Item.Properties().group(ModItemGroups.MachinesIG.instance).rarity(Rarity.create(tier.getNameColor(), tier.getColor())))));
+    	}
+    	for(MachineFrameTier tier : MachineFrameTier.values()) {
+    		MACHINE_FRAME_TIERED.put(tier, ITEMS.register(tier.getMachineName(), () -> new BlockItem(BlockInit.MACHINE_FRAME_TIERED.get(tier).get(), new Item.Properties().group(ModItemGroups.MachinesIG.instance).rarity(Rarity.create(tier.getNameColor(), tier.getColor())))));
+    	}
+    }
 }

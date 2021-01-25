@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "aaa",
+    "gfg",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "tag": "forge:ingots/signalum"
+    },
+    "g": {
+      "tag": "forge:gears/invar"
+    },
+    "f": {
+      "item": "mechaddendums:machine_frame_basic"
+    }
+  },
+  "result": {
+    "item": "mechaddendums:machine_frame_advanced"
+  }
+}

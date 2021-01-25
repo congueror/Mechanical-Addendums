@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "aaa",
+    "gfg",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "tag": "forge:ingots/enderium"
+    },
+    "g": {
+      "tag": "forge:gears/opal"
+    },
+    "f": {
+      "item": "mechaddendums:machine_frame_industrial"
+    }
+  },
+  "result": {
+    "item": "mechaddendums:machine_frame_ultimate"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "aaa",
+    "gfg",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "tag": "forge:ingots/cobalt"
+    },
+    "g": {
+      "tag": "forge:gears/chromium"
+    },
+    "f": {
+      "item": "mechaddendums:machine_frame_advanced"
+    }
+  },
+  "result": {
+    "item": "mechaddendums:machine_frame_industrial"
+  }
+}

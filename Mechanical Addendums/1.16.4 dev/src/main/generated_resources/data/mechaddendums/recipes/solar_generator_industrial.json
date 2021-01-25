@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ggg",
+    "sfs",
+    "iii"
+  ],
+  "key": {
+    "g": {
+      "item": "mechaddendums:photovoltaic_cell_industrial"
+    },
+    "f": {
+      "item": "mechaddendums:machine_frame_industrial"
+    },
+    "s": {
+      "tag": "forge:ingots/steel"
+    },
+    "i": {
+      "tag": "forge:ingots/cobalt"
+    }
+  },
+  "result": {
+    "item": "mechaddendums:solar_generator_industrial"
+  }
+}

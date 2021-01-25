@@ -4,11 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.congueror.mechaddendums.MechAddendums;
+import com.congueror.mechaddendums.blocks.FermentingBarrelBlock;
 import com.congueror.mechaddendums.blocks.MetalBlock;
 import com.congueror.mechaddendums.blocks.ModOreBlock;
 import com.congueror.mechaddendums.blocks.RubberLeavesBlock;
 import com.congueror.mechaddendums.blocks.solargen.SolarGeneratorBlock;
 import com.congueror.mechaddendums.blocks.trees.RubberTree;
+import com.congueror.mechaddendums.util.enums.MachineFrameTier;
 import com.congueror.mechaddendums.util.enums.SolarGenTier;
 
 import net.minecraft.block.Block;
@@ -19,6 +21,7 @@ import net.minecraft.block.SaplingBlock;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.StairsBlock;
+import net.minecraft.block.WoodButtonBlock;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
@@ -170,12 +173,23 @@ public class BlockInit
 			(Block.Properties.from(BlockInit.RUBBER_PLANKS.get())));
 	public static final RegistryObject<Block> RUBBER_FENCE_GATE = BLOCKS.register("rubber_fence_gate", () -> new FenceGateBlock
 			(Block.Properties.from(BlockInit.RUBBER_PLANKS.get())));
+	public static final RegistryObject<Block> RUBBER_BUTTON = BLOCKS.register("rubber_button", () -> new WoodButtonBlock
+			(Block.Properties.from(Blocks.OAK_BUTTON)));
 	
-	//Solar Gen
+	public static final RegistryObject<Block> FERMENTING_BARREL = BLOCKS.register("fermenting_barrel", () -> new FermentingBarrelBlock
+    		(Block.Properties.from(Blocks.BARREL)));
+	
+	//Machines
+	public static final RegistryObject<Block> MACHINE_FRAME = BLOCKS.register("machine_frame", () -> new Block
+			(Block.Properties.from(BlockInit.STEEL_BLOCK.get())));
+	public static final Map<MachineFrameTier, RegistryObject<Block>> MACHINE_FRAME_TIERED = new HashMap<>();
 	public static final Map<SolarGenTier, RegistryObject<SolarGeneratorBlock>> SOLAR_GENERATOR = new HashMap<>();
 	public static void init() {
 		for(SolarGenTier tier : SolarGenTier.values()) {
 			SOLAR_GENERATOR.put(tier, BLOCKS.register(tier.getSolarGenName(), () -> new SolarGeneratorBlock(tier)));
+		}
+		for(MachineFrameTier tier : MachineFrameTier.values()) {
+			MACHINE_FRAME_TIERED.put(tier, BLOCKS.register(tier.getMachineName(), () -> new Block(Block.Properties.from(BlockInit.SIGNALUM_BLOCK.get()))));
 		}
 	}
     

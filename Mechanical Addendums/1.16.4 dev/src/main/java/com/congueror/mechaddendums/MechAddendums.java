@@ -10,7 +10,6 @@ import com.congueror.mechaddendums.init.EffectInit;
 import com.congueror.mechaddendums.init.ItemInit;
 import com.congueror.mechaddendums.init.TileEntityInit;
 import com.congueror.mechaddendums.network.PacketHandler;
-import com.congueror.mechaddendums.util.ModItemGroups;
 import com.congueror.mechaddendums.util.Strippables;
 import com.congueror.mechaddendums.util.enums.SolarGenTier;
 import com.congueror.mechaddendums.util.eventbus.ClientEventBusSub;
@@ -23,21 +22,16 @@ import com.congueror.mechaddendums.world.gen.TreeGenFeatures;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.IForgeRegistry;
 
 @Mod("mechaddendums")
 @Mod.EventBusSubscriber(modid = "mechaddendums", bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -66,10 +60,11 @@ public class MechAddendums
         TileEntityInit.TILE_ENTITIES.register(modEventBus);
         ContainerInit.CONTAINERS.register(modEventBus);
         
+        ItemInit.init();
         BlockInit.init();
         ContainerInit.init();
         TileEntityInit.init();
-        
+                
         PacketHandler.init();
         
         MinecraftForge.EVENT_BUS.register(this);
@@ -77,21 +72,23 @@ public class MechAddendums
         MinecraftForge.EVENT_BUS.register(TreeGenFeatures.class);
     }
     
-    @SubscribeEvent
-    public static void onRegisterItems(final RegistryEvent.Register<Item> event) 
-    {
-        final IForgeRegistry<Item> registry = event.getRegistry();
-        
-        BlockInit.BLOCKS.getEntries().stream().map(RegistryObject::get).forEach(block -> 
-        {
-            final Item.Properties properties = new Item.Properties().group(ModItemGroups.BlocksIG.instance);
-            final BlockItem blockItem = new BlockItem(block, properties);
-            blockItem.setRegistryName(block.getRegistryName());
-            registry.register(blockItem);
-        });
-        
-		LOGGER.debug("Registered BlockItems!");
-     }
+//    @SubscribeEvent
+//    public static void onRegisterItems(final RegistryEvent.Register<Item> event) 
+//    {
+//    	final IForgeRegistry<Item> registry = event.getRegistry();
+//        
+//        BlockInit.BLOCKS.getEntries().stream().map(RegistryObject::get).forEach(block -> 
+//        {
+//            final Item.Properties properties = new Item.Properties().group(ModItemGroups.BlocksIG.instance);
+//            
+//            
+//            final BlockItem blockItem = new BlockItem(block, properties);
+//            blockItem.setRegistryName(block.getRegistryName());
+//            registry.register(blockItem);
+//        });
+//        
+//        LOGGER.debug("Registered BlockItems!");
+//    }
     
     @SubscribeEvent
     public void commonSetup(final FMLCommonSetupEvent event) {

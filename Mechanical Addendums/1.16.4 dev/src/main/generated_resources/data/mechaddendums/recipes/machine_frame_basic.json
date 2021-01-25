@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "aaa",
+    "gfg",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "tag": "forge:ingots/brass"
+    },
+    "g": {
+      "tag": "forge:gears/tin"
+    },
+    "f": {
+      "item": "mechaddendums:machine_frame"
+    }
+  },
+  "result": {
+    "item": "mechaddendums:machine_frame_basic"
+  }
+}

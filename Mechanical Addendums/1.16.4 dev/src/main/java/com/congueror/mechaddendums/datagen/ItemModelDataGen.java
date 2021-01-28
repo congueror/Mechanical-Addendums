@@ -956,6 +956,24 @@ public class ItemModelDataGen extends ItemModelProvider{
                 "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/photovoltaic_cell_industrial"));
 		singleTexture(ItemInit.ULTIMATE_PHOTOVOLTAIC_CELL.get().getRegistryName().getPath(), new ResourceLocation("item/generated"),
                 "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/photovoltaic_cell_ultimate"));
+		
+		//Food
+		singleTexture(ItemInit.JUICER.get().getRegistryName().getPath(), new ResourceLocation("item/generated"),
+                "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/juicer"));
+		singleTexture(ItemInit.RUM.get().getRegistryName().getPath(), new ResourceLocation("item/generated"),
+                "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/rum"));
+		singleTexture(ItemInit.PINEAPPLE.get().getRegistryName().getPath(), new ResourceLocation("item/generated"),
+                "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/pineapple"));
+		singleTexture(ItemInit.PINEAPPLE_JUICE.get().getRegistryName().getPath(), new ResourceLocation("item/generated"),
+                "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/pineapple_juice"));
+		singleTexture(ItemInit.COCONUT.get().getRegistryName().getPath(), new ResourceLocation("item/generated"),
+                "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/coconut"));
+		singleTexture(ItemInit.COCONUT_MILK.get().getRegistryName().getPath(), new ResourceLocation("item/generated"),
+                "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/coconut_milk"));
+		singleTexture(ItemInit.PINA_COLADA.get().getRegistryName().getPath(), new ResourceLocation("item/generated"),
+                "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/pina_colada"));
+		singleTexture(ItemInit.PINEAPPLE_SEEDS.get().getRegistryName().getPath(), new ResourceLocation("item/generated"),
+                "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/pineapple_seeds"));
 	}
 
 }

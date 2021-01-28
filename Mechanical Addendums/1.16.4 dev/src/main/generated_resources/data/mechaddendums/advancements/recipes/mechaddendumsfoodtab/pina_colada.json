@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "mechaddendums:pina_colada"
+    ]
+  },
+  "criteria": {
+    "pineapple_juice": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:juices/pineapple"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "mechaddendums:pina_colada"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "pineapple_juice",
+      "has_the_recipe"
+    ]
+  ]
+}

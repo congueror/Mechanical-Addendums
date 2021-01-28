@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:juices/pineapple"
+    },
+    {
+      "tag": "forge:juices/pineapple"
+    },
+    {
+      "tag": "forge:juices/pineapple"
+    },
+    {
+      "tag": "forge:rum"
+    },
+    {
+      "tag": "forge:coconut_milk"
+    }
+  ],
+  "result": {
+    "item": "mechaddendums:pina_colada"
+  }
+}

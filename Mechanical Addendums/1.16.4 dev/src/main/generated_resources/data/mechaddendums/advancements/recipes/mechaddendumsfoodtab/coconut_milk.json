@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "mechaddendums:coconut_milk"
+    ]
+  },
+  "criteria": {
+    "coconut": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:coconut"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "mechaddendums:coconut_milk"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "coconut",
+      "has_the_recipe"
+    ]
+  ]
+}

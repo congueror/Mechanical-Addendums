@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:pineapple"
+    }
+  ],
+  "result": {
+    "item": "mechaddendums:pineapple_seeds",
+    "count": 3
+  }
+}

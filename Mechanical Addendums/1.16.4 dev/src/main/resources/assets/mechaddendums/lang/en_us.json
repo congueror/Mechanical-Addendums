@@ -63,6 +63,8 @@
 	"item.mechaddendums.copper_nugget": "Copper Nugget",
 	"item.mechaddendums.copper_gear": "Copper Gear",
 	"item.mechaddendums.copper_dust": "Copper Dust",
+	"block.mechaddendums.copper_ore": "Copper Ore",
+	"block.mechaddendums.copper_block": "Block of Copper",
 	"item.mechaddendums.copper_sword": "Copper Sword",
 	"item.mechaddendums.copper_pickaxe": "Copper Pickaxe",
 	"item.mechaddendums.copper_axe": "Copper Axe",
@@ -437,6 +439,17 @@
 	"block.mechaddendums.machine_frame_ultimate": "Ultimate Machine Frame",
 	
 	"block.mechaddendums.fermenting_barrel": "Fermenting Barrel",
+	"item.mechaddendums.juicer": "Juicer",
+	"item.mechaddendums.rum": "Bottle of Rum",
+	
+	"item.mechaddendums.pineapple_seeds": "Pineapple Seeds",
+	"item.mechaddendums.pineapple": "Pineapple",
+	"item.mechaddendums.pineapple_juice": "Pineapple Juice",
+	
+	"item.mechaddendums.coconut": "Coconut",
+	"item.mechaddendums.coconut_milk": "Coconut Milk",
+	
+	"item.mechaddendums.pina_colada": "Piña Colada",
 	
 	"tooltip.uraniumdamage": "Will give radiation when in inventory",
 	"tooltip.treetap": "Used to extract rubber from a certain tree",
@@ -444,6 +457,8 @@
 	"tooltip.hazmatsuit": "Full Set Bonus: Protection against radiation",
 	"tooltip.leaddust": "Looks so tasty...",
 	"tooltip.uraniumdust": "Harmless, unless digested",
+	"tooltip.fermenting_barrel": "Used to ferment certain natural resources",
+	"tooltip.juicer": "Used to extract the juice of fruits and vegetables",
 	
 	"tooltip.mechaddendums.solargen_shift_info": "@7Hold @c@oShift @7for details",
 	"tooltip.mechaddendums.solargen_hold_shift": "@7Generation: @a%d @4FE/t\n@7Transfer: @a%d @4FE/t\n@7Capacity: @a%d @4FE",

@@ -2,6 +2,8 @@ package com.congueror.mechaddendums.items;
 
 import java.util.List;
 
+import com.congueror.mechaddendums.init.ItemInit;
+
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -10,15 +12,19 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
-public class TreeTapItem extends Item
+public class ModContainerItem extends Item
 {
-	public TreeTapItem(Properties properties) {
+	public ModContainerItem(Properties properties) {
 		super(properties);
 	}
 
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-		tooltip.add(new TranslationTextComponent("tooltip.treetap").mergeStyle(TextFormatting.GRAY));
+		if(this == ItemInit.TREE_TAP.get()) {
+			tooltip.add(new TranslationTextComponent("tooltip.treetap").mergeStyle(TextFormatting.GRAY));
+		} else {
+			tooltip.add(new TranslationTextComponent("tooltip.juicer").mergeStyle(TextFormatting.GRAY));
+		}
 	}
 	
 	@Override

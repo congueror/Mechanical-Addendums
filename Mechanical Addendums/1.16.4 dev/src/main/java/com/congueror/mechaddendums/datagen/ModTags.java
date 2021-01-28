@@ -205,6 +205,17 @@ public class ModTags
 		public static final IOptionalNamedTag<Item> TIER_2_HAMMERS = mechaddendumsTag("hammers/tier_2_hammers");
 		public static final IOptionalNamedTag<Item> TIER_3_HAMMERS = mechaddendumsTag("hammers/tier_3_hammers");
 		
+		public static final IOptionalNamedTag<Item> JUICER = tag("tool_juicer");
+		public static final IOptionalNamedTag<Item> RUM = tag("rum");
+		public static final IOptionalNamedTag<Item> PINEAPPLE = tag("pineapple");
+		public static final IOptionalNamedTag<Item> JUICES = tag("juices");
+			public static final IOptionalNamedTag<Item> JUICES_PINEAPPLE = tag("juices/pineapple");
+		public static final IOptionalNamedTag<Item> COCONUT = tag("coconut");
+		public static final IOptionalNamedTag<Item> COCONUT_MILK = tag("coconut_milk");
+		public static final IOptionalNamedTag<Item> PINA_COLADA = tag("pina_colada");
+		public static final IOptionalNamedTag<Item> SEEDS = tag("seeds");
+			public static final IOptionalNamedTag<Item> SEEDS_PINEAPPLE = tag("seeds/pineapple");
+		
 		private static IOptionalNamedTag<Item> tag(String name)
         {
             return ItemTags.createOptional(new ResourceLocation("forge", name));

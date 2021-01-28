@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mechaddendums:juicer"
+    },
+    {
+      "tag": "forge:coconut"
+    }
+  ],
+  "result": {
+    "item": "mechaddendums:coconut_milk"
+  }
+}

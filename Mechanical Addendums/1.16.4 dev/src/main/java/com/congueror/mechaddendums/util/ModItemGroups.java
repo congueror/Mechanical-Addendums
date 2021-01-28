@@ -116,7 +116,7 @@ public class ModItemGroups
 		@Override
 		public ItemStack createIcon() 
 		{
-			return new ItemStack(ItemInit.URANIUM_DUST.get());
+			return new ItemStack(ItemInit.PINEAPPLE.get());
 		}
 	
 		@Override

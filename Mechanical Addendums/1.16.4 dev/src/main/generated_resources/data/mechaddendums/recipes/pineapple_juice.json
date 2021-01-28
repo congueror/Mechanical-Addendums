@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mechaddendums:juicer"
+    },
+    {
+      "tag": "forge:pineapple"
+    }
+  ],
+  "result": {
+    "item": "mechaddendums:pineapple_juice"
+  }
+}

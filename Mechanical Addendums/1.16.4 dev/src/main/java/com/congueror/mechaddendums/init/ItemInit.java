@@ -9,8 +9,9 @@ import com.congueror.mechaddendums.items.FermentingBarrelBlockItem;
 import com.congueror.mechaddendums.items.HammerItem;
 import com.congueror.mechaddendums.items.HazmatSuitItem;
 import com.congueror.mechaddendums.items.LeadDustItem;
+import com.congueror.mechaddendums.items.ModDrinkItem;
 import com.congueror.mechaddendums.items.RadioactiveMetalItem;
-import com.congueror.mechaddendums.items.TreeTapItem;
+import com.congueror.mechaddendums.items.ModContainerItem;
 import com.congueror.mechaddendums.items.UraniumDustItem;
 import com.congueror.mechaddendums.util.ModItemGroups;
 import com.congueror.mechaddendums.util.enums.MachineFrameTier;
@@ -22,6 +23,7 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.BlockNamedItem;
 import net.minecraft.item.HoeItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.PickaxeItem;
@@ -563,7 +565,7 @@ public class ItemInit
     public static final RegistryObject<Item> PYROTHEUM_DUST = ITEMS.register("pyrotheum_dust", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     
     public static final RegistryObject<Item> RUBBER = ITEMS.register("rubber", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
-    public static final RegistryObject<Item> TREE_TAP = ITEMS.register("tree_tap", ()-> new TreeTapItem(new Item.Properties().group(ModItemGroups.ItemsIG.instance).maxStackSize(1)));
+    public static final RegistryObject<Item> TREE_TAP = ITEMS.register("tree_tap", ()-> new ModContainerItem(new Item.Properties().group(ModItemGroups.ItemsIG.instance).maxStackSize(1)));
     public static final RegistryObject<BlockItem> RUBBER_LOG = ITEMS.register("rubber_log", () -> new BlockItem(BlockInit.RUBBER_LOG.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     public static final RegistryObject<BlockItem> RUBBER_WOOD = ITEMS.register("rubber_wood", () -> new BlockItem(BlockInit.RUBBER_WOOD.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     public static final RegistryObject<BlockItem> RUBBER_STRIPPED_LOG = ITEMS.register("stripped_rubber_log", () -> new BlockItem(BlockInit.RUBBER_STRIPPED_LOG.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
@@ -603,7 +605,7 @@ public class ItemInit
     public static final RegistryObject<Item> EMERALD_GEAR = ITEMS.register("emerald_gear", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> NETHERITE_GEAR = ITEMS.register("netherite_gear", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     
-    public static final RegistryObject<BlockItem> FERMENTING_BARREL = ITEMS.register("fermenting_barrel", () -> new FermentingBarrelBlockItem(BlockInit.FERMENTING_BARREL.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    public static final RegistryObject<BlockItem> FERMENTING_BARREL = ITEMS.register("fermenting_barrel", () -> new FermentingBarrelBlockItem(BlockInit.FERMENTING_BARREL.get(), new Item.Properties().group(ModItemGroups.FoodIG.instance)));
     
     //Machines
     public static final RegistryObject<BlockItem> MACHINE_FRAME = ITEMS.register("machine_frame", () -> new BlockItem(BlockInit.MACHINE_FRAME.get(), new Item.Properties().group(ModItemGroups.MachinesIG.instance)));
@@ -622,4 +624,14 @@ public class ItemInit
     		MACHINE_FRAME_TIERED.put(tier, ITEMS.register(tier.getMachineName(), () -> new BlockItem(BlockInit.MACHINE_FRAME_TIERED.get(tier).get(), new Item.Properties().group(ModItemGroups.MachinesIG.instance).rarity(Rarity.create(tier.getNameColor(), tier.getColor())))));
     	}
     }
+    
+    //Food
+    public static final RegistryObject<Item> JUICER = ITEMS.register("juicer", () -> new ModContainerItem(new Item.Properties().group(ModItemGroups.FoodIG.instance)));
+    public static final RegistryObject<Item> RUM = ITEMS.register("rum", () -> new ModDrinkItem(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.RUM)));
+    public static final RegistryObject<Item> PINEAPPLE = ITEMS.register("pineapple", () -> new Item(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.PINEAPPLE)));
+    public static final RegistryObject<Item> PINEAPPLE_JUICE = ITEMS.register("pineapple_juice", () -> new ModDrinkItem(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.PINEAPPLE_JUICE)));
+    public static final RegistryObject<Item> COCONUT = ITEMS.register("coconut", () -> new Item(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.COCONUT)));
+    public static final RegistryObject<Item> COCONUT_MILK = ITEMS.register("coconut_milk", () -> new ModDrinkItem(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.COCONUT_MILK)));
+    public static final RegistryObject<Item> PINA_COLADA = ITEMS.register("pina_colada", () -> new ModDrinkItem(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.PINA_COLADA)));
+    public static final RegistryObject<Item> PINEAPPLE_SEEDS = ITEMS.register("pineapple_seeds", () -> new BlockNamedItem(BlockInit.PINEAPPLE_CROP.get(), new Item.Properties().group(ModItemGroups.FoodIG.instance)));
 }

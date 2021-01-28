@@ -3671,5 +3671,56 @@ public class RecipeDataGen extends RecipeProvider
 		        .key('i', ModTags.Items.INGOTS_ENDERIUM)
 		        .addCriterion("machine_frame_ultimate", hasItem(BlockInit.MACHINE_FRAME_TIERED.get(MachineFrameTier.ULTIMATE).get()))
 		        .build(recipe);
+				
+				ShapedRecipeBuilder.shapedRecipe(BlockInit.FERMENTING_BARREL.get(), 1)
+		        .patternLine("psp")
+		        .patternLine("pip")
+		        .patternLine("psp")
+		        .key('p', ItemTags.PLANKS)
+		        .key('s', ItemTags.WOODEN_SLABS)
+		        .key('i', Tags.Items.INGOTS_IRON)
+		        .addCriterion("iron_ingot", hasItem(Tags.Items.INGOTS_IRON))
+		        .build(recipe);
+				
+				ShapelessRecipeBuilder.shapelessRecipe(ItemInit.RUM.get(), 1)
+				.addIngredient(BlockInit.FERMENTING_BARREL.get())
+				.addIngredient(Items.SUGAR_CANE, 4)
+				.addCriterion("fermenting_barrel", hasItem(BlockInit.FERMENTING_BARREL.get()))
+				.build(recipe);
+				
+				ShapedRecipeBuilder.shapedRecipe(ItemInit.JUICER.get(), 1)
+		        .patternLine("i  ")
+		        .patternLine("p  ")
+		        .patternLine("   ")
+		        .key('p', Items.HEAVY_WEIGHTED_PRESSURE_PLATE)
+		        .key('i', Tags.Items.INGOTS_IRON)
+		        .addCriterion("iron_ingot", hasItem(Tags.Items.INGOTS_IRON))
+		        .build(recipe);
+				
+				ShapelessRecipeBuilder.shapelessRecipe(ItemInit.PINEAPPLE_JUICE.get(), 1)
+				.addIngredient(ItemInit.JUICER.get())
+				.addIngredient(ModTags.Items.PINEAPPLE)
+				.addCriterion("pineapple", hasItem(ModTags.Items.PINEAPPLE))
+				.build(recipe);
+				
+				ShapelessRecipeBuilder.shapelessRecipe(ItemInit.COCONUT_MILK.get(), 1)
+				.addIngredient(ItemInit.JUICER.get())
+				.addIngredient(ModTags.Items.COCONUT)
+				.addCriterion("coconut", hasItem(ModTags.Items.COCONUT))
+				.build(recipe);
+				
+				ShapelessRecipeBuilder.shapelessRecipe(ItemInit.PINA_COLADA.get(), 1)
+				.addIngredient(ModTags.Items.JUICES_PINEAPPLE)
+				.addIngredient(ModTags.Items.JUICES_PINEAPPLE)
+				.addIngredient(ModTags.Items.JUICES_PINEAPPLE)
+				.addIngredient(ModTags.Items.RUM)
+				.addIngredient(ModTags.Items.COCONUT_MILK)
+				.addCriterion("pineapple_juice", hasItem(ModTags.Items.JUICES_PINEAPPLE))
+				.build(recipe);
+				
+				ShapelessRecipeBuilder.shapelessRecipe(ItemInit.PINEAPPLE_SEEDS.get(), 3)
+				.addIngredient(ModTags.Items.PINEAPPLE)
+				.addCriterion("pineapple", hasItem(ModTags.Items.PINEAPPLE))
+				.build(recipe);
 	}
 }

@@ -373,6 +373,19 @@ public class TagsDataGen {
 			getOrCreateBuilder(ModTags.Items.RUBBER_LOGS).add(BlockInit.RUBBER_STRIPPED_LOG.get().asItem());
 			getOrCreateBuilder(ModTags.Items.RUBBER_LOGS).add(BlockInit.RUBBER_STRIPPED_WOOD.get().asItem());
 			getOrCreateBuilder(ModTags.Items.RUBBER).add(ItemInit.RUBBER.get());
+			
+			getOrCreateBuilder(ModTags.Items.RUM).add(ItemInit.RUM.get());
+			getOrCreateBuilder(ModTags.Items.PINEAPPLE).add(ItemInit.PINEAPPLE.get());
+			getOrCreateBuilder(ModTags.Items.COCONUT).add(ItemInit.COCONUT.get());
+			getOrCreateBuilder(ModTags.Items.JUICER).add(ItemInit.JUICER.get());
+			getOrCreateBuilder(ModTags.Items.COCONUT_MILK).add(ItemInit.COCONUT_MILK.get());
+			getOrCreateBuilder(ModTags.Items.PINA_COLADA).add(ItemInit.PINA_COLADA.get());
+			
+			getOrCreateBuilder(ModTags.Items.JUICES).addTag(ModTags.Items.JUICES_PINEAPPLE);
+			getOrCreateBuilder(ModTags.Items.JUICES_PINEAPPLE).add(ItemInit.PINEAPPLE_JUICE.get());
+			
+			getOrCreateBuilder(ModTags.Items.SEEDS).addTag(ModTags.Items.SEEDS_PINEAPPLE);
+			getOrCreateBuilder(ModTags.Items.SEEDS_PINEAPPLE).add(ItemInit.PINEAPPLE_SEEDS.get());
 		}
 	}
 

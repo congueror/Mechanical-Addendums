@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "i  ",
+    "p  ",
+    "   "
+  ],
+  "key": {
+    "p": {
+      "item": "minecraft:heavy_weighted_pressure_plate"
+    },
+    "i": {
+      "tag": "forge:ingots/iron"
+    }
+  },
+  "result": {
+    "item": "mechaddendums:juicer"
+  }
+}

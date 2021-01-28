@@ -192,6 +192,9 @@ public class BlockInit
 			MACHINE_FRAME_TIERED.put(tier, BLOCKS.register(tier.getMachineName(), () -> new Block(Block.Properties.from(BlockInit.SIGNALUM_BLOCK.get()))));
 		}
 	}
+	
+	public static final RegistryObject<Block> PINEAPPLE_CROP = BLOCKS.register("pineapple_crop", () -> new Block
+			(Block.Properties.from(Blocks.CARROTS)));
     
     //public static final RegistryObject<Block> ALLOY_SMELTER = BLOCKS.register("alloy_smelter", () -> new AlloySmelterBlock(Block.Properties.create(Material.IRON).hardnessAndResistance(5.5f, 6.5f).sound(SoundType.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(1).setRequiresTool()));
 }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cross",
   "textures": {
-    "cross": "mechaddendums:block/pineapple_crop_stage0"
+    "cross": "mechaddendums:block/coconut_sapling"
   }
 }

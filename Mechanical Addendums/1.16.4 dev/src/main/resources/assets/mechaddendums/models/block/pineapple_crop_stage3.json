@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:block/crop",
+  "parent": "minecraft:block/cross",
   "textures": {
-    "crop": "mechaddendums:block/pineapple_crop_stage3"
+    "cross": "mechaddendums:block/pineapple_crop_stage3"
   }
 }

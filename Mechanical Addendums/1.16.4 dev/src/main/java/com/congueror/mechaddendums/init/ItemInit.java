@@ -5,13 +5,14 @@ import java.util.Map;
 
 import com.congueror.mechaddendums.MechAddendums;
 import com.congueror.mechaddendums.items.CoalNuggetItem;
+import com.congueror.mechaddendums.items.CustomSpawnEgg;
 import com.congueror.mechaddendums.items.FermentingBarrelBlockItem;
 import com.congueror.mechaddendums.items.HammerItem;
 import com.congueror.mechaddendums.items.HazmatSuitItem;
 import com.congueror.mechaddendums.items.LeadDustItem;
+import com.congueror.mechaddendums.items.ModContainerItem;
 import com.congueror.mechaddendums.items.ModDrinkItem;
 import com.congueror.mechaddendums.items.RadioactiveMetalItem;
-import com.congueror.mechaddendums.items.ModContainerItem;
 import com.congueror.mechaddendums.items.UraniumDustItem;
 import com.congueror.mechaddendums.util.ModItemGroups;
 import com.congueror.mechaddendums.util.enums.MachineFrameTier;
@@ -630,8 +631,14 @@ public class ItemInit
     public static final RegistryObject<Item> RUM = ITEMS.register("rum", () -> new ModDrinkItem(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.RUM)));
     public static final RegistryObject<Item> PINEAPPLE = ITEMS.register("pineapple", () -> new Item(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.PINEAPPLE)));
     public static final RegistryObject<Item> PINEAPPLE_JUICE = ITEMS.register("pineapple_juice", () -> new ModDrinkItem(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.PINEAPPLE_JUICE)));
+    public static final RegistryObject<Item> PINEAPPLE_SEEDS = ITEMS.register("pineapple_seeds", () -> new BlockNamedItem(BlockInit.PINEAPPLE_CROP.get(), new Item.Properties().group(ModItemGroups.FoodIG.instance)));
     public static final RegistryObject<Item> COCONUT = ITEMS.register("coconut", () -> new Item(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.COCONUT)));
     public static final RegistryObject<Item> COCONUT_MILK = ITEMS.register("coconut_milk", () -> new ModDrinkItem(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.COCONUT_MILK)));
-    public static final RegistryObject<Item> PINA_COLADA = ITEMS.register("pina_colada", () -> new ModDrinkItem(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.PINA_COLADA)));
-    public static final RegistryObject<Item> PINEAPPLE_SEEDS = ITEMS.register("pineapple_seeds", () -> new BlockNamedItem(BlockInit.PINEAPPLE_CROP.get(), new Item.Properties().group(ModItemGroups.FoodIG.instance)));
+    public static final RegistryObject<Item> PINA_COLADA = ITEMS.register("pina_colada", () -> new ModDrinkItem(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.PINA_COLADA).rarity(Rarity.RARE)));
+    
+    public static final RegistryObject<BlockItem> COCONUT_LEAVES = ITEMS.register("coconut_leaves", () -> new BlockItem(BlockInit.COCONUT_LEAVES.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    public static final RegistryObject<BlockItem> COCONUT_SAPLING = ITEMS.register("coconut_sapling", () -> new BlockItem(BlockInit.COCONUT_SAPLING.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    
+    public static final RegistryObject<CustomSpawnEgg> WANDERING_FLORIST_SPAWN_EGG = ITEMS.register("wandering_florist_spawn_egg", () -> 
+    new CustomSpawnEgg(EntityInit.WANDERING_FLORIST, 0x2FFF00, 15377456, new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
 }

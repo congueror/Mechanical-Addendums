@@ -98,22 +98,30 @@ minecraft {
 }
 
 repositories {
-	   		flatDir {
-        dirs 'libs' 
-        }
-        	maven {
-    	// location of the maven that hosts JEI files
-    	name = "Progwml6 maven"
-   		 url = "https://dvs1.progwml6.com/files/maven/"
-  		}
-  			maven {
-    	// location of a maven mirror for JEI files, as a fallback
-    	name = "ModMaven"
-    	url = "https://modmaven.k-4u.nl"
-  		}
-  		maven {
-        url = "https://www.cursemaven.com"
-    	}
+	flatDir {
+    dirs 'libs' 
+    }
+        
+    maven {
+    // location of the maven that hosts JEI files
+    name = "Progwml6 maven"
+   	url = "https://dvs1.progwml6.com/files/maven/"
+  	}
+  		
+  	maven {
+    // location of a maven mirror for JEI files, as a fallback
+    name = "ModMaven"
+    url = "https://modmaven.k-4u.nl"
+  	}
+  		
+  	maven {
+    url = "https://www.cursemaven.com"
+    }
+    
+    maven {
+    name = "MelanX maven"
+    url = "https://maven.melanx.de/"
+	}
 }
 
 dependencies {
@@ -122,9 +130,11 @@ dependencies {
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft 'net.minecraftforge:forge:1.16.4-35.1.37'
     
-    //implementation fg.deobf("com.sk89q:worldedit-forge-mc1.16.2:7.2.0-beta-04")
+    implementation fg.deobf("com.smth:AppleSkin-mc1.16.2:1.0.14")
     
-    implementation fg.deobf("curse.maven:recipe-printer:3068981")
+	runtimeOnly fg.deobf("de.melanx.recipeprinter:recipeprinter-1.16.3:2.0.0")
+	compile fg.deobf("io.github.noeppi_noeppi.mods:LibX:1.16.3-1.0.1")
+    //implementation fg.deobf("curse.maven:appleskin:3035787")
     
      // compile against the JEI API but do not include it at runtime
     compileOnly fg.deobf("mezz.jei:jei-1.16.4:7.6.0.52:api")

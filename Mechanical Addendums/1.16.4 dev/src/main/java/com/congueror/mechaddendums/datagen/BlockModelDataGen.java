@@ -167,7 +167,6 @@ public class BlockModelDataGen extends BlockStateProvider
 		basicBlockItem(BlockInit.RUBBER_STRIPPED_WOOD.get());
 		basicBlockItem(BlockInit.RUBBER_PLANKS.get());
 		basicBlockItem(BlockInit.RUBBER_LEAVES.get());
-		basicBlockItem(BlockInit.RUBBER_SAPLING.get());
 		basicBlockItem(BlockInit.RUBBER_STAIRS.get());
 		basicBlockItem(BlockInit.RUBBER_SLAB.get());
 		basicBlockItem(BlockInit.RUBBER_FENCE_GATE.get());
@@ -196,5 +195,7 @@ public class BlockModelDataGen extends BlockStateProvider
 		simpleBlock(BlockInit.MACHINE_FRAME_TIERED.get(tier).get());
 		basicBlockItem(BlockInit.MACHINE_FRAME_TIERED.get(tier).get());
 		}
+		
+		basicBlockItem(BlockInit.COCONUT_LEAVES.get());
 	}
 }

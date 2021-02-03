@@ -3722,5 +3722,18 @@ public class RecipeDataGen extends RecipeProvider
 				.addIngredient(ModTags.Items.PINEAPPLE)
 				.addCriterion("pineapple", hasItem(ModTags.Items.PINEAPPLE))
 				.build(recipe);
+				
+				ShapelessRecipeBuilder.shapelessRecipe(BlockInit.COCONUT_SAPLING.get(), 1)
+				.addIngredient(ItemTags.SAPLINGS)
+				.addIngredient(ModTags.Items.COCONUT)
+				.addIngredient(ModTags.Items.COCONUT)
+				.addIngredient(ModTags.Items.COCONUT)
+				.addIngredient(ModTags.Items.COCONUT)
+				.addIngredient(ModTags.Items.COCONUT)
+				.addIngredient(ModTags.Items.COCONUT)
+				.addIngredient(ModTags.Items.COCONUT)
+				.addIngredient(ModTags.Items.COCONUT)
+				.addCriterion("coconut", hasItem(ModTags.Items.COCONUT))
+				.build(recipe);
 	}
 }

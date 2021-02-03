@@ -1,4 +1,6 @@
 {
+	"entity.mechaddendums.wandering_florist_entity": "Wandering Florist",
+
 	"itemGroup.mechaddendumsarmourtab": "MA Armoury",
 	"itemGroup.mechaddendumsitemstab": "MA Items",
 	"itemGroup.mechaddendumsblockstab": "MA Blocks",
@@ -448,6 +450,8 @@
 	
 	"item.mechaddendums.coconut": "Coconut",
 	"item.mechaddendums.coconut_milk": "Coconut Milk",
+	"block.mechaddendums.coconut_sapling": "Coconut Sapling",
+	"block.mechaddendums.coconut_leaves": "Coconut Leaves",
 	
 	"item.mechaddendums.pina_colada": "Piña Colada",
 	

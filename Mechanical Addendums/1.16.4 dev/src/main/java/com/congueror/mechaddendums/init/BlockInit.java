@@ -7,8 +7,10 @@ import com.congueror.mechaddendums.MechAddendums;
 import com.congueror.mechaddendums.blocks.FermentingBarrelBlock;
 import com.congueror.mechaddendums.blocks.MetalBlock;
 import com.congueror.mechaddendums.blocks.ModOreBlock;
+import com.congueror.mechaddendums.blocks.PineappleCropBlock;
 import com.congueror.mechaddendums.blocks.RubberLeavesBlock;
 import com.congueror.mechaddendums.blocks.solargen.SolarGeneratorBlock;
+import com.congueror.mechaddendums.blocks.trees.CoconutTree;
 import com.congueror.mechaddendums.blocks.trees.RubberTree;
 import com.congueror.mechaddendums.util.enums.MachineFrameTier;
 import com.congueror.mechaddendums.util.enums.SolarGenTier;
@@ -16,6 +18,7 @@ import com.congueror.mechaddendums.util.enums.SolarGenTier;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FenceGateBlock;
+import net.minecraft.block.LeavesBlock;
 import net.minecraft.block.RotatedPillarBlock;
 import net.minecraft.block.SaplingBlock;
 import net.minecraft.block.SlabBlock;
@@ -193,8 +196,13 @@ public class BlockInit
 		}
 	}
 	
-	public static final RegistryObject<Block> PINEAPPLE_CROP = BLOCKS.register("pineapple_crop", () -> new Block
+	public static final RegistryObject<Block> PINEAPPLE_CROP = BLOCKS.register("pineapple_crop", () -> new PineappleCropBlock
 			(Block.Properties.from(Blocks.CARROTS)));
+	public static final RegistryObject<Block> COCONUT_LEAVES = BLOCKS.register("coconut_leaves", () -> new LeavesBlock
+    		(Block.Properties.from(Blocks.OAK_LEAVES)));
+	public static final RegistryObject<Block> COCONUT_SAPLING = BLOCKS.register("coconut_sapling", () -> new SaplingBlock
+    		(new CoconutTree(), Block.Properties.from(Blocks.OAK_SAPLING)));
+	
     
     //public static final RegistryObject<Block> ALLOY_SMELTER = BLOCKS.register("alloy_smelter", () -> new AlloySmelterBlock(Block.Properties.create(Material.IRON).hardnessAndResistance(5.5f, 6.5f).sound(SoundType.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(1).setRequiresTool()));
 }

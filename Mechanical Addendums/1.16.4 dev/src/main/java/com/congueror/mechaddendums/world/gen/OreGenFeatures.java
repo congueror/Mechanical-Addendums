@@ -136,7 +136,7 @@ public class OreGenFeatures {
 					BlockInit.SALTPETRE_ORE.get().getDefaultState(), 8))
 			.withPlacement(Placement.RANGE.configure(new TopSolidRangeConfig(0, 0, 8))).square()
 			.func_242731_b(1);
-
+	
 	public static void initModFeatures() {
 		Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, new ResourceLocation(modID, "ore_tin"), ORE_TIN);
 		Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, new ResourceLocation(modID, "ore_aluminum"), ORE_ALUMINUM);

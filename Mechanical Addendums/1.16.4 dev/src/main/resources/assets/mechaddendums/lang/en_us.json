@@ -463,6 +463,7 @@
 	"tooltip.uraniumdust": "Harmless, unless digested",
 	"tooltip.fermenting_barrel": "Used to ferment certain natural resources",
 	"tooltip.juicer": "Used to extract the juice of fruits and vegetables",
+	"tooltip.pinacolada": "Do you like Piña Coladas?",
 	
 	"tooltip.mechaddendums.solargen_shift_info": "@7Hold @c@oShift @7for details",
 	"tooltip.mechaddendums.solargen_hold_shift": "@7Generation: @a%d @4FE/t\n@7Transfer: @a%d @4FE/t\n@7Capacity: @a%d @4FE",

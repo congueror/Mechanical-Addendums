@@ -23,6 +23,7 @@ import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
 import net.minecraft.entity.item.ExperienceOrbEntity;
 import net.minecraft.entity.merchant.villager.AbstractVillagerEntity;
 import net.minecraft.entity.merchant.villager.VillagerTrades;
+import net.minecraft.entity.monster.BlazeEntity;
 import net.minecraft.entity.monster.EvokerEntity;
 import net.minecraft.entity.monster.IllusionerEntity;
 import net.minecraft.entity.monster.PillagerEntity;
@@ -51,18 +52,18 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.common.util.Constants;
 
 @SuppressWarnings("unused")
 public class AbstractWanderer extends AbstractVillagerEntity {
     @Nullable
     private BlockPos wanderTarget;
     private BlockPos homePos;
+    
+    private int despawnDelay;
 
     protected VillagerTrades.ITrade[] sells;
     protected VillagerTrades.ITrade[] buys;
-
-    private static final DataParameter<Boolean> WILL_DESPAWN = EntityDataManager.createKey(AbstractWanderer.class, DataSerializers.BOOLEAN);
-    private int despawnDelay;
 
     public AbstractWanderer(EntityType<? extends AbstractWanderer> type, World worldIn) {
         super(type, worldIn);
@@ -93,6 +94,7 @@ public class AbstractWanderer extends AbstractVillagerEntity {
         this.goalSelector.addGoal(1, new AvoidEntityGoal<>(this, VexEntity.class, 8.0F, 0.5D, 0.5D));
         this.goalSelector.addGoal(1, new AvoidEntityGoal<>(this, PillagerEntity.class, 15.0F, 0.5D, 0.5D));
         this.goalSelector.addGoal(1, new AvoidEntityGoal<>(this, IllusionerEntity.class, 12.0F, 0.5D, 0.5D));
+        this.goalSelector.addGoal(1, new AvoidEntityGoal<>(this, BlazeEntity.class, 12.0F, 0.5D, 0.5D));
         this.goalSelector.addGoal(1, new PanicGoal(this, 0.25D));
         this.goalSelector.addGoal(1, new LookAtCustomerGoal(this));
         this.goalSelector.addGoal(2, new AbstractWanderer.MoveToGoal(this, 2.0D, 0.35D));
@@ -136,6 +138,7 @@ public class AbstractWanderer extends AbstractVillagerEntity {
 
     public void writeAdditional(CompoundNBT compound) {
         super.writeAdditional(compound);
+        compound.putInt("DespawnDelay", this.despawnDelay);
         if (this.wanderTarget != null) {
             compound.put("WanderTarget", NBTUtil.writeBlockPos(this.wanderTarget));
         }
@@ -147,6 +150,9 @@ public class AbstractWanderer extends AbstractVillagerEntity {
      */
     public void readAdditional(CompoundNBT compound) {
         super.readAdditional(compound);
+        if (compound.contains("DespawnDelay", Constants.NBT.TAG_INT)) {
+            this.despawnDelay = compound.getInt("DespawnDelay");
+        }
 
         if (compound.contains("WanderTarget")) {
             this.wanderTarget = NBTUtil.readBlockPos(compound.getCompound("WanderTarget"));
@@ -159,12 +165,18 @@ public class AbstractWanderer extends AbstractVillagerEntity {
         return false;
     }
     
-    public boolean willDespawn() {
-        return this.dataManager.get(WILL_DESPAWN).booleanValue();
-    }
-    
     public void setDespawnDelay(int delay) {
         this.despawnDelay = delay;
+    }
+
+    public int getDespawnDelay() {
+        return this.despawnDelay;
+    }
+    
+    private void handleDespawn(){
+        if(this.despawnDelay > 0 && !this.hasCustomer() && --this.despawnDelay == 0){
+            this.remove();
+        }
     }
 
     protected void onVillagerTrade(MerchantOffer offer) {
@@ -261,6 +273,13 @@ public class AbstractWanderer extends AbstractVillagerEntity {
 
         private boolean isWithinDistance(BlockPos pos, double distance) {
             return !pos.withinDistance(this.traderEntity.getPositionVec(), distance);
+        }
+    }
+    
+    @Override
+    public void livingTick() {
+    	if (!this.world.isRemote) {
+            this.handleDespawn();
         }
     }
 }

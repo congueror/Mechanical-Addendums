@@ -1,45 +1,32 @@
 package com.congueror.mechaddendums.util;
 
-import java.util.HashMap;
-import java.util.Map;
+import javax.annotation.Nullable;
 
 import com.congueror.mechaddendums.MechAddendums;
 import com.congueror.mechaddendums.entities.wandering_florist.WanderingFloristSpawner;
 
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 
-@Mod.EventBusSubscriber(modid = MechAddendums.MOD_ID)
+@EventBusSubscriber(modid = MechAddendums.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class Events {
-
-	private static final Map<ServerWorld, WanderingFloristSpawner> WADNERING_FLORIST_SPAWNER_MAP = new HashMap<>();
-
-    @SubscribeEvent
-    public static void worldLoad(WorldEvent.Load evt) {
-        if (!evt.getWorld().isRemote() && evt.getWorld() instanceof ServerWorld) {
-        	WADNERING_FLORIST_SPAWNER_MAP.put((ServerWorld) evt.getWorld(), new WanderingFloristSpawner((ServerWorld) evt.getWorld()));
-        }
-    }
-
-    @SubscribeEvent
-    public static void worldUnload(WorldEvent.Unload evt) {
-        if (!evt.getWorld().isRemote() && evt.getWorld() instanceof ServerWorld) {
-        	WADNERING_FLORIST_SPAWNER_MAP.remove(evt.getWorld());
-        }
-    }
-
-    @SubscribeEvent
-    public static void onServerTick(TickEvent.WorldTickEvent tick){
-        if(!tick.world.isRemote && tick.world instanceof ServerWorld){
-            ServerWorld serverWorld = (ServerWorld)tick.world;
-            WanderingFloristSpawner spawner = WADNERING_FLORIST_SPAWNER_MAP.get(serverWorld);
-            if (spawner != null) {
-                spawner.tick();
-            }
-        }
-
-    }
+	
+	@Nullable
+    private static WanderingFloristSpawner wanderingFloristSpawner = null;
+	
+	@SubscribeEvent
+	  public static void onServerSetUp(FMLServerStartingEvent event) {
+	    ServerWorld world = event.getServer().func_241755_D_();
+	    wanderingFloristSpawner = new WanderingFloristSpawner(world);
+	}
+	
+	@SubscribeEvent
+	public static void onServerTick(TickEvent.ServerTickEvent event) {
+	    if (wanderingFloristSpawner != null)
+	    	wanderingFloristSpawner.tick(); 
+	  }
 }

@@ -13,6 +13,7 @@ import com.congueror.mechaddendums.init.EntityInit;
 import com.congueror.mechaddendums.init.ItemInit;
 import com.congueror.mechaddendums.init.TileEntityInit;
 import com.congueror.mechaddendums.network.PacketHandler;
+import com.congueror.mechaddendums.util.Events;
 import com.congueror.mechaddendums.util.Strippables;
 import com.congueror.mechaddendums.util.enums.SolarGenTier;
 import com.congueror.mechaddendums.util.eventbus.ClientEventBusSub;
@@ -34,6 +35,7 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -48,6 +50,8 @@ public class MechAddendums
     public static final Logger LOGGER;
     public static final String MOD_ID = "mechaddendums";
     public static MechAddendums instance;
+    
+    public static Events event = new Events();
     
     public static IEventBusSub eventbussub = DistExecutor.safeRunForDist(() -> ClientEventBusSub::new, () -> EventBusSub::new);
     
@@ -128,5 +132,9 @@ public class MechAddendums
     public static ResourceLocation location(String path)
     {
         return new ResourceLocation(MOD_ID, path);
+    }
+    
+    public static boolean isCLibLoaded() {
+    	return ModList.get().isLoaded("clib");
     }
 }

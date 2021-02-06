@@ -21,9 +21,9 @@ public class ModContainerItem extends Item
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
 		if(this == ItemInit.TREE_TAP.get()) {
-			tooltip.add(new TranslationTextComponent("tooltip.treetap").mergeStyle(TextFormatting.GRAY));
+			tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.treetap").mergeStyle(TextFormatting.GRAY));
 		} else {
-			tooltip.add(new TranslationTextComponent("tooltip.juicer").mergeStyle(TextFormatting.GRAY));
+			tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.juicer").mergeStyle(TextFormatting.GRAY));
 		}
 	}
 	

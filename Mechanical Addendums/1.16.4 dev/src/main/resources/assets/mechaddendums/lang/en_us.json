@@ -6,12 +6,6 @@
 	"itemGroup.mechaddendumsblockstab": "MA Blocks",
 	"itemGroup.mechaddendumsfoodtab": "MA Food",
 	"itemGroup.mechaddendumsmachinestab": "MA Machines",
-	
-	"effect.mechaddendums.radiation": "Radiation",
-	"death.attack.radiation": "%1$s died from radiation",
-	"effect.mechaddendums.lead_poisoning": "Lead Poisoning",
-	"death.attack.lead_poisoning": "%1$s was poisoned by lead",
-	"death.attack.uranium_eat": "%1$s thought it was a good idea to eat uranium",
 
 	"item.mechaddendums.tin_ingot": "Tin Ingot",
 	"item.mechaddendums.tin_nugget": "Tin Nugget",
@@ -456,15 +450,25 @@
 	
 	"item.mechaddendums.pina_colada": "Piña Colada",
 	
-	"tooltip.uraniumdamage": "Will give radiation when in inventory",
-	"tooltip.treetap": "Used to extract rubber from a certain tree",
-	"tooltip.coalnugget": "Burns 0.89 items per nugget",
-	"tooltip.hazmatsuit": "Full Set Bonus: Protection against radiation",
-	"tooltip.leaddust": "Looks so tasty...",
-	"tooltip.uraniumdust": "Harmless, unless digested",
-	"tooltip.fermenting_barrel": "Used to ferment certain natural resources",
-	"tooltip.juicer": "Used to extract the juice of fruits and vegetables",
-	"tooltip.pinacolada": "Do you like Piña Coladas?",
+	"effect.mechaddendums.radiation": "Radiation",
+	"death.attack.radiation": "%1$s died from radiation",
+	"effect.mechaddendums.lead_poisoning": "Lead Poisoning",
+	"death.attack.lead_poisoning": "%1$s was poisoned by lead",
+	"death.attack.uranium_eat": "%1$s thought it was a good idea to eat uranium",
+	
+	"tooltip.mechaddendums.uraniumdamage": "Will give radiation when in inventory",
+	"tooltip.mechaddendums.treetap": "Used to extract rubber from a certain tree",
+	"tooltip.mechaddendums.coalnugget": "Burns 0.89 items per nugget",
+	"tooltip.mechaddendums.hazmatsuit": "Full Set Bonus: Protection against radiation",
+	"tooltip.mechaddendums.leaddust": "Looks so tasty...",
+	"tooltip.mechaddendums.uraniumdust": "Harmless, unless digested",
+	"tooltip.mechaddendums.fermenting_barrel": "Used to ferment certain natural resources",
+	"tooltip.mechaddendums.juicer": "Used to extract the juice of fruits and vegetables",
+	"tooltip.mechaddendums.pinacolada": "Do you like Piña Coladas?",
+	
+	"tooltip.mechaddendums.block_tags": "Block Tags",
+	"tooltip.mechaddendums.item_tags": "Item Tags",
+	"tooltip.mechaddendums.hold_ctrl_for_tags": "@7Hold @c@oCtrl @7for tags",
 	
 	"tooltip.mechaddendums.solargen_shift_info": "@7Hold @c@oShift @7for details",
 	"tooltip.mechaddendums.solargen_hold_shift": "@7Generation: @a%d @4FE/t\n@7Transfer: @a%d @4FE/t\n@7Capacity: @a%d @4FE",

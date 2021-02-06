@@ -22,7 +22,7 @@ public class UraniumDustItem extends Item
 	
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-		tooltip.add(new TranslationTextComponent("tooltip.uraniumdust").mergeStyle(TextFormatting.GRAY));
+		tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.uraniumdust").mergeStyle(TextFormatting.GRAY));
 	}
 	
 	@Override

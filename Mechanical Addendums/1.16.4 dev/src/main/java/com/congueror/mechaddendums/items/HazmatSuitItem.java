@@ -21,6 +21,6 @@ public class HazmatSuitItem extends ArmorItem
 
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-		tooltip.add(new TranslationTextComponent("tooltip.hazmatsuit").mergeStyle(TextFormatting.GRAY));
+		tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.hazmatsuit").mergeStyle(TextFormatting.GRAY));
 	}
 }

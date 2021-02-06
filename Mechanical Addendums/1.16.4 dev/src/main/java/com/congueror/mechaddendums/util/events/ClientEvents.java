@@ -32,58 +32,67 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
-@EventBusSubscriber(value = {Dist.CLIENT}, modid = MechAddendums.MOD_ID, bus = Bus.FORGE)
 public class ClientEvents {
 	
-	@SubscribeEvent
-	public void doClientStuff(final FMLClientSetupEvent event) {
-    	RenderTypeLookup.setRenderLayer(BlockInit.RUBBER_SAPLING.get(), RenderType.getCutout());
-    	RenderTypeLookup.setRenderLayer(BlockInit.PINEAPPLE_CROP.get(), RenderType.getCutout());
-    	RenderTypeLookup.setRenderLayer(BlockInit.COCONUT_SAPLING.get(), RenderType.getCutout());
-    
-    	for(SolarGenTier tier : SolarGenTier.values()) {
-            ScreenManager.registerFactory(ContainerInit.SOLAR_GENERATOR_CONTAINER.get(tier).get(), SolarGeneratorScreen::new);
-    	}
-    	
-		RenderingRegistry.registerEntityRenderingHandler(EntityInit.WANDERING_FLORIST.get(), WanderingFloristRenderer::new);
-    }
+	@EventBusSubscriber(value = {Dist.CLIENT}, modid = MechAddendums.MOD_ID, bus = Bus.MOD)
+	public static class ModClientEvents {
+		@SubscribeEvent
+		public static void doClientStuff(final FMLClientSetupEvent event) {
+	    	RenderTypeLookup.setRenderLayer(BlockInit.RUBBER_SAPLING.get(), RenderType.getCutout());
+	    	RenderTypeLookup.setRenderLayer(BlockInit.PINEAPPLE_CROP.get(), RenderType.getCutout());
+	    	RenderTypeLookup.setRenderLayer(BlockInit.COCONUT_SAPLING.get(), RenderType.getCutout());
+	    
+	    	for(SolarGenTier tier : SolarGenTier.values()) {
+	            ScreenManager.registerFactory(ContainerInit.SOLAR_GENERATOR_CONTAINER.get(tier).get(), SolarGeneratorScreen::new);
+	    	}
+	    	
+			RenderingRegistry.registerEntityRenderingHandler(EntityInit.WANDERING_FLORIST.get(), WanderingFloristRenderer::new);
+	    }
+	}
 	
-	@SubscribeEvent
-	public void clientSetup(ItemTooltipEvent event) 
-	{
-		Item item = event.getItemStack().getItem();
-	      Set<ResourceLocation> blockTags = Block.getBlockFromItem(item).getTags();
-	      Set<ResourceLocation> itemTags = item.getTags();
-	      if (!blockTags.isEmpty() || !itemTags.isEmpty()) {
-	        List<ITextComponent> lines = event.getToolTip();
-	        if (Screen.hasControlDown()) {
-	          if (!blockTags.isEmpty()) {
-	            lines.add(getTextComponent("info.mechaddendums.block_tags").mergeStyle(TextFormatting.GRAY));
-	            blockTags.stream()
-	              .map(Object::toString)
-	              .map(s -> "  " + s)
-	              .map(t -> getTextComponent(t).mergeStyle(TextFormatting.DARK_GRAY))
-	              .forEach(lines::add);
-	          } 
-	          if (!itemTags.isEmpty()) {
-	            lines.add(getTextComponent("info.mechaddendums.item_tags").mergeStyle(TextFormatting.GRAY));
-	            itemTags.stream()
-	              .map(Object::toString)
-	              .map(s -> "  " + s)
-	              .map(t -> getTextComponent(t).mergeStyle(TextFormatting.DARK_GRAY))
-	              .forEach(lines::add);
-	          } 
-	        } else {
-	          lines.add(getTextComponent("info.mechaddendums.hold_ctrl_for_tags").mergeStyle(TextFormatting.GRAY));
-	        } 
-	      } 
+	@EventBusSubscriber(value = {Dist.CLIENT}, modid = MechAddendums.MOD_ID, bus = Bus.FORGE)
+	public static class ForgeClientEvents {
+		@SubscribeEvent
+		public static void clientSetup(ItemTooltipEvent event) 
+		{
+			if(event.getFlags().isAdvanced()) {
+				Item item = event.getItemStack().getItem();
+				Set<ResourceLocation> blockTags = Block.getBlockFromItem(item).getTags();
+				Set<ResourceLocation> itemTags = item.getTags();
+				if (!blockTags.isEmpty() || !itemTags.isEmpty())
+				{
+					List<ITextComponent> lines = event.getToolTip();
+					if (Screen.hasControlDown()) 
+					{
+						if (!blockTags.isEmpty()) {
+							lines.add(getTextComponent("tooltip.mechaddendums.block_tags").mergeStyle(TextFormatting.GRAY));
+							blockTags.stream()
+							.map(Object::toString)
+							.map(s -> "  " + s)
+							.map(t -> getTextComponent(t).mergeStyle(TextFormatting.DARK_GRAY))
+							.forEach(lines::add);
+						} 
+						if (!itemTags.isEmpty()) {
+							lines.add(getTextComponent("tooltip.mechaddendums.item_tags").mergeStyle(TextFormatting.GRAY));
+							itemTags.stream()
+							.map(Object::toString)
+							.map(s -> "  " + s)
+							.map(t -> getTextComponent(t).mergeStyle(TextFormatting.DARK_GRAY))
+							.forEach(lines::add);
+						} 
+					} else {
+						lines.add(getTextComponent("tooltip.mechaddendums.hold_ctrl_for_tags").mergeStyle(TextFormatting.GRAY));
+					}
+				}
+			}
+		}
 	}
 	
 	public static IFormattableTextComponent getTextComponent(String key) {
 	    return canLocalize(key) ? (IFormattableTextComponent)new TranslationTextComponent(key) : (IFormattableTextComponent)new StringTextComponent(key);
-	  }
+	}
 	
 	public static boolean canLocalize(String key) {
 	    return I18n.hasKey(key);
-	  }
+	}
 }

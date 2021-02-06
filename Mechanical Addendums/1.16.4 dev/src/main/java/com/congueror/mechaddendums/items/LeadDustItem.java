@@ -19,7 +19,7 @@ public class LeadDustItem extends Item
 	
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-		tooltip.add(new TranslationTextComponent("tooltip.leaddust").mergeStyle(TextFormatting.GRAY));
+		tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.leaddust").mergeStyle(TextFormatting.GRAY));
 	}
 
 }

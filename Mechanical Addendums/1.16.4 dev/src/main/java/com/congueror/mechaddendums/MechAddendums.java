@@ -15,7 +15,6 @@ import com.congueror.mechaddendums.util.Strippables;
 import com.congueror.mechaddendums.util.eventbus.ClientEventBusSub;
 import com.congueror.mechaddendums.util.eventbus.EventBusSub;
 import com.congueror.mechaddendums.util.eventbus.IEventBusSub;
-import com.congueror.mechaddendums.util.events.ClientEvents;
 import com.congueror.mechaddendums.world.gen.OreGen;
 import com.congueror.mechaddendums.world.gen.OreGenFeatures;
 import com.congueror.mechaddendums.world.gen.TreeGenFeatures;

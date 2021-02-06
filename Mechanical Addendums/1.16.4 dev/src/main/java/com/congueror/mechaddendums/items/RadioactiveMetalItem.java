@@ -29,7 +29,7 @@ public class RadioactiveMetalItem extends Item {
 	
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-		tooltip.add(new TranslationTextComponent("tooltip.uraniumdamage").mergeStyle(TextFormatting.GRAY));
+		tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.uraniumdamage").mergeStyle(TextFormatting.GRAY));
 	}
 	
 	@Override

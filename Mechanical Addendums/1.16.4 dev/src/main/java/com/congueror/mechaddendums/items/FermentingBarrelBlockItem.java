@@ -20,7 +20,7 @@ public class FermentingBarrelBlockItem extends BlockItem
 	
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-		tooltip.add(new TranslationTextComponent("tooltip.fermenting_barrel").mergeStyle(TextFormatting.GRAY));
+		tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.fermenting_barrel").mergeStyle(TextFormatting.GRAY));
 	}
 	
 	@Override

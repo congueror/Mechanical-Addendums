@@ -4,8 +4,6 @@ import java.util.EnumSet;
 
 import javax.annotation.Nullable;
 
-import com.congueror.mechaddendums.entities.wandering_florist.WanderingFloristEntity;
-
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.MobEntity;
@@ -39,9 +37,6 @@ import net.minecraft.item.MerchantOffers;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.NBTUtil;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.DamageSource;
@@ -60,8 +55,6 @@ public class AbstractWanderer extends AbstractVillagerEntity {
     private BlockPos wanderTarget;
     private BlockPos homePos;
     
-    private int despawnDelay;
-
     protected VillagerTrades.ITrade[] sells;
     protected VillagerTrades.ITrade[] buys;
 
@@ -138,7 +131,6 @@ public class AbstractWanderer extends AbstractVillagerEntity {
 
     public void writeAdditional(CompoundNBT compound) {
         super.writeAdditional(compound);
-        compound.putInt("DespawnDelay", this.despawnDelay);
         if (this.wanderTarget != null) {
             compound.put("WanderTarget", NBTUtil.writeBlockPos(this.wanderTarget));
         }
@@ -150,10 +142,6 @@ public class AbstractWanderer extends AbstractVillagerEntity {
      */
     public void readAdditional(CompoundNBT compound) {
         super.readAdditional(compound);
-        if (compound.contains("DespawnDelay", Constants.NBT.TAG_INT)) {
-            this.despawnDelay = compound.getInt("DespawnDelay");
-        }
-
         if (compound.contains("WanderTarget")) {
             this.wanderTarget = NBTUtil.readBlockPos(compound.getCompound("WanderTarget"));
         }
@@ -163,20 +151,6 @@ public class AbstractWanderer extends AbstractVillagerEntity {
 
     public boolean canDespawn(double distanceToClosestPlayer) {
         return false;
-    }
-    
-    public void setDespawnDelay(int delay) {
-        this.despawnDelay = delay;
-    }
-
-    public int getDespawnDelay() {
-        return this.despawnDelay;
-    }
-    
-    private void handleDespawn(){
-        if(this.despawnDelay > 0 && !this.hasCustomer() && --this.despawnDelay == 0){
-            this.remove();
-        }
     }
 
     protected void onVillagerTrade(MerchantOffer offer) {
@@ -273,13 +247,6 @@ public class AbstractWanderer extends AbstractVillagerEntity {
 
         private boolean isWithinDistance(BlockPos pos, double distance) {
             return !pos.withinDistance(this.traderEntity.getPositionVec(), distance);
-        }
-    }
-    
-    @Override
-    public void livingTick() {
-    	if (!this.world.isRemote) {
-            this.handleDespawn();
         }
     }
 }

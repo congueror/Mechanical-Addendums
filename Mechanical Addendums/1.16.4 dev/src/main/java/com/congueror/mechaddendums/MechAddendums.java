@@ -68,7 +68,6 @@ public class MechAddendums
         ContainerInit.init();
         TileEntityInit.init();
         
-        OreGen.initModFeatures();
         MinecraftForge.EVENT_BUS.register(new OreGen());
         
         PacketHandler.init();
@@ -82,6 +81,8 @@ public class MechAddendums
     public void commonSetup(final FMLCommonSetupEvent event) {    	
     	TreeGenFeatures.configs.RUBBER_TREE_CONFIG.forcePlacement = false;
     	TreeGenFeatures.configs.COCONUT_TREE_CONFIG.forcePlacement = true;
+    	
+        OreGen.initModFeatures();
     }
     
     @SubscribeEvent

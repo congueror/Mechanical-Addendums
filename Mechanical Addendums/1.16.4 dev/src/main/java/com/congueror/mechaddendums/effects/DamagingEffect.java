@@ -4,8 +4,12 @@ import com.congueror.mechaddendums.init.DamageSources;
 import com.congueror.mechaddendums.init.EffectInit;
 
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectType;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvent;
+import net.minecraft.util.SoundEvents;
 
 public class DamagingEffect extends Effect
 {
@@ -18,9 +22,14 @@ public class DamagingEffect extends Effect
 	public void performEffect(LivingEntity entityLivingBaseIn, int amplifier) {
 		if(this == EffectInit.RADIATION.get()) {
 			entityLivingBaseIn.attackEntityFrom(DamageSources.RADIATION, 0.8F);
+			entityLivingBaseIn.playSound(SoundEvents.ENTITY_GENERIC_BURN, 1.0f, 1.0f);
 		} else {
 			entityLivingBaseIn.attackEntityFrom(DamageSources.LEAD_POISONING, 0.2F);
 		}
+	}
+	
+	public static void playSound(PlayerEntity playerIn, SoundEvent soundIn) {
+	      playerIn.playSound(soundIn, SoundCategory.PLAYERS, 6.0F, 1.0F);
 	}
 	
 	@Override

@@ -1,0 +1,22 @@
+{
+	"item.pina_colada_song_disc": {
+		"category": "item",
+		"subtitle": "item.pina_colada_song_disc.sub",
+		"sounds": [
+			{
+				"name": "mechaddendums:item/pina_colada_song_disc",
+				"stream": true
+			}
+		]
+	},
+	"item.horn_disc": {
+		"category": "item",
+		"subtitle": "item.horn_disc.sub",
+		"sounds": [
+			{
+				"name": "mechaddendums:item/horn_disc",
+				"stream": true
+			}
+		]
+	}
+} 

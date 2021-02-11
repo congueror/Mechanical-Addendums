@@ -372,6 +372,9 @@ public class TagsDataGen {
 			getOrCreateBuilder(ModTags.Items.RUBBER_LOGS).add(BlockInit.RUBBER_WOOD.get().asItem());
 			getOrCreateBuilder(ModTags.Items.RUBBER_LOGS).add(BlockInit.RUBBER_STRIPPED_LOG.get().asItem());
 			getOrCreateBuilder(ModTags.Items.RUBBER_LOGS).add(BlockInit.RUBBER_STRIPPED_WOOD.get().asItem());
+			
+			getOrCreateBuilder(ModTags.Items.FENCE_GATES_WOODEN).add(BlockInit.RUBBER_FENCE_GATE.get().asItem());
+			
 			getOrCreateBuilder(ModTags.Items.RUBBER).add(ItemInit.RUBBER.get());
 			
 			getOrCreateBuilder(ModTags.Items.RUM).add(ItemInit.RUM.get());
@@ -495,6 +498,8 @@ public class TagsDataGen {
 			getOrCreateBuilder(ModTags.Blocks.RUBBER_LOGS).add(BlockInit.RUBBER_WOOD.get());
 			getOrCreateBuilder(ModTags.Blocks.RUBBER_LOGS).add(BlockInit.RUBBER_STRIPPED_LOG.get());
 			getOrCreateBuilder(ModTags.Blocks.RUBBER_LOGS).add(BlockInit.RUBBER_STRIPPED_WOOD.get());
+			
+			getOrCreateBuilder(ModTags.Blocks.FENCE_GATES_WOODEN).add(BlockInit.RUBBER_FENCE_GATE.get());
 		}
 	}
 }

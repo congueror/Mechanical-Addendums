@@ -9,10 +9,13 @@ import com.congueror.mechaddendums.entities.wandering_florist.WanderingFloristRe
 import com.congueror.mechaddendums.init.BlockInit;
 import com.congueror.mechaddendums.init.ContainerInit;
 import com.congueror.mechaddendums.init.EntityInit;
+import com.congueror.mechaddendums.util.GuiCLibLoaded;
 import com.congueror.mechaddendums.util.enums.SolarGenTier;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScreenManager;
+import net.minecraft.client.gui.screen.MainMenuScreen;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
@@ -25,6 +28,7 @@ import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -50,10 +54,20 @@ public class ClientEvents {
 	    }
 	}
 	
+	static boolean i = false;
+	
 	@EventBusSubscriber(value = {Dist.CLIENT}, modid = MechAddendums.MOD_ID, bus = Bus.FORGE)
 	public static class ForgeClientEvents {
 		@SubscribeEvent
-		public static void clientSetup(ItemTooltipEvent event) 
+		public static void clibScreen(GuiScreenEvent.DrawScreenEvent.Post event) {
+			if(event.getGui() instanceof MainMenuScreen && !i && MechAddendums.isCLibLoaded()) {
+				Minecraft.getInstance().displayGuiScreen(new GuiCLibLoaded());
+				i = true;
+			}
+		}
+		
+		@SubscribeEvent
+		public static void tagSetup(ItemTooltipEvent event) 
 		{
 			if(event.getFlags().isAdvanced()) {
 				Item item = event.getItemStack().getItem();
@@ -81,7 +95,8 @@ public class ClientEvents {
 							.forEach(lines::add);
 						} 
 					} else {
-						lines.add(getTextComponent("tooltip.mechaddendums.hold_ctrl_for_tags").mergeStyle(TextFormatting.GRAY));
+						//lines.add(getTextComponent("tooltip.mechaddendums.hold_ctrl_for_tags").mergeStyle(TextFormatting.GRAY));
+						lines.add(new TranslationTextComponent("tooltip.mechaddendums.hold_ctrl_for_tags").mergeStyle(TextFormatting.GRAY));
 					}
 				}
 			}

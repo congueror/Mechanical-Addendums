@@ -5,7 +5,9 @@ import java.util.Map;
 
 import com.congueror.mechaddendums.MechAddendums;
 import com.congueror.mechaddendums.items.CoalNuggetItem;
+import com.congueror.mechaddendums.items.CustomMusicDisc;
 import com.congueror.mechaddendums.items.CustomSpawnEgg;
+import com.congueror.mechaddendums.items.EmeraldHornItem;
 import com.congueror.mechaddendums.items.FermentingBarrelBlockItem;
 import com.congueror.mechaddendums.items.HammerItem;
 import com.congueror.mechaddendums.items.HazmatSuitItem;
@@ -578,6 +580,7 @@ public class ItemInit
     public static final RegistryObject<BlockItem> RUBBER_SLAB = ITEMS.register("rubber_slab", () -> new BlockItem(BlockInit.RUBBER_SLAB.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     public static final RegistryObject<BlockItem> RUBBER_FENCE_GATE = ITEMS.register("rubber_fence_gate", () -> new BlockItem(BlockInit.RUBBER_FENCE_GATE.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     public static final RegistryObject<BlockItem> RUBBER_BUTTON = ITEMS.register("rubber_button", () -> new BlockItem(BlockInit.RUBBER_BUTTON.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    //public static final RegistryObject<BlockItem> RUBBER_SIGN = ITEMS.register("rubber_sign", () -> new SignItem(new Item.Properties().group(ModItemGroups.BlocksIG.instance), BlockInit.RUBBER_SIGN.get(), BlockInit.RUBBER_WALL_SIGN.get()));
     
     public static final RegistryObject<Item> HAZMAT_HELM = ITEMS.register("hazmat_scuba_helmet", ()-> new HazmatSuitItem(ModArmorMaterial.HAZMAT, EquipmentSlotType.HEAD, new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> HAZMAT_CHEST = ITEMS.register("hazmat_suit", ()-> new HazmatSuitItem(ModArmorMaterial.HAZMAT, EquipmentSlotType.CHEST, new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
@@ -641,4 +644,10 @@ public class ItemInit
     
     public static final RegistryObject<CustomSpawnEgg> WANDERING_FLORIST_SPAWN_EGG = ITEMS.register("wandering_florist_spawn_egg", () -> 
     new CustomSpawnEgg(EntityInit.WANDERING_FLORIST, 0x2FFF00, 15377456, new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    
+    public static final RegistryObject<CustomMusicDisc> PINA_COLADA_SONG_MUSIC_DISC = ITEMS.register("pina_colada_song_music_disc", () ->
+    new CustomMusicDisc(12, SoundInit.PINA_COLADA_SONG_LAZY.get(), new Item.Properties().group(ModItemGroups.ItemsIG.instance).maxStackSize(1)));
+    
+    public static final RegistryObject<EmeraldHornItem> EMERALD_HORN = ITEMS.register("emerald_horn", () ->
+    new EmeraldHornItem(new Item.Properties().group(ModItemGroups.ItemsIG.instance).maxStackSize(1).defaultMaxDamage(1)));
 }

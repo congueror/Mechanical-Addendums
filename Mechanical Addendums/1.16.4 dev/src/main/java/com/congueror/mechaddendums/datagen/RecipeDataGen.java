@@ -3735,5 +3735,14 @@ public class RecipeDataGen extends RecipeProvider
 				.addIngredient(ModTags.Items.COCONUT)
 				.addCriterion("coconut", hasItem(ModTags.Items.COCONUT))
 				.build(recipe);
+				
+				ShapedRecipeBuilder.shapedRecipe(ItemInit.PINA_COLADA_SONG_MUSIC_DISC.get(), 1)
+		        .patternLine("ppp")
+		        .patternLine("pmp")
+		        .patternLine("ppp")
+		        .key('p', ModTags.Items.PINA_COLADA)
+		        .key('m', Items.MUSIC_DISC_PIGSTEP)
+		        .addCriterion("music_disc_pigstep", hasItem(Items.MUSIC_DISC_PIGSTEP))
+		        .build(recipe);
 	}
 }

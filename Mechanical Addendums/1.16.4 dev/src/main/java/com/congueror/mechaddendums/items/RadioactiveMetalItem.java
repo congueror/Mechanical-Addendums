@@ -13,9 +13,6 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -38,28 +35,24 @@ public class RadioactiveMetalItem extends Item {
 			LivingEntity living = (LivingEntity) entityIn;
 			if(entityIn instanceof PlayerEntity && (!(((PlayerEntity) entityIn).getItemStackFromSlot(EquipmentSlotType.HEAD).getItem() == ItemInit.HAZMAT_HELM.get()) || !(((PlayerEntity) entityIn).getItemStackFromSlot(EquipmentSlotType.CHEST).getItem() == ItemInit.HAZMAT_CHEST.get()) || !(((PlayerEntity) entityIn).getItemStackFromSlot(EquipmentSlotType.LEGS).getItem() == ItemInit.HAZMAT_LEGS.get()) || !(((PlayerEntity) entityIn).getItemStackFromSlot(EquipmentSlotType.FEET).getItem() == ItemInit.HAZMAT_BOOTS.get())) && !((PlayerEntity) entityIn).isCreative() && worldIn.getGameTime() % 20 == 0 && !worldIn.isRemote) {
 				tryRadiationTick(stack, entityIn, living);
-				playSound(living, living.getPosition(), SoundEvents.ENTITY_GENERIC_BURN);
 			}
 		}
 		else if(this == ItemInit.URANIUM_NUGGET.get()) {
 			LivingEntity living = (LivingEntity) entityIn;
 			if (entityIn instanceof PlayerEntity && !(((PlayerEntity) entityIn).getItemStackFromSlot(EquipmentSlotType.HEAD).getItem() == ItemInit.HAZMAT_HELM.get()) && !(((PlayerEntity) entityIn).getItemStackFromSlot(EquipmentSlotType.CHEST).getItem() == ItemInit.HAZMAT_CHEST.get()) && !(((PlayerEntity) entityIn).getItemStackFromSlot(EquipmentSlotType.LEGS).getItem() == ItemInit.HAZMAT_LEGS.get()) && !(((PlayerEntity) entityIn).getItemStackFromSlot(EquipmentSlotType.FEET).getItem() == ItemInit.HAZMAT_BOOTS.get()) && !((PlayerEntity) entityIn).isCreative() && worldIn.getGameTime() % 30 == 0 && !worldIn.isRemote) {
 				tryRadiationTick(stack, entityIn, living);
-				playSound(living, living.getPosition(), SoundEvents.ENTITY_GENERIC_BURN);
 			}
 		}
 		else if(this == ItemInit.THORIUM_INGOT.get()) {
 			LivingEntity living = (LivingEntity) entityIn;
 			if (entityIn instanceof PlayerEntity && !(((PlayerEntity) entityIn).getItemStackFromSlot(EquipmentSlotType.HEAD).getItem() == ItemInit.HAZMAT_HELM.get()) && !(((PlayerEntity) entityIn).getItemStackFromSlot(EquipmentSlotType.CHEST).getItem() == ItemInit.HAZMAT_CHEST.get()) && !(((PlayerEntity) entityIn).getItemStackFromSlot(EquipmentSlotType.LEGS).getItem() == ItemInit.HAZMAT_LEGS.get()) && !(((PlayerEntity) entityIn).getItemStackFromSlot(EquipmentSlotType.FEET).getItem() == ItemInit.HAZMAT_BOOTS.get()) && !((PlayerEntity) entityIn).isCreative() && worldIn.getGameTime() % 200 == 0 && !worldIn.isRemote) {
 				tryRadiationTick(stack, entityIn, living);
-				playSound(living, living.getPosition(), SoundEvents.ENTITY_GENERIC_BURN);
 			}
 		}
 		else if(this == ItemInit.THORIUM_NUGGET.get()) {
 			LivingEntity living = (LivingEntity) entityIn;
 			if (entityIn instanceof PlayerEntity && !(((PlayerEntity) entityIn).getItemStackFromSlot(EquipmentSlotType.HEAD).getItem() == ItemInit.HAZMAT_HELM.get()) && !(((PlayerEntity) entityIn).getItemStackFromSlot(EquipmentSlotType.CHEST).getItem() == ItemInit.HAZMAT_CHEST.get()) && !(((PlayerEntity) entityIn).getItemStackFromSlot(EquipmentSlotType.LEGS).getItem() == ItemInit.HAZMAT_LEGS.get()) && !(((PlayerEntity) entityIn).getItemStackFromSlot(EquipmentSlotType.FEET).getItem() == ItemInit.HAZMAT_BOOTS.get()) && !((PlayerEntity) entityIn).isCreative() && worldIn.getGameTime() % 300 == 0 && !worldIn.isRemote) {
 				tryRadiationTick(stack, entityIn, living);
-				playSound(living, living.getPosition(), SoundEvents.ENTITY_GENERIC_BURN);
 			}
 		}
 	}
@@ -82,10 +75,5 @@ public class RadioactiveMetalItem extends Item {
 	    {
 	      living.addPotionEffect(new EffectInstance(EffectInit.RADIATION.get(), 1, 3));
 	    }
-	}
-	
-	
-	public static void playSound(Entity entityIn, BlockPos position, SoundEvent soundIn) {
-	      entityIn.playSound(soundIn, 6.0F, 1.0F);
 	}
 }

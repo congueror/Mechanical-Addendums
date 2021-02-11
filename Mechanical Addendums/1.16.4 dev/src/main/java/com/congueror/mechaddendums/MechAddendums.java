@@ -9,6 +9,7 @@ import com.congueror.mechaddendums.init.ContainerInit;
 import com.congueror.mechaddendums.init.EffectInit;
 import com.congueror.mechaddendums.init.EntityInit;
 import com.congueror.mechaddendums.init.ItemInit;
+import com.congueror.mechaddendums.init.SoundInit;
 import com.congueror.mechaddendums.init.TileEntityInit;
 import com.congueror.mechaddendums.network.PacketHandler;
 import com.congueror.mechaddendums.util.Strippables;
@@ -61,6 +62,7 @@ public class MechAddendums
         TileEntityInit.TILE_ENTITIES.register(modEventBus);
         ContainerInit.CONTAINERS.register(modEventBus);
         EntityInit.ENTITY_TYPES.register(modEventBus);
+        SoundInit.SOUNDS.register(modEventBus);
         
         ItemInit.init();
         BlockInit.init();

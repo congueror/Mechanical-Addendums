@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
-    "mechaddendums:rubber_log"
+    "mechaddendums:rubber_log",
+    "mechaddendums:rubber_wood",
+    "mechaddendums:stripped_rubber_log",
+    "mechaddendums:stripped_rubber_wood"
   ]
 }

@@ -199,6 +199,7 @@ public class ModTags
 			public static final IOptionalNamedTag<Item> STORAGE_BLOCKS_CHROMIUM = tag("storage_blocks/chromium");
 			public static final IOptionalNamedTag<Item> STORAGE_BLOCKS_ZINC = tag("storage_blocks/zinc");
 		public static final IOptionalNamedTag<Item> RUBBER_LOGS = tag("rubber_logs");
+		public static final IOptionalNamedTag<Item> FENCE_GATES_WOODEN = tag("fence_gates/wooden");
 		public static final IOptionalNamedTag<Item> RUBBER = tag("rubber");
 		
 		public static final IOptionalNamedTag<Item> HAMMERS = mechaddendumsTag("hammers");
@@ -286,6 +287,7 @@ public class ModTags
 			public static final IOptionalNamedTag<Block> STORAGE_BLOCKS_BRASS = tag("storage_blocks/brass");
 			public static final IOptionalNamedTag<Block> STORAGE_BLOCKS_CHROMIUM = tag("storage_blocks/chromium");
 		public static final IOptionalNamedTag<Block> RUBBER_LOGS = tag("rubber_logs");
+		public static final IOptionalNamedTag<Block> FENCE_GATES_WOODEN = tag("fence_gates/wooden");
 			
 		private static IOptionalNamedTag<Block> tag(String name)
 	    {

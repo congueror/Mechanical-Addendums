@@ -974,6 +974,15 @@ public class ItemModelDataGen extends ItemModelProvider{
                 "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/pina_colada"));
 		singleTexture(ItemInit.PINEAPPLE_SEEDS.get().getRegistryName().getPath(), new ResourceLocation("item/generated"),
                 "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/pineapple_seeds"));
+		
+		singleTexture(ItemInit.PINA_COLADA_SONG_MUSIC_DISC.get().getRegistryName().getPath(), new ResourceLocation("item/generated"),
+                "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/pina_colada_song_music_disc"));
+		
+		singleTexture(ItemInit.EMERALD_HORN.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"),
+                "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/emerald_horn"));
+		
+		singleTexture(ItemInit.RUBBER_SIGN.get().getRegistryName().getPath(), new ResourceLocation("item/generated"),
+                "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/rubber_sign"));
 	}
 
 }

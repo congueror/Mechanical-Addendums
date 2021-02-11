@@ -30,27 +30,31 @@ public class SolarGeneratorScreen extends ContainerScreen<SolarGeneratorContaine
             this.renderTooltip(mStack, new StringTextComponent("Energy: " + getPercent() + "%"), mouseX, mouseY);
     }
 	
-	 @Override
-	    protected void drawGuiContainerForegroundLayer(MatrixStack mStack, int mouseX, int mouseY)
-	    {
-	        String energy = new TranslationTextComponent("gui." + MechAddendums.MOD_ID + ".stored_energy").appendString(" " + getEnergyFormatted(tile.energyClient)).getString();
-	        this.font.drawString(mStack, energy, (xSize / 2 - font.getStringWidth(energy) / 2) + 14, 20, 4210752);
+	@Override
+	protected void drawGuiContainerForegroundLayer(MatrixStack mStack, int mouseX, int mouseY)
+	{
+		 String energy = new TranslationTextComponent("gui." + MechAddendums.MOD_ID + ".stored_energy").appendString(" " + getEnergyFormatted(tile.energyClient)).getString();
+	     this.font.drawString(mStack, energy, (xSize / 2 - font.getStringWidth(energy) / 2) + 14, 20, 4210752);
 
-	        String maxEnergy = new TranslationTextComponent("gui." + MechAddendums.MOD_ID + ".max_capacity").appendString(" " + getEnergyFormatted(tile.maxEnergy)).getString();
-	        this.font.drawString(mStack, maxEnergy, (xSize / 2 - font.getStringWidth(maxEnergy) / 2) + 14, 30, 4210752);
+	     String maxEnergy = new TranslationTextComponent("gui." + MechAddendums.MOD_ID + ".max_capacity").appendString(" " + getEnergyFormatted(tile.maxEnergy)).getString();
+	     this.font.drawString(mStack, maxEnergy, (xSize / 2 - font.getStringWidth(maxEnergy) / 2) + 14, 30, 4210752);
 
-	        String generation = new TranslationTextComponent("gui." + MechAddendums.MOD_ID + ".generation").appendString(" " + tile.energyProductionClient + " FE/t").getString();
-	        this.font.drawString(mStack, generation, (xSize / 2 - font.getStringWidth(generation) / 2) + 14, 40, 4210752);
-	    }
+	     String generation = new TranslationTextComponent("gui." + MechAddendums.MOD_ID + ".generation").appendString(" " + tile.energyProductionClient + " FE/t").getString();
+	     this.font.drawString(mStack, generation, (xSize / 2 - font.getStringWidth(generation) / 2) + 14, 40, 4210752);
+	}
 	
 	@Override
 	protected void drawGuiContainerBackgroundLayer(MatrixStack matrixStack, float partialTicks, int x, int y) {	
 		 this.minecraft.getTextureManager().bindTexture(TEXTURES);
 	        this.blit(matrixStack, this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
-
+	        
+	        
+	        
 	        // Energy
 	        int z = this.getEnergyScaled(60);
 	        this.blit(matrixStack, this.guiLeft + 10, this.guiTop + 12 + z, this.xSize, 0, 16, 60 - z);
+	        
+	        this.blit(matrixStack, this.guiLeft + 10, this.guiTop + 12, this.xSize + 16, 0, 16, 60);
 	}
 
 	private String getEnergyFormatted(int energy)

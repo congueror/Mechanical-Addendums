@@ -31,64 +31,64 @@ public class ModOreBlock extends OreBlock
     public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
     {
 		if(this == BlockInit.ALUMINUM_ORE.get()) {
-			tooltip.add(new TranslationTextComponent("tooltip.aluminum_ore").mergeStyle(TextFormatting.GRAY));
+			tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.aluminum_ore").mergeStyle(TextFormatting.GRAY));
 		}
 		else if(this == BlockInit.TIN_ORE.get()) {
-			tooltip.add(new TranslationTextComponent("tooltip.tin_ore").mergeStyle(TextFormatting.GRAY));
+			tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.tin_ore").mergeStyle(TextFormatting.GRAY));
 		}
 		else if(this == BlockInit.LEAD_ORE.get()) {
-			tooltip.add(new TranslationTextComponent("tooltip.lead_ore").mergeStyle(TextFormatting.GRAY));
+			tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.lead_ore").mergeStyle(TextFormatting.GRAY));
 		}
 		else if(this == BlockInit.COPPER_ORE.get()) {
-			tooltip.add(new TranslationTextComponent("tooltip.copper_ore").mergeStyle(TextFormatting.GRAY));
+			tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.copper_ore").mergeStyle(TextFormatting.GRAY));
 		}
 		else if(this == BlockInit.RUBY_ORE.get()) {
-			tooltip.add(new TranslationTextComponent("tooltip.ruby_ore").mergeStyle(TextFormatting.GRAY));
+			tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.ruby_ore").mergeStyle(TextFormatting.GRAY));
 		}
 		else if(this == BlockInit.SILVER_ORE.get()) {
-			tooltip.add(new TranslationTextComponent("tooltip.silver_ore").mergeStyle(TextFormatting.GRAY));
+			tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.silver_ore").appendString("").mergeStyle(TextFormatting.GRAY));
 		}
 		else if(this == BlockInit.NICKEL_ORE.get()) {
-			tooltip.add(new TranslationTextComponent("tooltip.nickel_ore").mergeStyle(TextFormatting.GRAY));
+			tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.nickel_ore").mergeStyle(TextFormatting.GRAY));
 		}
 		else if(this == BlockInit.SULFUR_ORE.get()) {
-			tooltip.add(new TranslationTextComponent("tooltip.sulfur_ore").mergeStyle(TextFormatting.GRAY));
+			tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.sulfur_ore").mergeStyle(TextFormatting.GRAY));
 		}
 		else if(this == BlockInit.PLATINUM_ORE.get()) {
-			tooltip.add(new TranslationTextComponent("tooltip.platinum_ore").mergeStyle(TextFormatting.GRAY));
+			tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.platinum_ore").mergeStyle(TextFormatting.GRAY));
 		}
 		else if(this == BlockInit.TUNGSTEN_ORE.get()) {
-			tooltip.add(new TranslationTextComponent("tooltip.tungsten_ore").mergeStyle(TextFormatting.GRAY));
+			tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.tungsten_ore").mergeStyle(TextFormatting.GRAY));
 		}
 		else if(this == BlockInit.AMETHYST_ORE.get()) {
-			tooltip.add(new TranslationTextComponent("tooltip.amethyst_ore").mergeStyle(TextFormatting.GRAY));
+			tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.amethyst_ore").mergeStyle(TextFormatting.GRAY));
 		}
 		else if(this == BlockInit.SAPPHIRE_ORE.get()) {
-			tooltip.add(new TranslationTextComponent("tooltip.sapphire_ore").mergeStyle(TextFormatting.GRAY));
+			tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.sapphire_ore").mergeStyle(TextFormatting.GRAY));
 		}
 		else if(this == BlockInit.OPAL_ORE.get()) {
-			tooltip.add(new TranslationTextComponent("tooltip.opal_ore").mergeStyle(TextFormatting.GRAY));
+			tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.opal_ore").mergeStyle(TextFormatting.GRAY));
 		}
 		else if(this == BlockInit.TITANIUM_ORE.get()) {
-			tooltip.add(new TranslationTextComponent("tooltip.titanium_ore").mergeStyle(TextFormatting.GRAY));
+			tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.titanium_ore").mergeStyle(TextFormatting.GRAY));
 		}
 		else if(this == BlockInit.URANIUM_ORE.get()) {
-			tooltip.add(new TranslationTextComponent("tooltip.uranium_ore").mergeStyle(TextFormatting.GRAY));
+			tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.uranium_ore").mergeStyle(TextFormatting.GRAY));
 		}
 		else if(this == BlockInit.COBALT_ORE.get()) {
-			tooltip.add(new TranslationTextComponent("tooltip.cobalt_ore").mergeStyle(TextFormatting.GRAY));
+			tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.cobalt_ore").mergeStyle(TextFormatting.GRAY));
 		}
 		else if(this == BlockInit.ZINC_ORE.get()) {
-			tooltip.add(new TranslationTextComponent("tooltip.zinc_ore").mergeStyle(TextFormatting.GRAY));
+			tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.zinc_ore").mergeStyle(TextFormatting.GRAY));
 		}
 		else if(this == BlockInit.SALTPETRE_ORE.get()) {
-			tooltip.add(new TranslationTextComponent("tooltip.saltpetre_ore").mergeStyle(TextFormatting.GRAY));
+			tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.saltpetre_ore").mergeStyle(TextFormatting.GRAY));
 		}
 		else if(this == BlockInit.CHROMIUM_ORE.get()) {
-			tooltip.add(new TranslationTextComponent("tooltip.chromium_ore").mergeStyle(TextFormatting.GRAY));
+			tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.chromium_ore").mergeStyle(TextFormatting.GRAY));
 		}
 		else if(this == BlockInit.THORIUM_ORE.get()) {
-			tooltip.add(new TranslationTextComponent("tooltip.thorium_ore").mergeStyle(TextFormatting.GRAY));
+			tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.thorium_ore").mergeStyle(TextFormatting.GRAY));
 		}
     }
 	

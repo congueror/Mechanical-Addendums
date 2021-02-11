@@ -101,10 +101,6 @@ public class AbstractWanderer extends AbstractVillagerEntity {
     @Override
 	public AgeableEntity func_241840_a(ServerWorld p_241840_1_, AgeableEntity p_241840_2_) {
 		return null;
-	}
-
-    public boolean func_213705_dZ() {
-        return false;
     }
 
     @Override

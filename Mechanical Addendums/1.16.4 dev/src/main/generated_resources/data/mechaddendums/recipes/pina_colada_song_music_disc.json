@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ppp",
+    "pmp",
+    "ppp"
+  ],
+  "key": {
+    "p": {
+      "tag": "forge:pina_colada"
+    },
+    "m": {
+      "item": "minecraft:music_disc_pigstep"
+    }
+  },
+  "result": {
+    "item": "mechaddendums:pina_colada_song_music_disc"
+  }
+}

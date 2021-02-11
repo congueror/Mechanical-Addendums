@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "mechaddendums:pina_colada_song_music_disc"
+    ]
+  },
+  "criteria": {
+    "music_disc_pigstep": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:music_disc_pigstep"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "mechaddendums:pina_colada_song_music_disc"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "music_disc_pigstep",
+      "has_the_recipe"
+    ]
+  ]
+}

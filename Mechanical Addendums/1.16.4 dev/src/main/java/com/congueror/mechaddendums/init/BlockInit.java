@@ -178,6 +178,11 @@ public class BlockInit
 			(Block.Properties.from(BlockInit.RUBBER_PLANKS.get())));
 	public static final RegistryObject<Block> RUBBER_BUTTON = BLOCKS.register("rubber_button", () -> new WoodButtonBlock
 			(Block.Properties.from(Blocks.OAK_BUTTON)));
+//	public static final RegistryObject<Block> RUBBER_SIGN = BLOCKS.register("rubber_sign", () -> new StandingSignBlock
+//			(Block.Properties.from(Blocks.OAK_SIGN), ModWoodType.RUBBER));
+//	public static final RegistryObject<Block> RUBBER_WALL_SIGN = BLOCKS.register("rubber_wall_sign", () -> new WallSignBlock
+//			(Block.Properties.from(Blocks.OAK_WALL_SIGN), ModWoodType.RUBBER));
+	
 	
 	public static final RegistryObject<Block> FERMENTING_BARREL = BLOCKS.register("fermenting_barrel", () -> new FermentingBarrelBlock
     		(Block.Properties.from(Blocks.BARREL)));

@@ -981,8 +981,8 @@ public class ItemModelDataGen extends ItemModelProvider{
 		singleTexture(ItemInit.EMERALD_HORN.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"),
                 "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/emerald_horn"));
 		
-		singleTexture(ItemInit.RUBBER_SIGN.get().getRegistryName().getPath(), new ResourceLocation("item/generated"),
-                "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/rubber_sign"));
+//		singleTexture(ItemInit.RUBBER_SIGN.get().getRegistryName().getPath(), new ResourceLocation("item/generated"),
+//                "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/rubber_sign"));
 	}
 
 }

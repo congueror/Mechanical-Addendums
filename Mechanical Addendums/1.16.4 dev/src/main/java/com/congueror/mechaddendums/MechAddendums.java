@@ -17,7 +17,6 @@ import com.congueror.mechaddendums.util.eventbus.ClientEventBusSub;
 import com.congueror.mechaddendums.util.eventbus.EventBusSub;
 import com.congueror.mechaddendums.util.eventbus.IEventBusSub;
 import com.congueror.mechaddendums.world.gen.OreGen;
-import com.congueror.mechaddendums.world.gen.OreGenFeatures;
 import com.congueror.mechaddendums.world.gen.TreeGenFeatures;
 
 import net.minecraft.entity.EntityType;
@@ -68,7 +67,10 @@ public class MechAddendums
         BlockInit.init();
         ContainerInit.init();
         TileEntityInit.init();
-                
+        
+        OreGen.initModFeatures();
+        MinecraftForge.EVENT_BUS.register(new OreGen());
+        
         PacketHandler.init();
         
         MinecraftForge.EVENT_BUS.register(this);
@@ -77,11 +79,7 @@ public class MechAddendums
     }
     
     @SubscribeEvent
-    public void commonSetup(final FMLCommonSetupEvent event) {
-    	//ModOreGen.addFeatures();
-    	OreGenFeatures.initModFeatures();
-        OreGen.setupOreGenerator();
-    	
+    public void commonSetup(final FMLCommonSetupEvent event) {    	
     	TreeGenFeatures.configs.RUBBER_TREE_CONFIG.forcePlacement = false;
     	TreeGenFeatures.configs.COCONUT_TREE_CONFIG.forcePlacement = true;
     }

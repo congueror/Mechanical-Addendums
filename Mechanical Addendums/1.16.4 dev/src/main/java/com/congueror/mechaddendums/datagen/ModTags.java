@@ -91,6 +91,7 @@ public class ModTags
 			public static final IOptionalNamedTag<Item> DUSTS_BRASS = tag("dusts/brass");
 			public static final IOptionalNamedTag<Item> DUSTS_CHROMIUM = tag("dusts/chromium");
 			public static final IOptionalNamedTag<Item> DUSTS_THORIUM = tag("dusts/thorium");
+			public static final IOptionalNamedTag<Item> DUSTS_SALT = tag("dusts/salt");
 		public static final IOptionalNamedTag<Item> GEMS = tag("gems");
 			public static final IOptionalNamedTag<Item> GEMS_AMETHYST = tag("gems/amethyst");
 			public static final IOptionalNamedTag<Item> GEMS_OPAL = tag("gems/opal");
@@ -208,7 +209,9 @@ public class ModTags
 		
 		public static final IOptionalNamedTag<Item> JUICER = tag("tool_juicer");
 		public static final IOptionalNamedTag<Item> RUM = tag("rum");
-		public static final IOptionalNamedTag<Item> PINEAPPLE = tag("pineapple");
+		public static final IOptionalNamedTag<Item> FRUITS = tag("fruit");
+			public static final IOptionalNamedTag<Item> FRUITS_PINEAPPLE = tag("fruits/pineapple");
+			public static final IOptionalNamedTag<Item> FRUITS_CANDLENUT = tag("fruits/candlenut");
 		public static final IOptionalNamedTag<Item> JUICES = tag("juices");
 			public static final IOptionalNamedTag<Item> JUICES_PINEAPPLE = tag("juices/pineapple");
 		public static final IOptionalNamedTag<Item> COCONUT = tag("coconut");
@@ -216,6 +219,7 @@ public class ModTags
 		public static final IOptionalNamedTag<Item> PINA_COLADA = tag("pina_colada");
 		public static final IOptionalNamedTag<Item> SEEDS = tag("seeds");
 			public static final IOptionalNamedTag<Item> SEEDS_PINEAPPLE = tag("seeds/pineapple");
+		public static final IOptionalNamedTag<Item> SALT = tag("salt");
 		
 		private static IOptionalNamedTag<Item> tag(String name)
         {

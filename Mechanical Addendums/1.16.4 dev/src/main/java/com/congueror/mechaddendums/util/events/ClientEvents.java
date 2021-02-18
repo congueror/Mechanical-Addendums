@@ -20,6 +20,7 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.IFormattableTextComponent;
@@ -27,6 +28,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
@@ -45,6 +47,7 @@ public class ClientEvents {
 	    	RenderTypeLookup.setRenderLayer(BlockInit.RUBBER_SAPLING.get(), RenderType.getCutout());
 	    	RenderTypeLookup.setRenderLayer(BlockInit.PINEAPPLE_CROP.get(), RenderType.getCutout());
 	    	RenderTypeLookup.setRenderLayer(BlockInit.COCONUT_SAPLING.get(), RenderType.getCutout());
+	    	RenderTypeLookup.setRenderLayer(BlockInit.CANDLENUT_SAPLING.get(), RenderType.getCutout());
 	    
 	    	for(SolarGenTier tier : SolarGenTier.values()) {
 	            ScreenManager.registerFactory(ContainerInit.SOLAR_GENERATOR_CONTAINER.get(tier).get(), SolarGeneratorScreen::new);
@@ -57,7 +60,8 @@ public class ClientEvents {
 	static boolean i = false;
 	
 	@EventBusSubscriber(value = {Dist.CLIENT}, modid = MechAddendums.MOD_ID, bus = Bus.FORGE)
-	public static class ForgeClientEvents {
+	@SuppressWarnings("resource")
+	public static class ForgeClientEvents implements IEventBusSub{
 		@SubscribeEvent
 		public static void clibScreen(GuiScreenEvent.DrawScreenEvent.Post event) {
 			if(event.getGui() instanceof MainMenuScreen && !i && MechAddendums.isCLibLoaded()) {
@@ -80,27 +84,30 @@ public class ClientEvents {
 					{
 						if (!blockTags.isEmpty()) {
 							lines.add(getTextComponent("tooltip.mechaddendums.block_tags").mergeStyle(TextFormatting.GRAY));
-							blockTags.stream()
-							.map(Object::toString)
-							.map(s -> "  " + s)
-							.map(t -> getTextComponent(t).mergeStyle(TextFormatting.DARK_GRAY))
-							.forEach(lines::add);
+							blockTags.stream().map(Object::toString).map(s -> "  " + s).map(t -> getTextComponent(t).mergeStyle(TextFormatting.DARK_GRAY)).forEach(lines::add);
 						} 
 						if (!itemTags.isEmpty()) {
 							lines.add(getTextComponent("tooltip.mechaddendums.item_tags").mergeStyle(TextFormatting.GRAY));
-							itemTags.stream()
-							.map(Object::toString)
-							.map(s -> "  " + s)
-							.map(t -> getTextComponent(t).mergeStyle(TextFormatting.DARK_GRAY))
-							.forEach(lines::add);
+							itemTags.stream().map(Object::toString).map(s -> "  " + s).map(t -> getTextComponent(t).mergeStyle(TextFormatting.DARK_GRAY)).forEach(lines::add);
 						} 
 					} else {
-						//lines.add(getTextComponent("tooltip.mechaddendums.hold_ctrl_for_tags").mergeStyle(TextFormatting.GRAY));
 						lines.add(new TranslationTextComponent("tooltip.mechaddendums.hold_ctrl_for_tags").mergeStyle(TextFormatting.GRAY));
 					}
 				}
 			}
 		}
+
+		@Override
+		public PlayerEntity getClientPlayer() {
+			return  Minecraft.getInstance().player;
+		}
+
+		@Override
+		public World getClientWorld() {
+			return Minecraft.getInstance().world;
+		}
+		
+		
 	}
 	
 	public static IFormattableTextComponent getTextComponent(String key) {

@@ -564,6 +564,8 @@ public class ItemInit
     public static final RegistryObject<BlockItem> SALTPETRE_ORE = ITEMS.register("saltpetre_ore", () -> new BlockItem(BlockInit.SALTPETRE_ORE.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     public static final RegistryObject<Item> SALTPETRE_DUST = ITEMS.register("saltpetre_dust", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> SULFUR_DUST = ITEMS.register("sulfur_dust", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    public static final RegistryObject<Item> SALT = ITEMS.register("salt", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    public static final RegistryObject<Item> SALT_BLOCK = ITEMS.register("salt_block", ()-> new BlockItem(BlockInit.SALT_BLOCK.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     
     public static final RegistryObject<Item> PYROTHEUM_DUST = ITEMS.register("pyrotheum_dust", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     
@@ -609,8 +611,6 @@ public class ItemInit
     public static final RegistryObject<Item> EMERALD_GEAR = ITEMS.register("emerald_gear", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> NETHERITE_GEAR = ITEMS.register("netherite_gear", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     
-    public static final RegistryObject<BlockItem> FERMENTING_BARREL = ITEMS.register("fermenting_barrel", () -> new FermentingBarrelBlockItem(BlockInit.FERMENTING_BARREL.get(), new Item.Properties().group(ModItemGroups.FoodIG.instance)));
-    
     //Machines
     public static final RegistryObject<BlockItem> MACHINE_FRAME = ITEMS.register("machine_frame", () -> new BlockItem(BlockInit.MACHINE_FRAME.get(), new Item.Properties().group(ModItemGroups.MachinesIG.instance)));
     public static final Map<MachineFrameTier, RegistryObject<Item>> MACHINE_FRAME_TIERED = new HashMap<>();
@@ -630,18 +630,26 @@ public class ItemInit
     }
     
     //Food
+    public static final RegistryObject<BlockItem> FERMENTING_BARREL = ITEMS.register("fermenting_barrel", () -> new FermentingBarrelBlockItem(BlockInit.FERMENTING_BARREL.get(), new Item.Properties().group(ModItemGroups.FoodIG.instance)));
     public static final RegistryObject<Item> JUICER = ITEMS.register("juicer", () -> new ModContainerItem(new Item.Properties().group(ModItemGroups.FoodIG.instance)));
-    public static final RegistryObject<Item> RUM = ITEMS.register("rum", () -> new ModDrinkItem(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.RUM)));
-    public static final RegistryObject<Item> PINEAPPLE = ITEMS.register("pineapple", () -> new Item(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.PINEAPPLE)));
-    public static final RegistryObject<Item> PINEAPPLE_JUICE = ITEMS.register("pineapple_juice", () -> new ModDrinkItem(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.PINEAPPLE_JUICE)));
-    public static final RegistryObject<Item> PINEAPPLE_SEEDS = ITEMS.register("pineapple_seeds", () -> new BlockNamedItem(BlockInit.PINEAPPLE_CROP.get(), new Item.Properties().group(ModItemGroups.FoodIG.instance)));
-    public static final RegistryObject<Item> COCONUT = ITEMS.register("coconut", () -> new Item(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.COCONUT)));
-    public static final RegistryObject<Item> COCONUT_MILK = ITEMS.register("coconut_milk", () -> new ModDrinkItem(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.COCONUT_MILK)));
-    public static final RegistryObject<Item> PINA_COLADA = ITEMS.register("pina_colada", () -> new ModDrinkItem(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.PINA_COLADA).rarity(Rarity.RARE)));
     
+    public static final RegistryObject<Item> RUM = ITEMS.register("rum", () -> new ModDrinkItem(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.RUM)));
+    public static final RegistryObject<Item> PINEAPPLE = ITEMS.register("pineapple", () -> new Item(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.BASIC_FOOD)));
+    public static final RegistryObject<Item> PINEAPPLE_JUICE = ITEMS.register("pineapple_juice", () -> new ModDrinkItem(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.BASIC_DRINKS)));
+    public static final RegistryObject<Item> PINEAPPLE_SEEDS = ITEMS.register("pineapple_seeds", () -> new BlockNamedItem(BlockInit.PINEAPPLE_CROP.get(), new Item.Properties().group(ModItemGroups.FoodIG.instance)));
+    public static final RegistryObject<Item> COCONUT = ITEMS.register("coconut", () -> new Item(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.BASIC_FOOD)));
+    public static final RegistryObject<Item> COCONUT_MILK = ITEMS.register("coconut_milk", () -> new ModDrinkItem(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.BASIC_DRINKS)));
+    public static final RegistryObject<Item> CANDLENUT = ITEMS.register("candlenut", () -> new Item(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.BASIC_FOOD)));
+    public static final RegistryObject<Item> COOKED_CANDLENUT = ITEMS.register("cooked_candlenut", () -> new Item(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.COOKED_BASIC_FOOD)));
+    public static final RegistryObject<Item> INAMONA = ITEMS.register("inamona", () -> new Item(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.INAMONA)));
+    public static final RegistryObject<Item> PINA_COLADA = ITEMS.register("pina_colada", () -> new ModDrinkItem(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.PINA_COLADA).rarity(Rarity.RARE)));
+
     public static final RegistryObject<BlockItem> COCONUT_LEAVES = ITEMS.register("coconut_leaves", () -> new BlockItem(BlockInit.COCONUT_LEAVES.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     public static final RegistryObject<BlockItem> COCONUT_SAPLING = ITEMS.register("coconut_sapling", () -> new BlockItem(BlockInit.COCONUT_SAPLING.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    public static final RegistryObject<BlockItem> CANDLENUT_LEAVES = ITEMS.register("candlenut_leaves", () -> new BlockItem(BlockInit.CANDLENUT_LEAVES.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
+    public static final RegistryObject<BlockItem> CANDLENUT_SAPLING = ITEMS.register("candlenut_sapling", () -> new BlockItem(BlockInit.CANDLENUT_SAPLING.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     
+    //Misc
     public static final RegistryObject<CustomSpawnEgg> WANDERING_FLORIST_SPAWN_EGG = ITEMS.register("wandering_florist_spawn_egg", () -> 
     new CustomSpawnEgg(EntityInit.WANDERING_FLORIST, 0x2FFF00, 15377456, new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     
@@ -649,5 +657,5 @@ public class ItemInit
     new CustomMusicDisc(12, SoundInit.PINA_COLADA_SONG_LAZY.get(), new Item.Properties().group(ModItemGroups.ItemsIG.instance).maxStackSize(1)));
     
     public static final RegistryObject<EmeraldHornItem> EMERALD_HORN = ITEMS.register("emerald_horn", () ->
-    new EmeraldHornItem(new Item.Properties().group(ModItemGroups.ItemsIG.instance).maxStackSize(1).defaultMaxDamage(1)));
+    new EmeraldHornItem(new Item.Properties().group(ModItemGroups.ItemsIG.instance).maxStackSize(1).defaultMaxDamage(5000).rarity(Rarity.EPIC)));
 }

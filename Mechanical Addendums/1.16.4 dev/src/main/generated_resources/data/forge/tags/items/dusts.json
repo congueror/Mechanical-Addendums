@@ -38,6 +38,7 @@
     "#forge:dusts/titanium",
     "#forge:dusts/tungsten",
     "#forge:dusts/uranium",
-    "#forge:dusts/zinc"
+    "#forge:dusts/zinc",
+    "#forge:dusts/salt"
   ]
 }

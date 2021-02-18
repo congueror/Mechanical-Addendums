@@ -1,4 +1,4 @@
-package com.congueror.mechaddendums.util.eventbus;
+package com.congueror.mechaddendums.util.events;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;

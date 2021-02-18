@@ -20,6 +20,7 @@ import net.minecraft.world.gen.feature.Features;
 import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.feature.TwoLayerFeature;
 import net.minecraft.world.gen.foliageplacer.AcaciaFoliagePlacer;
+import net.minecraft.world.gen.foliageplacer.BlobFoliagePlacer;
 import net.minecraft.world.gen.foliageplacer.FancyFoliagePlacer;
 import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
 import net.minecraft.world.gen.placement.Placement;
@@ -30,8 +31,12 @@ import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class TreeGenFeatures {
-	public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> RUBBER_TREE = Feature.TREE.withConfiguration(configs.RUBBER_TREE_CONFIG);
-	public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> COCONUT_TREE = Feature.TREE.withConfiguration(configs.COCONUT_TREE_CONFIG);
+	public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> RUBBER_TREE = Feature.TREE
+			.withConfiguration(configs.RUBBER_TREE_CONFIG);
+	public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> COCONUT_TREE = Feature.TREE
+			.withConfiguration(configs.COCONUT_TREE_CONFIG);
+	public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> CANDLENUT_TREE = Feature.TREE
+			.withConfiguration(configs.CANDLENUT_TREE_CONFIG);
 
 	public static final ConfiguredFeature<?, ?> PLACABLE_RUBBER_TREE = createConfiguredFeature("rubber_tree",
 			TreeGenFeatures.RUBBER_TREE.withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT)
@@ -39,31 +44,36 @@ public class TreeGenFeatures {
 	public static final ConfiguredFeature<?, ?> PLACABLE_COCONUT_TREE = createConfiguredFeature("coconut_tree",
 			TreeGenFeatures.COCONUT_TREE.withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT)
 					.withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(0, 1.0F, 1))));
-	
+//	public static final ConfiguredFeature<?, ?> PLACABLE_CANDLENUT_TREE = createConfiguredFeature("candlenut_tree",
+//			TreeGenFeatures.CANDLENUT_TREE.withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT)
+//					.withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(0, 0.1F, 1))));
+
+	public static final ConfiguredFeature<?, ?> CANDLENUT_TREE_FEATURE = createConfiguredFeature("candlenut_tree",
+			Feature.TREE.withConfiguration(configs.CANDLENUT_TREE_CONFIG)
+					.withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(0, 0.1F, 1))));
+
 	@SubscribeEvent
-	public static void addTrees(BiomeLoadingEvent event)
-	{
+	public static void addTrees(BiomeLoadingEvent event) {
 		BiomeGenerationSettingsBuilder builder = event.getGeneration();
 
-		if (event.getName().toString().startsWith("minecraft:"))
-		{
+		if (event.getName().toString().startsWith("minecraft:")) {
 			if (doesBiomeMatch(event.getName(), Biomes.FOREST)) {
 				builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PLACABLE_RUBBER_TREE);
+				builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, CANDLENUT_TREE_FEATURE);
 			}
-			
+
 			if (doesBiomeMatch(event.getName(), Biomes.JUNGLE)) {
 				builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PLACABLE_COCONUT_TREE);
 			}
 		}
 	}
-	
-	private static <FC extends IFeatureConfig> ConfiguredFeature<FC, ?> createConfiguredFeature(String nameIn, ConfiguredFeature<FC, ?> featureIn)
-	{
+
+	private static <FC extends IFeatureConfig> ConfiguredFeature<FC, ?> createConfiguredFeature(String nameIn,
+			ConfiguredFeature<FC, ?> featureIn) {
 		return Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, MechAddendums.find(nameIn), featureIn);
 	}
-	
-	public static boolean doesBiomeMatch(ResourceLocation biomeNameIn, RegistryKey<Biome> biomeIn)
-	{
+
+	public static boolean doesBiomeMatch(ResourceLocation biomeNameIn, RegistryKey<Biome> biomeIn) {
 		return biomeNameIn.getPath().matches(biomeIn.getLocation().getPath());
 	}
 
@@ -72,13 +82,16 @@ public class TreeGenFeatures {
 				new SimpleBlockStateProvider(BlockInit.RUBBER_LOG.get().getDefaultState()),
 				new SimpleBlockStateProvider(BlockInit.RUBBER_LEAVES.get().getDefaultState()),
 				new FancyFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0), 3),
-				new StraightTrunkPlacer(4, 2, 0), 
-				new TwoLayerFeature(1, 0, 1))).setIgnoreVines().build();
+				new StraightTrunkPlacer(4, 2, 0), new TwoLayerFeature(1, 0, 1))).setIgnoreVines().build();
 		public static final BaseTreeFeatureConfig COCONUT_TREE_CONFIG = (new BaseTreeFeatureConfig.Builder(
 				new SimpleBlockStateProvider(Blocks.JUNGLE_LOG.getDefaultState()),
 				new SimpleBlockStateProvider(BlockInit.COCONUT_LEAVES.get().getDefaultState()),
 				new AcaciaFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0)),
-				new ForkyTrunkPlacer(5, 2, 2),
-				new TwoLayerFeature(1, 0, 1))).setIgnoreVines().build();
+				new ForkyTrunkPlacer(5, 2, 2), new TwoLayerFeature(1, 0, 1))).setIgnoreVines().build();
+		public static final BaseTreeFeatureConfig CANDLENUT_TREE_CONFIG = (new BaseTreeFeatureConfig.Builder(
+				new SimpleBlockStateProvider(Blocks.OAK_LOG.getDefaultState()),
+				new SimpleBlockStateProvider(BlockInit.CANDLENUT_LEAVES.get().getDefaultState()),
+				new BlobFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0), 3),
+				new StraightTrunkPlacer(4, 2, 0), new TwoLayerFeature(1, 0, 1))).setIgnoreVines().build();
 	}
 }

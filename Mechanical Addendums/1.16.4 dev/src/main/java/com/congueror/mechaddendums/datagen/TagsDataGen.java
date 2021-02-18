@@ -130,6 +130,7 @@ public class TagsDataGen {
 			getOrCreateBuilder(ModTags.Items.DUSTS).addTag(ModTags.Items.DUSTS_TUNGSTEN);
 			getOrCreateBuilder(ModTags.Items.DUSTS).addTag(ModTags.Items.DUSTS_URANIUM);
 			getOrCreateBuilder(ModTags.Items.DUSTS).addTag(ModTags.Items.DUSTS_ZINC);
+			getOrCreateBuilder(ModTags.Items.DUSTS).addTag(ModTags.Items.DUSTS_SALT);
 			
 			getOrCreateBuilder(ModTags.Items.DUSTS_PYROTHEUM).add(ItemInit.PYROTHEUM_DUST.get());
 			getOrCreateBuilder(ModTags.Items.DUSTS_SULFUR).add(ItemInit.SULFUR_DUST.get());
@@ -169,6 +170,7 @@ public class TagsDataGen {
 			getOrCreateBuilder(ModTags.Items.DUSTS_TUNGSTEN).add(ItemInit.TUNGSTEN_DUST.get());
 			getOrCreateBuilder(ModTags.Items.DUSTS_URANIUM).add(ItemInit.URANIUM_DUST.get());
 			getOrCreateBuilder(ModTags.Items.DUSTS_ZINC).add(ItemInit.ZINC_DUST.get());
+			getOrCreateBuilder(ModTags.Items.DUSTS_SALT).add(ItemInit.SALT.get());
 			
 			getOrCreateBuilder(ModTags.Items.GEMS).addTag(ModTags.Items.GEMS_AMETHYST);
 			getOrCreateBuilder(ModTags.Items.GEMS).addTag(ModTags.Items.GEMS_OPAL);
@@ -377,8 +379,12 @@ public class TagsDataGen {
 			
 			getOrCreateBuilder(ModTags.Items.RUBBER).add(ItemInit.RUBBER.get());
 			
+			getOrCreateBuilder(ModTags.Items.FRUITS).addTag(ModTags.Items.FRUITS_PINEAPPLE);
+			getOrCreateBuilder(ModTags.Items.FRUITS).addTag(ModTags.Items.FRUITS_CANDLENUT);
+			getOrCreateBuilder(ModTags.Items.FRUITS_PINEAPPLE).add(ItemInit.PINEAPPLE.get());
+			getOrCreateBuilder(ModTags.Items.FRUITS_CANDLENUT).add(ItemInit.CANDLENUT.get());
+			
 			getOrCreateBuilder(ModTags.Items.RUM).add(ItemInit.RUM.get());
-			getOrCreateBuilder(ModTags.Items.PINEAPPLE).add(ItemInit.PINEAPPLE.get());
 			getOrCreateBuilder(ModTags.Items.COCONUT).add(ItemInit.COCONUT.get());
 			getOrCreateBuilder(ModTags.Items.JUICER).add(ItemInit.JUICER.get());
 			getOrCreateBuilder(ModTags.Items.COCONUT_MILK).add(ItemInit.COCONUT_MILK.get());
@@ -389,6 +395,8 @@ public class TagsDataGen {
 			
 			getOrCreateBuilder(ModTags.Items.SEEDS).addTag(ModTags.Items.SEEDS_PINEAPPLE);
 			getOrCreateBuilder(ModTags.Items.SEEDS_PINEAPPLE).add(ItemInit.PINEAPPLE_SEEDS.get());
+			
+			getOrCreateBuilder(ModTags.Items.SALT).add(ItemInit.SALT.get());
 		}
 	}
 

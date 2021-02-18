@@ -371,14 +371,6 @@
 	"item.mechaddendums.thorium_dust": "Thorium Dust",
 	"block.mechaddendums.thorium_ore": "Thorium Ore",
 	
-	"item.mechaddendums.coal_nugget": "Coal Nugget",
-	"item.mechaddendums.pyrotheum_dust": "Pyrotheum Dust",
-	"block.mechaddendums.sulfur_ore": "Sulfur Ore",
-	"item.mechaddendums.sulfur_dust": "Sulfur Dust",
-	"block.mechaddendums.saltpetre_ore": "Niter Ore",
-	"item.mechaddendums.saltpetre_dust": "Saltpetre Dust",
-	"item.mechaddendums.wandering_florist_spawn_egg": "Wandering Florist Spawn Egg",
-	
 	"item.mechaddendums.rubber": "Rubber",
 	"block.mechaddendums.rubber_log": "Rubber Log",
 	"block.mechaddendums.rubber_wood": "Rubber Wood",
@@ -421,6 +413,17 @@
 	"item.mechaddendums.emerald_dust": "Emerald Dust",
 	"item.mechaddendums.netherite_dust": "Netherite Dust",
 	
+	"item.mechaddendums.coal_nugget": "Coal Nugget",
+	"item.mechaddendums.pyrotheum_dust": "Pyrotheum Dust",
+	"block.mechaddendums.sulfur_ore": "Sulfur Ore",
+	"item.mechaddendums.sulfur_dust": "Sulfur Dust",
+	"block.mechaddendums.saltpetre_ore": "Niter Ore",
+	"item.mechaddendums.saltpetre_dust": "Saltpetre Dust",
+	"item.mechaddendums.salt": "Salt",
+	"block.mechaddendums.salt_block": "Salt Block",
+	"item.mechaddendums.wandering_florist_spawn_egg": "Wandering Florist Spawn Egg",
+	"item.mechaddendums.emerald_horn": "Emerald Horn of Greediness",
+	
 	"item.mechaddendums.photovoltaic_cell_basic": "Basic Photovoltaic Cell",
 	"item.mechaddendums.photovoltaic_cell_advanced": "Advanced Photovoltaic Cell",
 	"item.mechaddendums.photovoltaic_cell_industrial": "Industrial Photovoltaic Cell",
@@ -450,7 +453,13 @@
 	"block.mechaddendums.coconut_sapling": "Coconut Sapling",
 	"block.mechaddendums.coconut_leaves": "Coconut Leaves",
 	
+	"item.mechaddendums.candlenut": "Candlenut",
+	"item.mechaddendums.cooked_candlenut": "Roasted Candlenut",
+	"block.mechaddendums.candlenut_sapling": "Candlenut Sapling",
+	"block.mechaddendums.candlenut_leaves": "Candlenut Leaves",
+	
 	"item.mechaddendums.pina_colada": "Piña Colada",
+	"item.mechaddendums.inamona": "Inamona",
 	
 	"item.mechaddendums.pina_colada_song_music_disc": "Music Disc",
 	"item.mechaddendums.pina_colada_song_music_disc.desc": "Rupert Holmes - Escape (The Piña Colada Song)",
@@ -479,6 +488,7 @@
 	"tooltip.mechaddendums.fermenting_barrel": "Used to ferment certain natural resources",
 	"tooltip.mechaddendums.juicer": "Used to extract the juice of fruits and vegetables",
 	"tooltip.mechaddendums.pinacolada": "Do you like Piña Coladas?",
+	"tooltip.mechaddendums.inamona": "Hawaiian cuisine",
 	
 	"tooltip.mechaddendums.block_tags": "Block Tags",
 	"tooltip.mechaddendums.item_tags": "Item Tags",

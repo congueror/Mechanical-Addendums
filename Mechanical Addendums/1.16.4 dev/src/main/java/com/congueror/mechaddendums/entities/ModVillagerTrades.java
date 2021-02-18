@@ -44,12 +44,12 @@ public class ModVillagerTrades {
       private final int field_221212_e;
       private final float field_221213_f;
 
-      public ItemsForEmeraldsTrade(Item itemIn, int price, int countIn, int p_i50530_4_, int p_i50530_5_) {
-         this(new ItemStack(itemIn), price, countIn, p_i50530_4_, p_i50530_5_);
+      public ItemsForEmeraldsTrade(Item itemIn, int price, int countIn, int uses, int exp) {
+         this(new ItemStack(itemIn), price, countIn, uses, exp);
       }
 
-      public ItemsForEmeraldsTrade(ItemStack itemIn, int price, int countIn, int p_i50531_4_, int p_i50531_5_) {
-         this(itemIn, price, countIn, p_i50531_4_, p_i50531_5_, 0.05F);
+      public ItemsForEmeraldsTrade(ItemStack itemIn, int price, int countIn, int uses, int exp) {
+         this(itemIn, price, countIn, uses, exp, 0.05F);
       }
 
       public ItemsForEmeraldsTrade(ItemStack itemIn, int price, int countIn, int p_i50532_4_, int p_i50532_5_, float p_i50532_6_) {

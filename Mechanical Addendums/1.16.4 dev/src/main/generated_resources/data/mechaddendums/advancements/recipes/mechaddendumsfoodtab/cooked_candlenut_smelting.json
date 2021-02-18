@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "mechaddendums:cooked_candlenut_smelting"
+    ]
+  },
+  "criteria": {
+    "candlenut": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mechaddendums:cooked_candlenut"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "mechaddendums:cooked_candlenut_smelting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "candlenut",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -10,6 +10,7 @@ import com.congueror.mechaddendums.blocks.ModOreBlock;
 import com.congueror.mechaddendums.blocks.PineappleCropBlock;
 import com.congueror.mechaddendums.blocks.RubberLeavesBlock;
 import com.congueror.mechaddendums.blocks.solargen.SolarGeneratorBlock;
+import com.congueror.mechaddendums.blocks.trees.CandlenutTree;
 import com.congueror.mechaddendums.blocks.trees.CoconutTree;
 import com.congueror.mechaddendums.blocks.trees.RubberTree;
 import com.congueror.mechaddendums.util.enums.MachineFrameTier;
@@ -155,6 +156,8 @@ public class BlockInit
     public static final RegistryObject<Block> THORIUM_ORE = BLOCKS.register("thorium_ore", () -> new ModOreBlock
     		(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.0f, 3.0f).sound(SoundType.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(3).setRequiresTool()));
     
+    public static final RegistryObject<Block> SALT_BLOCK = BLOCKS.register("salt_block", () -> new Block
+			(Block.Properties.create(Material.CLAY).hardnessAndResistance(0.9f).sound(SoundType.GROUND).harvestTool(ToolType.SHOVEL)));
     //Rubber
     public static final RegistryObject<Block> RUBBER_LOG = BLOCKS.register("rubber_log", () -> new RotatedPillarBlock
     		(Block.Properties.from(Blocks.OAK_LOG)));
@@ -207,6 +210,10 @@ public class BlockInit
     		(Block.Properties.from(Blocks.OAK_LEAVES)));
 	public static final RegistryObject<Block> COCONUT_SAPLING = BLOCKS.register("coconut_sapling", () -> new SaplingBlock
     		(new CoconutTree(), Block.Properties.from(Blocks.OAK_SAPLING)));
+	public static final RegistryObject<Block> CANDLENUT_LEAVES = BLOCKS.register("candlenut_leaves", () -> new LeavesBlock
+    		(Block.Properties.from(Blocks.OAK_LEAVES)));
+	public static final RegistryObject<Block> CANDLENUT_SAPLING = BLOCKS.register("candlenut_sapling", () -> new SaplingBlock
+    		(new CandlenutTree(), Block.Properties.from(Blocks.OAK_SAPLING)));
 	
     
     //public static final RegistryObject<Block> ALLOY_SMELTER = BLOCKS.register("alloy_smelter", () -> new AlloySmelterBlock(Block.Properties.create(Material.IRON).hardnessAndResistance(5.5f, 6.5f).sound(SoundType.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(1).setRequiresTool()));

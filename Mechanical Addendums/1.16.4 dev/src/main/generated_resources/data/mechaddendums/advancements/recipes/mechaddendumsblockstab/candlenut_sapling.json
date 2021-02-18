@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "mechaddendums:candlenut_sapling"
+    ]
+  },
+  "criteria": {
+    "candlenut": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:fruits/candlenut"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "mechaddendums:candlenut_sapling"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "candlenut",
+      "has_the_recipe"
+    ]
+  ]
+}

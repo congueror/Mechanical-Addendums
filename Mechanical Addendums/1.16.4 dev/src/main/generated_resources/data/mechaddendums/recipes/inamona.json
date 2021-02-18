@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "bp ",
+    "ps ",
+    "   "
+  ],
+  "key": {
+    "s": {
+      "tag": "forge:dusts/salt"
+    },
+    "b": {
+      "item": "minecraft:bowl"
+    },
+    "p": {
+      "item": "mechaddendums:cooked_candlenut"
+    }
+  },
+  "result": {
+    "item": "mechaddendums:inamona"
+  }
+}

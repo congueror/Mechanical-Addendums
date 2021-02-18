@@ -197,5 +197,9 @@ public class BlockModelDataGen extends BlockStateProvider
 		}
 		
 		basicBlockItem(BlockInit.COCONUT_LEAVES.get());
+		basicBlockItem(BlockInit.CANDLENUT_LEAVES.get());
+		
+		simpleBlock(BlockInit.SALT_BLOCK.get());
+		basicBlockItem(BlockInit.SALT_BLOCK.get());
 	}
 }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "mechaddendums:block/coconut_sapling"
+    "layer0": "mechaddendums:item/rubber_sapling"
   }
 }

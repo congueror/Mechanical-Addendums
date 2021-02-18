@@ -22,20 +22,21 @@ public class WanderingFloristEntity extends AbstractWanderer {
 
         this.buys = new VillagerTrades.ITrade[]{
                 // item, num items to input, num emeralds to output, max uses, ex given
-                new ModVillagerTrades.ItemsForEmeraldsTrade(Items.WHEAT_SEEDS, 3, 1, 5, 5),
-                new ModVillagerTrades.ItemsForEmeraldsTrade(Items.BEETROOT_SEEDS, 3, 1, 5, 5),
-                new ModVillagerTrades.ItemsForEmeraldsTrade(Items.MELON_SEEDS, 3, 1, 5, 5),
-                new ModVillagerTrades.ItemsForEmeraldsTrade(Items.PUMPKIN_SEEDS, 3, 1, 5, 5),
-                new ModVillagerTrades.ItemsForEmeraldsTrade(Items.OAK_SAPLING, 6, 1, 5, 5),
-                new ModVillagerTrades.ItemsForEmeraldsTrade(Items.BIRCH_SAPLING, 6, 1, 5, 5),
-                new ModVillagerTrades.ItemsForEmeraldsTrade(Items.ACACIA_SAPLING, 6, 1, 5, 5),
-                new ModVillagerTrades.ItemsForEmeraldsTrade(Items.JUNGLE_SAPLING, 6, 1, 5, 5),
-                new ModVillagerTrades.ItemsForEmeraldsTrade(Items.SPRUCE_SAPLING, 6, 1, 5, 5),
-                new ModVillagerTrades.ItemsForEmeraldsTrade(Items.DARK_OAK_SAPLING, 6, 1, 5, 5),
+                new ModVillagerTrades.ItemsForEmeraldsTrade(Items.WHEAT_SEEDS, 4, 1, 5, 5),
+                new ModVillagerTrades.ItemsForEmeraldsTrade(Items.BEETROOT_SEEDS, 4, 1, 5, 5),
+                new ModVillagerTrades.ItemsForEmeraldsTrade(Items.MELON_SEEDS, 4, 1, 5, 5),
+                new ModVillagerTrades.ItemsForEmeraldsTrade(Items.PUMPKIN_SEEDS, 4, 1, 5, 5),
+                new ModVillagerTrades.ItemsForEmeraldsTrade(Items.OAK_SAPLING, 10, 1, 5, 5),
+                new ModVillagerTrades.ItemsForEmeraldsTrade(Items.BIRCH_SAPLING, 10, 1, 5, 5),
+                new ModVillagerTrades.ItemsForEmeraldsTrade(Items.ACACIA_SAPLING, 10, 1, 5, 5),
+                new ModVillagerTrades.ItemsForEmeraldsTrade(Items.JUNGLE_SAPLING, 10, 1, 5, 5),
+                new ModVillagerTrades.ItemsForEmeraldsTrade(Items.SPRUCE_SAPLING, 10, 1, 5, 5),
+                new ModVillagerTrades.ItemsForEmeraldsTrade(Items.DARK_OAK_SAPLING, 10, 1, 5, 5),
                 
-                new ModVillagerTrades.ItemsForEmeraldsTrade(ItemInit.PINEAPPLE_SEEDS.get(), 3, 1, 5, 5),
-                new ModVillagerTrades.ItemsForEmeraldsTrade(ItemInit.COCONUT_SAPLING.get(), 6, 1, 5, 5),
-                new ModVillagerTrades.ItemsForEmeraldsTrade(ItemInit.RUBBER_SAPLING.get(), 6, 1, 5, 5),
+                new ModVillagerTrades.ItemsForEmeraldsTrade(ItemInit.PINEAPPLE_SEEDS.get(), 4, 1, 5, 5),
+                new ModVillagerTrades.ItemsForEmeraldsTrade(ItemInit.COCONUT_SAPLING.get(), 10, 1, 5, 5),
+                new ModVillagerTrades.ItemsForEmeraldsTrade(ItemInit.RUBBER_SAPLING.get(), 10, 1, 5, 5),
+                new ModVillagerTrades.ItemsForEmeraldsTrade(ItemInit.CANDLENUT_SAPLING.get(), 10, 1, 5, 5),
         };
     }
     

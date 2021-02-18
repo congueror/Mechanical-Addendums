@@ -1,0 +1,9 @@
+{
+"parent": "item/handheld",
+  "textures": {
+    "layer0": "mechaddendums:item/emerald_horn"
+  },
+  "overrides": [
+          { "predicate": { "damaged": 1}, "model": "mechaddendums:item/emerald_horn_broken"}
+  ]
+}

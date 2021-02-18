@@ -17,6 +17,8 @@ import net.minecraft.data.ShapedRecipeBuilder;
 import net.minecraft.data.ShapelessRecipeBuilder;
 import net.minecraft.data.SmithingRecipeBuilder;
 import net.minecraft.item.Items;
+import net.minecraft.item.crafting.CookingRecipeSerializer;
+import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.ResourceLocation;
@@ -37,8 +39,8 @@ public class RecipeDataGen extends RecipeProvider
         .patternLine("aaa")
         .patternLine("aaa")
         .patternLine("aaa")
-        .key('a', ItemInit.ALUMINUM_INGOT.get())
-        .addCriterion("aluminum_ingot", hasItem(ItemInit.ALUMINUM_INGOT.get()))
+        .key('a', ModTags.Items.INGOTS_ALUMINUM)
+        .addCriterion("aluminum_ingot", hasItem(ModTags.Items.INGOTS_ALUMINUM))
         .build(recipe);
 	
 		//ingot_block
@@ -49,8 +51,8 @@ public class RecipeDataGen extends RecipeProvider
 		
 		//nugget
 		ShapelessRecipeBuilder.shapelessRecipe(ItemInit.ALUMINUM_NUGGET.get(), 9)
-		.addIngredient(ItemInit.ALUMINUM_INGOT.get())
-		.addCriterion("aluminum_ingot", hasItem(ItemInit.ALUMINUM_INGOT.get()))
+		.addIngredient(ModTags.Items.INGOTS_ALUMINUM)
+		.addCriterion("aluminum_ingot", hasItem(ModTags.Items.INGOTS_ALUMINUM))
 		.build(recipe);
 			
 		//ingot_nuggets
@@ -73,9 +75,9 @@ public class RecipeDataGen extends RecipeProvider
 		.build(recipe, new ResourceLocation(MechAddendums.MOD_ID, "aluminum_ingot_smelting"));
 		
 		ShapelessRecipeBuilder.shapelessRecipe(ItemInit.ALUMINUM_DUST.get(), 1)
-		.addIngredient(ItemInit.ALUMINUM_INGOT.get())
+		.addIngredient(ModTags.Items.INGOTS_ALUMINUM)
 		.addIngredient(ModTags.Items.HAMMERS)
-		.addCriterion("aluminum_ingot", hasItem(ItemInit.ALUMINUM_INGOT.get()))
+		.addCriterion("aluminum_ingot", hasItem(ModTags.Items.INGOTS_ALUMINUM))
 		.build(recipe);
 		CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(ItemInit.ALUMINUM_DUST.get()), ItemInit.ALUMINUM_INGOT.get(), 0.7f, 200)
 		.addCriterion("aluminum_dust", hasItem(ItemInit.ALUMINUM_DUST.get()))
@@ -85,8 +87,8 @@ public class RecipeDataGen extends RecipeProvider
         .patternLine(" a ")
         .patternLine("a a")
         .patternLine(" a ")
-        .key('a', ItemInit.ALUMINUM_INGOT.get())
-        .addCriterion("aluminum_ingot", hasItem(ItemInit.ALUMINUM_INGOT.get()))
+        .key('a', ModTags.Items.INGOTS_ALUMINUM)
+        .addCriterion("aluminum_ingot", hasItem(ModTags.Items.INGOTS_ALUMINUM))
         .build(recipe);
 		
 		
@@ -3699,8 +3701,8 @@ public class RecipeDataGen extends RecipeProvider
 				
 				ShapelessRecipeBuilder.shapelessRecipe(ItemInit.PINEAPPLE_JUICE.get(), 1)
 				.addIngredient(ItemInit.JUICER.get())
-				.addIngredient(ModTags.Items.PINEAPPLE)
-				.addCriterion("pineapple", hasItem(ModTags.Items.PINEAPPLE))
+				.addIngredient(ModTags.Items.FRUITS_PINEAPPLE)
+				.addCriterion("pineapple", hasItem(ModTags.Items.FRUITS_PINEAPPLE))
 				.build(recipe);
 				
 				ShapelessRecipeBuilder.shapelessRecipe(ItemInit.COCONUT_MILK.get(), 1)
@@ -3719,8 +3721,8 @@ public class RecipeDataGen extends RecipeProvider
 				.build(recipe);
 				
 				ShapelessRecipeBuilder.shapelessRecipe(ItemInit.PINEAPPLE_SEEDS.get(), 3)
-				.addIngredient(ModTags.Items.PINEAPPLE)
-				.addCriterion("pineapple", hasItem(ModTags.Items.PINEAPPLE))
+				.addIngredient(ModTags.Items.FRUITS_PINEAPPLE)
+				.addCriterion("pineapple", hasItem(ModTags.Items.FRUITS_PINEAPPLE))
 				.build(recipe);
 				
 				ShapelessRecipeBuilder.shapelessRecipe(BlockInit.COCONUT_SAPLING.get(), 1)
@@ -3744,5 +3746,49 @@ public class RecipeDataGen extends RecipeProvider
 		        .key('m', Items.MUSIC_DISC_PIGSTEP)
 		        .addCriterion("music_disc_pigstep", hasItem(Items.MUSIC_DISC_PIGSTEP))
 		        .build(recipe);
+				
+				ShapedRecipeBuilder.shapedRecipe(BlockInit.SALT_BLOCK.get(), 1)
+		        .patternLine("pp ")
+		        .patternLine("pp ")
+		        .patternLine("   ")
+		        .key('p', ModTags.Items.DUSTS_SALT)
+		        .addCriterion("salt", hasItem(ModTags.Items.DUSTS_SALT))
+		        .build(recipe);
+				
+				ShapelessRecipeBuilder.shapelessRecipe(BlockInit.CANDLENUT_SAPLING.get(), 1)
+				.addIngredient(ItemTags.SAPLINGS)
+				.addIngredient(ModTags.Items.FRUITS_CANDLENUT)
+				.addIngredient(ModTags.Items.FRUITS_CANDLENUT)
+				.addIngredient(ModTags.Items.FRUITS_CANDLENUT)
+				.addIngredient(ModTags.Items.FRUITS_CANDLENUT)
+				.addIngredient(ModTags.Items.FRUITS_CANDLENUT)
+				.addIngredient(ModTags.Items.FRUITS_CANDLENUT)
+				.addIngredient(ModTags.Items.FRUITS_CANDLENUT)
+				.addIngredient(ModTags.Items.FRUITS_CANDLENUT)
+				.addCriterion("candlenut", hasItem(ModTags.Items.FRUITS_CANDLENUT))
+				.build(recipe);
+				
+				CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(ItemInit.CANDLENUT.get()), ItemInit.COOKED_CANDLENUT.get(), 0.7f, 200)
+				.addCriterion("candlenut", hasItem(ItemInit.COOKED_CANDLENUT.get()))
+				.build(recipe, new ResourceLocation(MechAddendums.MOD_ID, "cooked_candlenut_smelting"));
+				
+				ShapedRecipeBuilder.shapedRecipe(ItemInit.INAMONA.get(), 1)
+		        .patternLine("bp ")
+		        .patternLine("ps ")
+		        .patternLine("   ")
+		        .key('s', ModTags.Items.DUSTS_SALT)
+		        .key('b',Items.BOWL)
+		        .key('p', ItemInit.COOKED_CANDLENUT.get())
+		        .addCriterion("cooked_candlenut", hasItem(ItemInit.COOKED_CANDLENUT.get()))
+		        .build(recipe);
+				
+				cookingRecipesForMethod(recipe, "smoking", IRecipeSerializer.SMOKING, 100);
+				cookingRecipesForMethod(recipe, "campfire_cooking", IRecipeSerializer.CAMPFIRE_COOKING, 600);
 	}
+	
+	private static void cookingRecipesForMethod(Consumer<IFinishedRecipe> recipeConsumer, String recipeConsumerIn, CookingRecipeSerializer<?> cookingMethod, int serializerIn) {
+			CookingRecipeBuilder.cookingRecipe(Ingredient.fromItems(ItemInit.CANDLENUT.get()), ItemInit.COOKED_CANDLENUT.get(), 0.7f, serializerIn, cookingMethod)
+			.addCriterion("candlenut", hasItem(ItemInit.COOKED_CANDLENUT.get()))
+			.build(recipeConsumer, "cooked_candlenut_" + recipeConsumerIn);
+	   }
 }

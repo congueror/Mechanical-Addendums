@@ -126,6 +126,7 @@ public class LootTableDataGen extends LootTableProvider
          for(MachineFrameTier tier : MachineFrameTier.values())
          standardDropTable(BlockInit.MACHINE_FRAME_TIERED.get(tier).get());
          standardDropTable(BlockInit.COCONUT_SAPLING.get());
+         standardDropTable(BlockInit.CANDLENUT_SAPLING.get());
         return tables;
 	}
 	

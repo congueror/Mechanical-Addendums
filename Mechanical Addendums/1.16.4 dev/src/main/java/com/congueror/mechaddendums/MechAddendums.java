@@ -3,6 +3,7 @@ package com.congueror.mechaddendums;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.congueror.mechaddendums.config.Config;
 import com.congueror.mechaddendums.entities.wandering_florist.WanderingFloristEntity;
 import com.congueror.mechaddendums.init.BlockInit;
 import com.congueror.mechaddendums.init.ContainerInit;
@@ -13,10 +14,10 @@ import com.congueror.mechaddendums.init.SoundInit;
 import com.congueror.mechaddendums.init.TileEntityInit;
 import com.congueror.mechaddendums.network.PacketHandler;
 import com.congueror.mechaddendums.util.Strippables;
-import com.congueror.mechaddendums.util.eventbus.ClientEventBusSub;
-import com.congueror.mechaddendums.util.eventbus.EventBusSub;
-import com.congueror.mechaddendums.util.eventbus.IEventBusSub;
-import com.congueror.mechaddendums.world.gen.OreGen;
+import com.congueror.mechaddendums.util.events.ClientEvents;
+import com.congueror.mechaddendums.util.events.CommonEvents;
+import com.congueror.mechaddendums.util.events.IEventBusSub;
+import com.congueror.mechaddendums.world.gen.OreGenFeatures;
 import com.congueror.mechaddendums.world.gen.TreeGenFeatures;
 
 import net.minecraft.entity.EntityType;
@@ -29,9 +30,11 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -44,10 +47,11 @@ public class MechAddendums
     public static final String MOD_ID = "mechaddendums";
     public static MechAddendums instance;
         
-    public static IEventBusSub eventbussub = DistExecutor.safeRunForDist(() -> ClientEventBusSub::new, () -> EventBusSub::new);
+    public static IEventBusSub eventbussub = DistExecutor.safeRunForDist(() -> ClientEvents.ForgeClientEvents::new, () -> CommonEvents.ForgeCommonEvents::new);
     
     public MechAddendums() {
-        //ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ClibConfig.spec);
+    	ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, Config.CLIENT_CONFIG);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.SERVER_CONFIG);
         
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         
@@ -68,12 +72,11 @@ public class MechAddendums
         ContainerInit.init();
         TileEntityInit.init();
         
-        MinecraftForge.EVENT_BUS.register(new OreGen());
         
         PacketHandler.init();
         
         MinecraftForge.EVENT_BUS.register(this);
-        
+        MinecraftForge.EVENT_BUS.register(new OreGenFeatures());
         MinecraftForge.EVENT_BUS.register(TreeGenFeatures.class);
     }
     
@@ -81,8 +84,9 @@ public class MechAddendums
     public void commonSetup(final FMLCommonSetupEvent event) {    	
     	TreeGenFeatures.configs.RUBBER_TREE_CONFIG.forcePlacement = false;
     	TreeGenFeatures.configs.COCONUT_TREE_CONFIG.forcePlacement = true;
+    	TreeGenFeatures.configs.CANDLENUT_TREE_CONFIG.forcePlacement = false;
     	
-        OreGen.initModFeatures();
+        OreGenFeatures.initModFeatures();
     }
     
     @SubscribeEvent

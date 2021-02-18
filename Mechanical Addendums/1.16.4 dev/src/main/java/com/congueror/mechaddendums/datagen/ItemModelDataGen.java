@@ -978,9 +978,28 @@ public class ItemModelDataGen extends ItemModelProvider{
 		singleTexture(ItemInit.PINA_COLADA_SONG_MUSIC_DISC.get().getRegistryName().getPath(), new ResourceLocation("item/generated"),
                 "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/pina_colada_song_music_disc"));
 		
+		singleTexture(ItemInit.SALT.get().getRegistryName().getPath(), new ResourceLocation("item/generated"),
+                "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/salt"));
+		
+		singleTexture(ItemInit.RUBBER_SAPLING.get().getRegistryName().getPath(), new ResourceLocation("item/generated"),
+                "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/rubber_sapling"));
+		singleTexture(ItemInit.COCONUT_SAPLING.get().getRegistryName().getPath(), new ResourceLocation("item/generated"),
+                "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/coconut_sapling"));
+		singleTexture(ItemInit.CANDLENUT_SAPLING.get().getRegistryName().getPath(), new ResourceLocation("item/generated"),
+                "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/candlenut_sapling"));
+		
+		singleTexture(ItemInit.CANDLENUT.get().getRegistryName().getPath(), new ResourceLocation("item/generated"),
+                "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/candlenut"));
+		singleTexture(ItemInit.COOKED_CANDLENUT.get().getRegistryName().getPath(), new ResourceLocation("item/generated"),
+                "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/cooked_candlenut"));
+		singleTexture(ItemInit.INAMONA.get().getRegistryName().getPath(), new ResourceLocation("item/generated"),
+                "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/inamona"));
+		
 		singleTexture(ItemInit.EMERALD_HORN.get().getRegistryName().getPath(), new ResourceLocation("item/handheld"),
                 "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/emerald_horn"));
-		
+		singleTexture(ItemInit.EMERALD_HORN.get().getRegistryName().getPath() + "_broken", new ResourceLocation("item/handheld"),
+                "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/emerald_horn_broken"));
+			
 //		singleTexture(ItemInit.RUBBER_SIGN.get().getRegistryName().getPath(), new ResourceLocation("item/generated"),
 //                "layer0", new ResourceLocation(MechAddendums.MOD_ID, "item/rubber_sign"));
 	}

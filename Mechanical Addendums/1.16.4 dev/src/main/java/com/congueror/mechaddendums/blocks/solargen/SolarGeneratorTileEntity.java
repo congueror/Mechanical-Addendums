@@ -5,6 +5,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import com.congueror.mechaddendums.config.Config;
 import com.congueror.mechaddendums.init.TileEntityInit;
 import com.congueror.mechaddendums.network.PacketHandler;
 import com.congueror.mechaddendums.network.packet.UpdateSolarGenerator;
@@ -33,16 +34,16 @@ import net.minecraftforge.fml.network.PacketDistributor;
 public class SolarGeneratorTileEntity extends TileEntity implements ITickableTileEntity, INamedContainerProvider{
 
 	private LazyOptional<IEnergyStorage> energy = LazyOptional.of(this::createEnergy);
-    private int energyGeneration, maxEnergyOutput;
-    public int maxEnergy;
     
     private SolarGenTier tier;
+    private int energyGeneration, maxEnergyOutput;
+    public int maxEnergy;
     public int energyClient, energyProductionClient;
 	
 	public SolarGeneratorTileEntity(SolarGenTier tier) {
 		super(TileEntityInit.SOLAR_GENERATOR_TILE_ENTITY.get(tier).get());
 		this.tier = tier;
-		energyGeneration = tier.getNum();
+		energyGeneration = (int) (tier.getNum() * Config.solarGenMultiplier.get());
         maxEnergyOutput = energyGeneration * 2;
         maxEnergy = energyGeneration * 1000;
         energyClient = energyProductionClient = -1;
@@ -59,7 +60,7 @@ public class SolarGeneratorTileEntity extends TileEntity implements ITickableTil
 	public void tick() {
 		if(!world.isRemote)
         {
-            energy.ifPresent(e -> ((ModEnergyStorage) e).generatePower(currentAmountEnergyProduced()));
+            energy.ifPresent(e -> ((ModEnergyStorage) e).generateEnergy(currentAmountEnergyProduced()));
             sendEnergy();
             if(energyClient != getEnergy() || energyProductionClient != currentAmountEnergyProduced())
             {
@@ -102,7 +103,7 @@ public class SolarGeneratorTileEntity extends TileEntity implements ITickableTil
                             {
                                 int received = handler.receiveEnergy(Math.min(capacity.get(), maxEnergyOutput), false);
                                 capacity.addAndGet(-received);
-                                ((ModEnergyStorage) energy).consumePower(received);
+                                ((ModEnergyStorage) energy).consumeEnergy(received);
                             }
                         });
                     }

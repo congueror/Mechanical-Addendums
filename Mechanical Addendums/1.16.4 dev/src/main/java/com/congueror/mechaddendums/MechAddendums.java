@@ -51,6 +51,7 @@ public class MechAddendums
     
     public MechAddendums() {
     	ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, Config.CLIENT_CONFIG);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.COMMON_CONFIG);
         ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.SERVER_CONFIG);
         
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();

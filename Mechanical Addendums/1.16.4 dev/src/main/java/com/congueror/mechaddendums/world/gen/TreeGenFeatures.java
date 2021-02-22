@@ -1,6 +1,7 @@
 package com.congueror.mechaddendums.world.gen;
 
 import com.congueror.mechaddendums.MechAddendums;
+import com.congueror.mechaddendums.config.WorldConfig;
 import com.congueror.mechaddendums.init.BlockInit;
 
 import net.minecraft.block.Blocks;
@@ -31,39 +32,31 @@ import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class TreeGenFeatures {
-	public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> RUBBER_TREE = Feature.TREE
-			.withConfiguration(configs.RUBBER_TREE_CONFIG);
-	public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> COCONUT_TREE = Feature.TREE
-			.withConfiguration(configs.COCONUT_TREE_CONFIG);
-	public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> CANDLENUT_TREE = Feature.TREE
-			.withConfiguration(configs.CANDLENUT_TREE_CONFIG);
+	public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> RUBBER_TREE = Feature.TREE.withConfiguration(configs.RUBBER_TREE_CONFIG);
+	public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> COCONUT_TREE = Feature.TREE.withConfiguration(configs.COCONUT_TREE_CONFIG);
+	public static final ConfiguredFeature<BaseTreeFeatureConfig, ?> CANDLENUT_TREE = Feature.TREE.withConfiguration(configs.CANDLENUT_TREE_CONFIG);
+	
+	public static final ConfiguredFeature<?, ?> RUBBER_TREE_FEATURE = configuredTreeFeature("rubber_tree", RUBBER_TREE, WorldConfig.rubberChance.get().floatValue());
+	public static final ConfiguredFeature<?, ?> COCONUT_TREE_FEATURE = configuredTreeFeature("coconut_tree", COCONUT_TREE, WorldConfig.coconutChance.get().floatValue());
+	public static final ConfiguredFeature<?, ?> CANDLENUT_TREE_FEATURE = configuredTreeFeature("canlenut_tree", CANDLENUT_TREE, WorldConfig.candlenutChance.get().floatValue());
 
-	public static final ConfiguredFeature<?, ?> PLACABLE_RUBBER_TREE = createConfiguredFeature("rubber_tree",
-			TreeGenFeatures.RUBBER_TREE.withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT)
-					.withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(0, 0.1F, 1))));
-	public static final ConfiguredFeature<?, ?> PLACABLE_COCONUT_TREE = createConfiguredFeature("coconut_tree",
-			TreeGenFeatures.COCONUT_TREE.withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT)
-					.withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(0, 1.0F, 1))));
-//	public static final ConfiguredFeature<?, ?> PLACABLE_CANDLENUT_TREE = createConfiguredFeature("candlenut_tree",
-//			TreeGenFeatures.CANDLENUT_TREE.withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT)
-//					.withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(0, 0.1F, 1))));
-
-	public static final ConfiguredFeature<?, ?> CANDLENUT_TREE_FEATURE = createConfiguredFeature("candlenut_tree",
-			Feature.TREE.withConfiguration(configs.CANDLENUT_TREE_CONFIG)
-					.withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(0, 0.1F, 1))));
-
+	public static ConfiguredFeature<?, ?> configuredTreeFeature(String nameIn, ConfiguredFeature<BaseTreeFeatureConfig, ?> feature, float extraChanceIn) {
+		return createConfiguredFeature(nameIn, feature
+				.withPlacement(Features.Placements.HEIGHTMAP_PLACEMENT).withPlacement(Placement.COUNT_EXTRA.configure(new AtSurfaceWithExtraConfig(0, extraChanceIn, 1))));
+	}
+	
 	@SubscribeEvent
 	public static void addTrees(BiomeLoadingEvent event) {
 		BiomeGenerationSettingsBuilder builder = event.getGeneration();
 
 		if (event.getName().toString().startsWith("minecraft:")) {
 			if (doesBiomeMatch(event.getName(), Biomes.FOREST)) {
-				builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PLACABLE_RUBBER_TREE);
+				builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, RUBBER_TREE_FEATURE);
 				builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, CANDLENUT_TREE_FEATURE);
 			}
 
 			if (doesBiomeMatch(event.getName(), Biomes.JUNGLE)) {
-				builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, PLACABLE_COCONUT_TREE);
+				builder.withFeature(GenerationStage.Decoration.VEGETAL_DECORATION, COCONUT_TREE_FEATURE);
 			}
 		}
 	}

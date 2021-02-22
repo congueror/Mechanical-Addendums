@@ -9,7 +9,6 @@ import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectType;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
 
 public class DamagingEffect extends Effect
 {
@@ -22,7 +21,6 @@ public class DamagingEffect extends Effect
 	public void performEffect(LivingEntity entityLivingBaseIn, int amplifier) {
 		if(this == EffectInit.RADIATION.get()) {
 			entityLivingBaseIn.attackEntityFrom(DamageSources.RADIATION, 0.8F);
-			entityLivingBaseIn.playSound(SoundEvents.ENTITY_GENERIC_BURN, 1.0f, 1.0f);
 		} else {
 			entityLivingBaseIn.attackEntityFrom(DamageSources.LEAD_POISONING, 0.2F);
 		}

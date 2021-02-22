@@ -1,6 +1,7 @@
 package com.congueror.mechaddendums.world.gen;
 
-import com.congueror.mechaddendums.config.Config;
+import com.congueror.mechaddendums.config.OreConfig;
+import com.congueror.mechaddendums.config.WorldConfig;
 import com.congueror.mechaddendums.init.BlockInit;
 import com.google.common.collect.ImmutableList;
 
@@ -25,29 +26,49 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 public class OreGenFeatures {
 	
 	public static void initModFeatures() {
-		//if statements here
-		registerOverworldConfiguredOre(Config.veinCountTin.get(), Config.veinSizeTin.get(), Config.minYTin.get(), Config.maxYTin.get(), BlockInit.TIN_ORE.get());
-		registerOverworldConfiguredOre(Config.veinCountAluminum.get(), Config.veinSizeAluminum.get(), Config.minYAluminum.get(), Config.maxYAluminum.get(), BlockInit.ALUMINUM_ORE.get());
-		registerOverworldConfiguredOre(20, 8, 0, 63, BlockInit.COPPER_ORE.get());
-		registerOverworldConfiguredOre(4, 7, 0, 31, BlockInit.LEAD_ORE.get());
-		registerOverworldConfiguredOre(3, 7, 0, 16, BlockInit.SILVER_ORE.get());
-		registerOverworldConfiguredOre(4, 7, 0, 31, BlockInit.NICKEL_ORE.get());
-		registerOverworldConfiguredOre(2, 3, 0, 100, BlockInit.SULFUR_ORE.get());
-		registerOverworldConfiguredOre(1, 6, 0, 8, BlockInit.PLATINUM_ORE.get());
-		registerOverworldConfiguredOre(2, 6, 0, 16, BlockInit.TUNGSTEN_ORE.get());
-		registerNetherConfiguredOre(1, 3, 0, 18, BlockInit.RUBY_ORE.get());
-		registerOverworldConfiguredOre(1, 6, 0, 16, BlockInit.AMETHYST_ORE.get());
-		registerOverworldConfiguredOre(2, 8, 0, 16, BlockInit.SAPPHIRE_ORE.get());
-		registerOverworldConfiguredOre(1, 6, 0, 9, BlockInit.OPAL_ORE.get());
-		registerNetherConfiguredOre(1, 7, 0, 7, BlockInit.TITANIUM_ORE.get());
-		registerOverworldConfiguredOre(1, 7, 0, 16, BlockInit.URANIUM_ORE.get());
-		registerNetherConfiguredOre(2, 7, 0, 8, BlockInit.COBALT_ORE.get());
-		registerOverworldConfiguredOre(8, 7, 0, 32, BlockInit.ZINC_ORE.get());
-		registerOverworldConfiguredOre(2, 3, 0, 100, BlockInit.SALTPETRE_ORE.get());
-		registerOverworldConfiguredOre(6, 7, 0, 22, BlockInit.CHROMIUM_ORE.get());
-		registerOverworldConfiguredOre(1, 7, 0, 8, BlockInit.THORIUM_ORE.get());
+		if(OreConfig.enableTin.get()) {
+		registerOverworldConfiguredOre(OreConfig.veinCountTin.get(), OreConfig.veinSizeTin.get(), OreConfig.minYTin.get(), OreConfig.maxYTin.get(), BlockInit.TIN_ORE.get());}
+		if(OreConfig.enableAluminum.get()) {
+		registerOverworldConfiguredOre(OreConfig.veinCountAluminum.get(), OreConfig.veinSizeAluminum.get(), OreConfig.minYAluminum.get(), OreConfig.maxYAluminum.get(), BlockInit.ALUMINUM_ORE.get());}
+		if(OreConfig.enableCopper.get()) {
+		registerOverworldConfiguredOre(OreConfig.veinCountCopper.get(), OreConfig.veinSizeCopper.get(), OreConfig.minYCopper.get(), OreConfig.maxYCopper.get(), BlockInit.COPPER_ORE.get());}
+		if(OreConfig.enableLead.get()) {
+		registerOverworldConfiguredOre(OreConfig.veinCountLead.get(), OreConfig.veinSizeLead.get(), OreConfig.minYLead.get(), OreConfig.maxYLead.get(), BlockInit.LEAD_ORE.get());}
+		if(OreConfig.enableSilver.get()) {
+		registerOverworldConfiguredOre(OreConfig.veinCountSilver.get(), OreConfig.veinSizeSilver.get(), OreConfig.minYSilver.get(), OreConfig.maxYSilver.get(), BlockInit.SILVER_ORE.get());}
+		if(OreConfig.enableNickel.get()) {
+		registerOverworldConfiguredOre(OreConfig.veinCountNickel.get(), OreConfig.veinSizeNickel.get(), OreConfig.minYNickel.get(), OreConfig.maxYNickel.get(), BlockInit.NICKEL_ORE.get());}
+		if(OreConfig.enableSulfur.get()) {
+		registerOverworldConfiguredOre(OreConfig.veinCountSulfur.get(), OreConfig.veinSizeSulfur.get(), OreConfig.minYSulfur.get(), OreConfig.maxYSulfur.get(), BlockInit.SULFUR_ORE.get());}
+		if(OreConfig.enablePlatinum.get()) {
+		registerOverworldConfiguredOre(OreConfig.veinCountPlatinum.get(), OreConfig.veinSizePlatinum.get(), OreConfig.minYPlatinum.get(), OreConfig.maxYPlatinum.get(), BlockInit.PLATINUM_ORE.get());}
+		if(OreConfig.enableTungsten.get()) {
+		registerOverworldConfiguredOre(OreConfig.veinCountTungsten.get(), OreConfig.veinSizeTungsten.get(), OreConfig.minYTungsten.get(), OreConfig.maxYTungsten.get(), BlockInit.TUNGSTEN_ORE.get());}
+		if(OreConfig.enableRuby.get()) {
+		registerNetherConfiguredOre(OreConfig.veinCountRuby.get(), OreConfig.veinSizeRuby.get(), OreConfig.minYRuby.get(), OreConfig.maxYRuby.get(), BlockInit.RUBY_ORE.get());}
+		if(OreConfig.enableAmethyst.get()) {
+		registerOverworldConfiguredOre(OreConfig.veinCountAmethyst.get(), OreConfig.veinSizeAmethyst.get(), OreConfig.minYAmethyst.get(), OreConfig.maxYAmethyst.get(), BlockInit.AMETHYST_ORE.get());}
+		if(OreConfig.enableSapphire.get()) {
+		registerOverworldConfiguredOre(OreConfig.veinCountSapphire.get(), OreConfig.veinSizeSapphire.get(), OreConfig.minYSapphire.get(), OreConfig.maxYSapphire.get(), BlockInit.SAPPHIRE_ORE.get());}
+		if(OreConfig.enableOpal.get()) {
+		registerOverworldConfiguredOre(OreConfig.veinCountOpal.get(), OreConfig.veinSizeOpal.get(), OreConfig.minYOpal.get(), OreConfig.maxYOpal.get(), BlockInit.OPAL_ORE.get());}
+		if(OreConfig.enableTitanium.get()) {
+		registerNetherConfiguredOre(OreConfig.veinCountTitanium.get(), OreConfig.veinSizeTitanium.get(), OreConfig.minYTitanium.get(), OreConfig.maxYTitanium.get(), BlockInit.TITANIUM_ORE.get());}
+		if(OreConfig.enableUranium.get()) {
+		registerOverworldConfiguredOre(OreConfig.veinCountUranium.get(), OreConfig.veinSizeUranium.get(), OreConfig.minYUranium.get(), OreConfig.maxYUranium.get(), BlockInit.URANIUM_ORE.get());}
+		if(OreConfig.enableCobalt.get()) {
+		registerNetherConfiguredOre(OreConfig.veinCountCobalt.get(), OreConfig.veinSizeCobalt.get(), OreConfig.minYCobalt.get(), OreConfig.maxYCobalt.get(), BlockInit.COBALT_ORE.get());}
+		if(OreConfig.enableZinc.get()) {
+		registerOverworldConfiguredOre(OreConfig.veinCountZinc.get(), OreConfig.veinSizeZinc.get(), OreConfig.minYZinc.get(), OreConfig.maxYZinc.get(), BlockInit.ZINC_ORE.get());}
+		if(OreConfig.enableSaltpetre.get()) {
+		registerOverworldConfiguredOre(OreConfig.veinCountSaltpetre.get(), OreConfig.veinSizeAluminum.get(), OreConfig.minYSaltpetre.get(), OreConfig.maxYSaltpetre.get(), BlockInit.SALTPETRE_ORE.get());}
+		if(OreConfig.enableChromium.get()) {
+		registerOverworldConfiguredOre(OreConfig.veinCountChromium.get(), OreConfig.veinSizeChromium.get(), OreConfig.minYChromium.get(), OreConfig.maxYSaltpetre.get(), BlockInit.CHROMIUM_ORE.get());}
+		if(OreConfig.enableThorium.get()) {
+		registerOverworldConfiguredOre(OreConfig.veinCountThorium.get(), OreConfig.veinSizeThorium.get(), OreConfig.minYThorium.get(), OreConfig.maxYThorium.get(), BlockInit.THORIUM_ORE.get());}
 		
-		registerConfiguredDisk(BlockInit.SALT_BLOCK.get());
+		if(WorldConfig.enableSalt.get()) {
+		registerConfiguredDisk(BlockInit.SALT_BLOCK.get());}
 	}
 	
 	public static void registerOverworldConfiguredOre(int veinCount, int veinSize, int minY, int maxY, Block ore){
@@ -69,7 +90,6 @@ public class OreGenFeatures {
 	@SubscribeEvent
 	public void setupOreGenerator(BiomeLoadingEvent event)
     {
-		//add if statement here as well
         BiomeGenerationSettingsBuilder generation = event.getGeneration();
         ConfiguredFeature<?, ?> salt_feature = WorldGenRegistries.CONFIGURED_FEATURE
 				.getOrDefault(BlockInit.SALT_BLOCK.get().getRegistryName());

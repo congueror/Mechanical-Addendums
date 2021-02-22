@@ -4,12 +4,15 @@ import java.util.List;
 import java.util.Set;
 
 import com.congueror.mechaddendums.MechAddendums;
+import com.congueror.mechaddendums.blocks.coalgen.CoalGeneratorScreen;
 import com.congueror.mechaddendums.blocks.solargen.SolarGeneratorScreen;
+import com.congueror.mechaddendums.config.Config;
 import com.congueror.mechaddendums.entities.wandering_florist.WanderingFloristRenderer;
 import com.congueror.mechaddendums.init.BlockInit;
 import com.congueror.mechaddendums.init.ContainerInit;
 import com.congueror.mechaddendums.init.EntityInit;
 import com.congueror.mechaddendums.util.GuiCLibLoaded;
+import com.congueror.mechaddendums.util.enums.CoalGenTier;
 import com.congueror.mechaddendums.util.enums.SolarGenTier;
 
 import net.minecraft.block.Block;
@@ -52,6 +55,9 @@ public class ClientEvents {
 	    	for(SolarGenTier tier : SolarGenTier.values()) {
 	            ScreenManager.registerFactory(ContainerInit.SOLAR_GENERATOR_CONTAINER.get(tier).get(), SolarGeneratorScreen::new);
 	    	}
+	    	for(CoalGenTier tier : CoalGenTier.values()) {
+	    		ScreenManager.registerFactory(ContainerInit.COAL_GENERATOR_CONTAINER.get(tier).get(), CoalGeneratorScreen::new);
+	    	}
 	    	
 			RenderingRegistry.registerEntityRenderingHandler(EntityInit.WANDERING_FLORIST.get(), WanderingFloristRenderer::new);
 	    }
@@ -64,7 +70,7 @@ public class ClientEvents {
 	public static class ForgeClientEvents implements IEventBusSub{
 		@SubscribeEvent
 		public static void clibScreen(GuiScreenEvent.DrawScreenEvent.Post event) {
-			if(event.getGui() instanceof MainMenuScreen && !i && MechAddendums.isCLibLoaded()) {
+			if(event.getGui() instanceof MainMenuScreen && !i && MechAddendums.isCLibLoaded() && Config.enableCLibScreen.get()) {
 				Minecraft.getInstance().displayGuiScreen(new GuiCLibLoaded());
 				i = true;
 			}

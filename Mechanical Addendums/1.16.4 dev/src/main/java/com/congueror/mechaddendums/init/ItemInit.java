@@ -17,6 +17,7 @@ import com.congueror.mechaddendums.items.ModDrinkItem;
 import com.congueror.mechaddendums.items.RadioactiveMetalItem;
 import com.congueror.mechaddendums.items.UraniumDustItem;
 import com.congueror.mechaddendums.util.ModItemGroups;
+import com.congueror.mechaddendums.util.enums.CoalGenTier;
 import com.congueror.mechaddendums.util.enums.MachineFrameTier;
 import com.congueror.mechaddendums.util.enums.ModArmorMaterial;
 import com.congueror.mechaddendums.util.enums.ModItemTier;
@@ -620,12 +621,16 @@ public class ItemInit
     public static final RegistryObject<Item> INDUSTRIAL_PHOTOVOLTAIC_CELL = ITEMS.register("photovoltaic_cell_industrial", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> ULTIMATE_PHOTOVOLTAIC_CELL = ITEMS.register("photovoltaic_cell_ultimate", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final Map<SolarGenTier, RegistryObject<Item>> SOLAR_GENERATOR = new HashMap<>();
+    public static final Map<CoalGenTier, RegistryObject<Item>> COAL_GENERATOR = new HashMap<>();
     public static void init() {
+    	for(MachineFrameTier tier : MachineFrameTier.values()) {
+    		MACHINE_FRAME_TIERED.put(tier, ITEMS.register(tier.getMachineName(), () -> new BlockItem(BlockInit.MACHINE_FRAME_TIERED.get(tier).get(), new Item.Properties().group(ModItemGroups.MachinesIG.instance).rarity(Rarity.create(tier.getNameColor(), tier.getColor())))));
+    	}
     	for(SolarGenTier tier : SolarGenTier.values()) {
     		SOLAR_GENERATOR.put(tier, ITEMS.register(tier.getSolarGenName(), () -> new BlockItem(BlockInit.SOLAR_GENERATOR.get(tier).get(), new Item.Properties().group(ModItemGroups.MachinesIG.instance).rarity(Rarity.create(tier.getNameColor(), tier.getColor())))));
     	}
-    	for(MachineFrameTier tier : MachineFrameTier.values()) {
-    		MACHINE_FRAME_TIERED.put(tier, ITEMS.register(tier.getMachineName(), () -> new BlockItem(BlockInit.MACHINE_FRAME_TIERED.get(tier).get(), new Item.Properties().group(ModItemGroups.MachinesIG.instance).rarity(Rarity.create(tier.getNameColor(), tier.getColor())))));
+    	for(CoalGenTier tier : CoalGenTier.values()) {
+    		COAL_GENERATOR.put(tier, ITEMS.register(tier.getCoalGenName(), () -> new BlockItem(BlockInit.COAL_GENERATOR.get(tier).get(), new Item.Properties().group(ModItemGroups.MachinesIG.instance).rarity(Rarity.create(tier.getNameColor(), tier.getColor())))));
     	}
     }
     

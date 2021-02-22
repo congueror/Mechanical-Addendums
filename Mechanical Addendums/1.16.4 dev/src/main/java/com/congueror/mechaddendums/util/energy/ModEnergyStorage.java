@@ -15,16 +15,22 @@ public class ModEnergyStorage extends EnergyStorage implements INBTSerializable<
     public void setEnergy(int energy)
     {
         this.energy = energy;
+        onEnergyChanged();
+    }
+    
+    protected void onEnergyChanged() {
+
     }
 
-    public void generatePower(int energy)
+    public void generateEnergy(int energy)
     {
         this.energy += energy;
         if(this.energy > capacity)
             this.energy = capacity;
+        onEnergyChanged();
     }
 
-    public void consumePower(int energy)
+    public void consumeEnergy(int energy)
     {
         this.energy -= energy;
         if(this.energy < 0)

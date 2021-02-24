@@ -502,6 +502,8 @@
 	"gui.mechaddendums.max_capacity": "Max Capacity:",
 	"gui.mechaddendums.generation": "Generation:",
 	
+	"gui.mechaddendums.furnacegeneration": "Generation:",
+	
 	"tooltip.mechaddendums.aluminum_ore": "Spawns between Y= ",
 	"tooltip.mechaddendums.tin_ore": "Spawns between Y= ",
 	"tooltip.mechaddendums.lead_ore": "Spawns between Y= ",

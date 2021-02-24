@@ -101,7 +101,7 @@ public class CoalGeneratorContainer extends Container {
                 }
                 slot.onSlotChange(stack, itemstack);
             } else {
-                if (stack.getItem().getBurnTime(stack) > 0) {
+                if (tile.isItemValid(stack)) {
                     if (!this.mergeItemStack(stack, 0, 1, false)) {
                         return ItemStack.EMPTY;
                     }

@@ -33,7 +33,8 @@ public class CoalGeneratorScreen extends ContainerScreen<CoalGeneratorContainer>
 
 	@Override
     protected void drawGuiContainerForegroundLayer(MatrixStack matrixStack, int mouseX, int mouseY) {
-        
+		String generation = new TranslationTextComponent("gui." + MechAddendums.MOD_ID + ".furnacegeneration").appendString(" " + tile.energyGenerating + " FE/t").getString();
+	     this.font.drawString(matrixStack, generation, (xSize / 2 - font.getStringWidth(generation) / 2) + 14, 40, 4210752);
     }
 
     @SuppressWarnings("deprecation")
@@ -50,9 +51,9 @@ public class CoalGeneratorScreen extends ContainerScreen<CoalGeneratorContainer>
         
         //Energy
         int z = this.getEnergyScaled(60);
-        this.blit(matrixStack, this.guiLeft + 10, this.guiTop + 12 + z, this.xSize, 0, 16, 60 - z);
+        this.blit(matrixStack, this.guiLeft + 8, this.guiTop + 10 + z, this.xSize, 0, 16, 60 - z);
         
-        this.blit(matrixStack, this.guiLeft + 10, this.guiTop + 12, this.xSize + 16, 5, 16, 60);
+        this.blit(matrixStack, this.guiLeft + 8, this.guiTop + 10, this.xSize + 16, 0, 16, 60);
     }
     
     private int getEnergyScaled(int pixels)
@@ -62,7 +63,7 @@ public class CoalGeneratorScreen extends ContainerScreen<CoalGeneratorContainer>
     
     private int getPercent()
     {
-        Long currentEnergy = new Long(tile.currentAmountEnergyProduced());
+        Long currentEnergy = new Long(tile.energyGenerating);
         int maxEnergy = tile.maxEnergy;
 
         long result = currentEnergy * 100 / maxEnergy;

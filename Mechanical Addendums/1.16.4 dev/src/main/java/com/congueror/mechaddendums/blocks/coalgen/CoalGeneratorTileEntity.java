@@ -23,6 +23,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.LazyOptional;
@@ -44,6 +45,7 @@ public class CoalGeneratorTileEntity extends TileEntity implements ITickableTile
 	private int counter;
 	
 	private int energyGeneration, maxEnergyOutput;
+	public int energyGenerating;
     public int maxEnergy;
 	
 	public CoalGeneratorTileEntity(CoalGenTier tier) {
@@ -67,14 +69,14 @@ public class CoalGeneratorTileEntity extends TileEntity implements ITickableTile
         if (counter > 0) {
             counter--;
             if (counter <= 0) {
-                energyStorage.generateEnergy(currentAmountEnergyProduced());
+                energyStorage.generateEnergy(energyGenerating);
             }
             markDirty();
         }
 
         if (counter <= 0) {
             ItemStack stack = itemHandler.getStackInSlot(0);
-            if (stack.getItem().getBurnTime(stack) > 0) {
+            if (isItemValid(stack)) {
                 itemHandler.extractItem(0, 1, false);
                 counter = 20;
                 markDirty();
@@ -97,14 +99,16 @@ public class CoalGeneratorTileEntity extends TileEntity implements ITickableTile
 	
     public int currentAmountEnergyProduced()
     {
-    	int mult;
+    	int mult = 0;
     	ItemStack stack = itemHandler.getStackInSlot(0);
-    	if(stack.getBurnTime() > 0) {
-    		mult = stack.getBurnTime();
-    	} else {
-    		mult = 0;
+    	if(isItemValid(stack)) {
+    		mult = ForgeHooks.getBurnTime(stack);
     	}
-        return (int) (energyGeneration * mult);
+        return energyGenerating = (int) (energyGeneration * mult);
+    }
+    
+    public boolean isItemValid(ItemStack stack) {
+            return ForgeHooks.getBurnTime(stack) > 0;
     }
 	
 	@Override

@@ -69,7 +69,7 @@ public class CoalGeneratorTileEntity extends TileEntity implements ITickableTile
         if (counter > 0) {
             counter--;
             if (counter <= 0) {
-                energyStorage.generateEnergy(energyGenerating);
+                energyStorage.generateEnergy(currentAmountEnergyProduced());
             }
             markDirty();
         }
@@ -104,7 +104,8 @@ public class CoalGeneratorTileEntity extends TileEntity implements ITickableTile
     	if(isItemValid(stack)) {
     		mult = ForgeHooks.getBurnTime(stack);
     	}
-        return energyGenerating = (int) (energyGeneration * mult);
+        energyGenerating = (int) (energyGeneration * mult);
+        return energyGenerating;
     }
     
     public boolean isItemValid(ItemStack stack) {
@@ -174,13 +175,13 @@ public class CoalGeneratorTileEntity extends TileEntity implements ITickableTile
 
             @Override
             public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
-                return stack.getItem().getBurnTime(stack) > 0;
+                return ForgeHooks.getBurnTime(stack) > 0;
             }
 
             @Nonnull
             @Override
             public ItemStack insertItem(int slot, @Nonnull ItemStack stack, boolean simulate) {
-                if (stack.getItem().getBurnTime(stack) > 0) {
+                if (!(ForgeHooks.getBurnTime(stack) > 0)) {
                     return stack;
                 }
                 return super.insertItem(slot, stack, simulate);

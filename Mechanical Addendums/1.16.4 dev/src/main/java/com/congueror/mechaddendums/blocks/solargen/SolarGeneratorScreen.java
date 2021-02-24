@@ -33,13 +33,13 @@ public class SolarGeneratorScreen extends ContainerScreen<SolarGeneratorContaine
 	@Override
 	protected void drawGuiContainerForegroundLayer(MatrixStack mStack, int mouseX, int mouseY)
 	{
-		 String energy = new TranslationTextComponent("gui." + MechAddendums.MOD_ID + ".stored_energy").appendString(" " + getEnergyFormatted(tile.energyClient)).getString();
+		 String energy = new TranslationTextComponent("gui." + MechAddendums.MOD_ID + ".solargen.stored_energy").appendString(" " + getEnergyFormatted(tile.energyClient)).getString();
 	     this.font.drawString(mStack, energy, (xSize / 2 - font.getStringWidth(energy) / 2) + 14, 20, 4210752);
 
-	     String maxEnergy = new TranslationTextComponent("gui." + MechAddendums.MOD_ID + ".max_capacity").appendString(" " + getEnergyFormatted(tile.maxEnergy)).getString();
+	     String maxEnergy = new TranslationTextComponent("gui." + MechAddendums.MOD_ID + ".solargen.max_capacity").appendString(" " + getEnergyFormatted(tile.maxEnergy)).getString();
 	     this.font.drawString(mStack, maxEnergy, (xSize / 2 - font.getStringWidth(maxEnergy) / 2) + 14, 30, 4210752);
 
-	     String generation = new TranslationTextComponent("gui." + MechAddendums.MOD_ID + ".generation").appendString(" " + tile.energyProductionClient + " FE/t").getString();
+	     String generation = new TranslationTextComponent("gui." + MechAddendums.MOD_ID + ".solargen.generation").appendString(" " + tile.energyProductionClient + " FE/t").getString();
 	     this.font.drawString(mStack, generation, (xSize / 2 - font.getStringWidth(generation) / 2) + 14, 40, 4210752);
 	}
 	

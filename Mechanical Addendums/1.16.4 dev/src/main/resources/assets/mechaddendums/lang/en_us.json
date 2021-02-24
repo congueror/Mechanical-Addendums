@@ -498,11 +498,11 @@
 	"tooltip.mechaddendums.solargen_hold_shift": "@7Generation: @a%d @4FE/t\n@7Transfer: @a%d @4FE/t\n@7Capacity: @a%d @4FE",
 	"tooltip.mechaddendums.solargen_hold_shift2": "@7Energy stored: @a%d @4FE",
 	
-	"gui.mechaddendums.stored_energy": "Stored Energy:",
-	"gui.mechaddendums.max_capacity": "Max Capacity:",
-	"gui.mechaddendums.generation": "Generation:",
+	"gui.mechaddendums.solargen.stored_energy": "Stored Energy:",
+	"gui.mechaddendums.solargen.max_capacity": "Max Capacity:",
+	"gui.mechaddendums.solargen.generation": "Generation:",
 	
-	"gui.mechaddendums.furnacegeneration": "Generation:",
+	"gui.mechaddendums.furnacegen.generation": "Generation:",
 	
 	"tooltip.mechaddendums.aluminum_ore": "Spawns between Y= ",
 	"tooltip.mechaddendums.tin_ore": "Spawns between Y= ",

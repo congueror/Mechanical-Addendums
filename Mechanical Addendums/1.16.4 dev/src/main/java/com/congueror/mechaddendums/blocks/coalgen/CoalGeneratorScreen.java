@@ -4,7 +4,6 @@ import com.congueror.mechaddendums.MechAddendums;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
@@ -33,7 +32,7 @@ public class CoalGeneratorScreen extends ContainerScreen<CoalGeneratorContainer>
 
 	@Override
     protected void drawGuiContainerForegroundLayer(MatrixStack matrixStack, int mouseX, int mouseY) {
-		String generation = new TranslationTextComponent("gui." + MechAddendums.MOD_ID + ".furnacegeneration").appendString(" " + tile.energyGenerating + " FE/t").getString();
+		String generation = new TranslationTextComponent("gui." + MechAddendums.MOD_ID + "furnacegen.generation").appendString(" " + tile.currentAmountEnergyProduced() + " FE/t").getString();
 	     this.font.drawString(matrixStack, generation, (xSize / 2 - font.getStringWidth(generation) / 2) + 14, 40, 4210752);
     }
 
@@ -63,7 +62,7 @@ public class CoalGeneratorScreen extends ContainerScreen<CoalGeneratorContainer>
     
     private int getPercent()
     {
-        Long currentEnergy = new Long(tile.energyGenerating);
+        Long currentEnergy = new Long(tile.currentAmountEnergyProduced());
         int maxEnergy = tile.maxEnergy;
 
         long result = currentEnergy * 100 / maxEnergy;

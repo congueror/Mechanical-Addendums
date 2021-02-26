@@ -62,7 +62,7 @@ public class CoalGeneratorScreen extends ContainerScreen<CoalGeneratorContainer>
     
     private int getPercent()
     {
-        Long currentEnergy = new Long(tile.currentAmountEnergyProduced());
+        Long currentEnergy = new Long(tile.maxEnergy);
         int maxEnergy = tile.maxEnergy;
 
         long result = currentEnergy * 100 / maxEnergy;

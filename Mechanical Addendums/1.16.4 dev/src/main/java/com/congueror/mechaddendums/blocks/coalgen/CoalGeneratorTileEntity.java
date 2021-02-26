@@ -33,173 +33,173 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
-public class CoalGeneratorTileEntity extends TileEntity implements ITickableTileEntity, INamedContainerProvider{
+public class CoalGeneratorTileEntity extends TileEntity implements ITickableTileEntity, INamedContainerProvider {
 
 	private ItemStackHandler itemHandler = createHandler();
-    private ModEnergyStorage energyStorage = createEnergy();
-    
-    private LazyOptional<IItemHandler> handler = LazyOptional.of(() -> itemHandler);
-    private LazyOptional<IEnergyStorage> energy = LazyOptional.of(() -> energyStorage);
-    
+	private ModEnergyStorage energyStorage = createEnergy();
+
+	private LazyOptional<IItemHandler> handler = LazyOptional.of(() -> itemHandler);
+	private LazyOptional<IEnergyStorage> energy = LazyOptional.of(() -> energyStorage);
+
 	private CoalGenTier tier;
 	private int counter;
-	
+
 	private int energyGeneration, maxEnergyOutput;
-	public int energyGenerating;
-    public int maxEnergy;
-	
+	public long energyGenerating;
+	public int maxEnergy;
+
 	public CoalGeneratorTileEntity(CoalGenTier tier) {
 		super(TileEntityInit.COAL_GENERATOR_TILE_ENTITY.get(tier).get());
 		this.tier = tier;
 		energyGeneration = (int) (tier.getNum() * Config.solarGenMultiplier.get());
-        maxEnergyOutput = energyGeneration * 2;
-        maxEnergy = energyGeneration * 1000;
+		maxEnergyOutput = energyGeneration * 2;
+		maxEnergy = energyGeneration * 1000;
+	}
+
+	private ModEnergyStorage createEnergy() {
+		return new ModEnergyStorage(maxEnergyOutput, maxEnergy);
 	}
 	
-	private ModEnergyStorage createEnergy() {
-        return new ModEnergyStorage(maxEnergyOutput, maxEnergy);
-    }
-
 	@Override
-    public void tick() {
+	public void tick() {
+
+        ItemStack stack = itemHandler.getStackInSlot(0);
+
         if (world.isRemote) {
             return;
         }
-
-        if (counter > 0) {
-            counter--;
-            if (counter <= 0) {
-                energyStorage.generateEnergy(currentAmountEnergyProduced());
-            }
-            markDirty();
-        }
-
+        
         if (counter <= 0) {
-            ItemStack stack = itemHandler.getStackInSlot(0);
-            if (isItemValid(stack)) {
-                itemHandler.extractItem(0, 1, false);
+            if(isItemValid(stack) && !energyStorage.isFullEnergy()) {
+            	itemHandler.extractItem(0, 1, false);
                 counter = 20;
                 markDirty();
             }
         }
-
-        BlockState blockState = world.getBlockState(pos);
-        if (blockState.get(BlockStateProperties.POWERED) != counter > 0) {
-            world.setBlockState(pos, blockState.with(BlockStateProperties.POWERED, counter > 0),
-                    Constants.BlockFlags.NOTIFY_NEIGHBORS + Constants.BlockFlags.BLOCK_UPDATE);
+        
+        if (counter > 0) {
+            counter--;
+            if(counter <= 0 ) {
+            	energyStorage.generateEnergy(currentAmountEnergyProduced());
+            }
+            System.out.println(energyStorage.getEnergyStored());
+            markDirty();
         }
 
-        sendOutPower();
-    }
+		BlockState blockState = world.getBlockState(pos);
+		if (blockState.get(BlockStateProperties.POWERED) != counter > 0) {
+			world.setBlockState(pos, blockState.with(BlockStateProperties.POWERED, counter > 0),
+					Constants.BlockFlags.NOTIFY_NEIGHBORS + Constants.BlockFlags.BLOCK_UPDATE);
+		}
 
-	public int getEnergy()
-    {
-        return getCapability(CapabilityEnergy.ENERGY).map(IEnergyStorage::getEnergyStored).orElse(0);
-    }
+		sendOutPower();
+	}
 	
-    public int currentAmountEnergyProduced()
-    {
-    	int mult = 0;
-    	ItemStack stack = itemHandler.getStackInSlot(0);
-    	if(isItemValid(stack)) {
-    		mult = ForgeHooks.getBurnTime(stack);
-    	}
-        energyGenerating = (int) (energyGeneration * mult);
-        return energyGenerating;
-    }
-    
-    public boolean isItemValid(ItemStack stack) {
-            return ForgeHooks.getBurnTime(stack) > 0;
-    }
+	public long currentAmountEnergyProduced() {
+		ItemStack stack = itemHandler.getStackInSlot(0);
+		long mult = ForgeHooks.getBurnTime(stack);
+		energyGenerating = energyGeneration * mult;
+		return energyGenerating;
+	}
 	
+	public boolean isItemValid(ItemStack stack) {
+		return ForgeHooks.getBurnTime(stack) > 0;
+	}
+
+	public int getEnergy() {
+		return getCapability(CapabilityEnergy.ENERGY).map(IEnergyStorage::getEnergyStored).orElse(0);
+	}
+
 	@Override
 	public void remove() {
 		super.remove();
-        handler.invalidate();
-        energy.invalidate();
+		handler.invalidate();
+		energy.invalidate();
 	}
-	
+
+	/*
+	 * Outputs energy from the block
+	 */
 	private void sendOutPower() {
-        AtomicInteger capacity = new AtomicInteger(energyStorage.getEnergyStored());
-        if (capacity.get() > 0) {
-            for (Direction direction : Direction.values()) {
-                TileEntity te = world.getTileEntity(pos.offset(direction));
-                if (te != null) {
-                    boolean doContinue = te.getCapability(CapabilityEnergy.ENERGY, direction).map(handler -> {
-                                if (handler.canReceive()) {
-                                    int received = handler.receiveEnergy(Math.min(capacity.get(), maxEnergyOutput), false);
-                                    capacity.addAndGet(-received);
-                                    energyStorage.consumeEnergy(received);
-                                    markDirty();
-                                    return capacity.get() > 0;
-                                } else {
-                                    return true;
-                                }
-                            }
-                    ).orElse(true);
-                    if (!doContinue) {
-                        return;
-                    }
-                }
-            }
-        }
-    }
-	
+		AtomicInteger capacity = new AtomicInteger(energyStorage.getEnergyStored());
+		if (capacity.get() > 0) {
+			for (Direction direction : Direction.values()) {
+				TileEntity te = world.getTileEntity(pos.offset(direction));
+				if (te != null) {
+					boolean doContinue = te.getCapability(CapabilityEnergy.ENERGY, direction).map(handler -> {
+						if (handler.canReceive()) {
+							int received = handler.receiveEnergy(Math.min(capacity.get(), maxEnergyOutput), false);
+							capacity.addAndGet(-received);
+							energyStorage.consumeEnergy(received);
+							markDirty();
+							return capacity.get() > 0;
+						} else {
+							return true;
+						}
+					}).orElse(true);
+					if (!doContinue) {
+						return;
+					}
+				}
+			}
+		}
+	}
+
 	@Override
-    public void read(BlockState state, CompoundNBT tag) {
-        itemHandler.deserializeNBT(tag.getCompound("inv"));
-        energyStorage.deserializeNBT(tag.getCompound("energy"));
+	public void read(BlockState state, CompoundNBT tag) {
+		itemHandler.deserializeNBT(tag.getCompound("inv"));
+		energyStorage.deserializeNBT(tag.getCompound("energy"));
 
-        counter = tag.getInt("counter");
-        super.read(state, tag);
-    }
+		counter = tag.getInt("counter");
+		super.read(state, tag);
+	}
 
-    @Override
-    public CompoundNBT write(CompoundNBT tag) {
-        tag.put("inv", itemHandler.serializeNBT());
-        tag.put("energy", energyStorage.serializeNBT());
+	@Override
+	public CompoundNBT write(CompoundNBT tag) {
+		tag.put("inv", itemHandler.serializeNBT());
+		tag.put("energy", energyStorage.serializeNBT());
 
-        tag.putInt("counter", counter);
-        return super.write(tag);
-    }
-    
-    private ItemStackHandler createHandler() {
-        return new ItemStackHandler(1) {
+		tag.putInt("counter", counter);
+		return super.write(tag);
+	}
 
-            @Override
-            protected void onContentsChanged(int slot) {
-                // To make sure the TE persists when the chunk is saved later we need to
-                // mark it dirty every time the item handler changes
-                markDirty();
-            }
+	private ItemStackHandler createHandler() {
+		return new ItemStackHandler(1) {
 
-            @Override
-            public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
-                return ForgeHooks.getBurnTime(stack) > 0;
-            }
+			@Override
+			protected void onContentsChanged(int slot) {
+				// To make sure the TE persists when the chunk is saved later we need to
+				// mark it dirty every time the item handler changes
+				markDirty();
+			}
 
-            @Nonnull
-            @Override
-            public ItemStack insertItem(int slot, @Nonnull ItemStack stack, boolean simulate) {
-                if (!(ForgeHooks.getBurnTime(stack) > 0)) {
-                    return stack;
-                }
-                return super.insertItem(slot, stack, simulate);
-            }
-        };
-    }
+			@Override
+			public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
+				return ForgeHooks.getBurnTime(stack) > 0;
+			}
 
-    @Nonnull
-    @Override
-    public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
-        if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
-            return handler.cast();
-        }
-        if (cap == CapabilityEnergy.ENERGY) {
-            return energy.cast();
-        }
-        return super.getCapability(cap, side);
-    }
+			@Nonnull
+			@Override
+			public ItemStack insertItem(int slot, @Nonnull ItemStack stack, boolean simulate) {
+				if (!(ForgeHooks.getBurnTime(stack) > 0)) {
+					return stack;
+				}
+				return super.insertItem(slot, stack, simulate);
+			}
+		};
+	}
+
+	@Nonnull
+	@Override
+	public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
+		if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+			return handler.cast();
+		}
+		if (cap == CapabilityEnergy.ENERGY) {
+			return energy.cast();
+		}
+		return super.getCapability(cap, side);
+	}
 
 	@Override
 	public Container createMenu(int windowId, PlayerInventory playerInventory, PlayerEntity player) {

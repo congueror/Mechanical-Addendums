@@ -22,7 +22,7 @@ public class ModEnergyStorage extends EnergyStorage implements INBTSerializable<
 
     }
 
-    public void generateEnergy(int energy)
+    public void generateEnergy(long energy)
     {
         this.energy += energy;
         if(this.energy > capacity)
@@ -37,6 +37,7 @@ public class ModEnergyStorage extends EnergyStorage implements INBTSerializable<
         {
             this.energy = 0;
         }
+        System.out.println("CONSUMED");
     }
 
     public boolean isFullEnergy()

@@ -59,32 +59,32 @@ public class CoalGeneratorTileEntity extends TileEntity implements ITickableTile
 	private ModEnergyStorage createEnergy() {
 		return new ModEnergyStorage(maxEnergyOutput, maxEnergy);
 	}
-	
+
 	@Override
 	public void tick() {
 
-        ItemStack stack = itemHandler.getStackInSlot(0);
+		ItemStack stack = itemHandler.getStackInSlot(0);
 
-        if (world.isRemote) {
-            return;
-        }
-        
-        if (counter <= 0) {
-            if(isItemValid(stack) && !energyStorage.isFullEnergy()) {
-            	itemHandler.extractItem(0, 1, false);
-                counter = 20;
-                markDirty();
-            }
-        }
-        
-        if (counter > 0) {
-            counter--;
-            if(counter <= 0 ) {
-            	energyStorage.generateEnergy(currentAmountEnergyProduced());
-            }
-            System.out.println(energyStorage.getEnergyStored());
-            markDirty();
-        }
+		if (world.isRemote) {
+			return;
+		}
+
+		if (counter <= 0) {
+			if (isItemValid(stack) && !energyStorage.isFullEnergy()) {
+				itemHandler.extractItem(0, 1, false);
+				counter = 20;
+				markDirty();
+			}
+		}
+
+		if (counter > 0) {
+			counter--;
+			if (counter <= 0) {
+				energyStorage.generateEnergy(currentAmountEnergyProduced());
+			}
+			System.out.println(energyStorage.getEnergyStored());
+			markDirty();
+		}
 
 		BlockState blockState = world.getBlockState(pos);
 		if (blockState.get(BlockStateProperties.POWERED) != counter > 0) {
@@ -94,14 +94,14 @@ public class CoalGeneratorTileEntity extends TileEntity implements ITickableTile
 
 		sendOutPower();
 	}
-	
+
 	public long currentAmountEnergyProduced() {
 		ItemStack stack = itemHandler.getStackInSlot(0);
 		long mult = ForgeHooks.getBurnTime(stack);
 		energyGenerating = energyGeneration * mult;
 		return energyGenerating;
 	}
-	
+
 	public boolean isItemValid(ItemStack stack) {
 		return ForgeHooks.getBurnTime(stack) > 0;
 	}

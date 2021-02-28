@@ -69,7 +69,7 @@ public class FurnaceGeneratorScreen extends ContainerScreen<FurnaceGeneratorCont
     }
     
     private int getBurnScaled() {
-    	return tile.counter2 / 14;
+    	return tile.counter2 / 14; //idk what to do here to make it work
     }
     
     private int getEnergyScaled(int pixels)

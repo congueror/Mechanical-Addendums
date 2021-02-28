@@ -9,12 +9,12 @@ import com.congueror.mechaddendums.blocks.MetalBlock;
 import com.congueror.mechaddendums.blocks.ModOreBlock;
 import com.congueror.mechaddendums.blocks.PineappleCropBlock;
 import com.congueror.mechaddendums.blocks.RubberLeavesBlock;
-import com.congueror.mechaddendums.blocks.coalgen.CoalGeneratorBlock;
+import com.congueror.mechaddendums.blocks.furnacegen.FurnaceGeneratorBlock;
 import com.congueror.mechaddendums.blocks.solargen.SolarGeneratorBlock;
 import com.congueror.mechaddendums.blocks.trees.CandlenutTree;
 import com.congueror.mechaddendums.blocks.trees.CoconutTree;
 import com.congueror.mechaddendums.blocks.trees.RubberTree;
-import com.congueror.mechaddendums.util.enums.CoalGenTier;
+import com.congueror.mechaddendums.util.enums.FurnaceGenTier;
 import com.congueror.mechaddendums.util.enums.MachineFrameTier;
 import com.congueror.mechaddendums.util.enums.SolarGenTier;
 
@@ -197,7 +197,7 @@ public class BlockInit
 			(Block.Properties.from(BlockInit.STEEL_BLOCK.get())));
 	public static final Map<MachineFrameTier, RegistryObject<Block>> MACHINE_FRAME_TIERED = new HashMap<>();
 	public static final Map<SolarGenTier, RegistryObject<SolarGeneratorBlock>> SOLAR_GENERATOR = new HashMap<>();
-	public static final Map<CoalGenTier, RegistryObject<CoalGeneratorBlock>> COAL_GENERATOR = new HashMap<>();
+	public static final Map<FurnaceGenTier, RegistryObject<FurnaceGeneratorBlock>> FURNACE_GENERATOR = new HashMap<>();
 	public static void init() {
 		for(MachineFrameTier tier : MachineFrameTier.values()) {
 			MACHINE_FRAME_TIERED.put(tier, BLOCKS.register(tier.getMachineName(), () -> new Block(Block.Properties.from(BlockInit.SIGNALUM_BLOCK.get()))));
@@ -205,8 +205,8 @@ public class BlockInit
 		for(SolarGenTier tier : SolarGenTier.values()) {
 			SOLAR_GENERATOR.put(tier, BLOCKS.register(tier.getSolarGenName(), () -> new SolarGeneratorBlock(tier)));
 		}
-		for(CoalGenTier tier : CoalGenTier.values()) {
-			COAL_GENERATOR.put(tier, BLOCKS.register(tier.getCoalGenName(), () -> new CoalGeneratorBlock(tier)));
+		for(FurnaceGenTier tier : FurnaceGenTier.values()) {
+			FURNACE_GENERATOR.put(tier, BLOCKS.register(tier.getFurnaceGenName(), () -> new FurnaceGeneratorBlock(tier)));
 		}
 	}
 	

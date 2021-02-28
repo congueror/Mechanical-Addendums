@@ -1,4 +1,4 @@
-package com.congueror.mechaddendums.blocks.coalgen;
+package com.congueror.mechaddendums.blocks.furnacegen;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -8,7 +8,7 @@ import javax.annotation.Nullable;
 import com.congueror.mechaddendums.config.Config;
 import com.congueror.mechaddendums.init.TileEntityInit;
 import com.congueror.mechaddendums.util.energy.ModEnergyStorage;
-import com.congueror.mechaddendums.util.enums.CoalGenTier;
+import com.congueror.mechaddendums.util.enums.FurnaceGenTier;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -33,7 +33,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
-public class CoalGeneratorTileEntity extends TileEntity implements ITickableTileEntity, INamedContainerProvider {
+public class FurnaceGeneratorTileEntity extends TileEntity implements ITickableTileEntity, INamedContainerProvider {
 
 	private ItemStackHandler itemHandler = createHandler();
 	private ModEnergyStorage energyStorage = createEnergy();
@@ -41,19 +41,21 @@ public class CoalGeneratorTileEntity extends TileEntity implements ITickableTile
 	private LazyOptional<IItemHandler> handler = LazyOptional.of(() -> itemHandler);
 	private LazyOptional<IEnergyStorage> energy = LazyOptional.of(() -> energyStorage);
 
-	private CoalGenTier tier;
-	private int counter;
+	private FurnaceGenTier tier;
+	public int counter;
+	public int counter2 = 0;
 
 	private int energyGeneration, maxEnergyOutput;
 	public long energyGenerating;
 	public int maxEnergy;
 
-	public CoalGeneratorTileEntity(CoalGenTier tier) {
-		super(TileEntityInit.COAL_GENERATOR_TILE_ENTITY.get(tier).get());
+	public FurnaceGeneratorTileEntity(FurnaceGenTier tier) {
+		super(TileEntityInit.FURNACE_GENERATOR_TILE_ENTITY.get(tier).get());
 		this.tier = tier;
 		energyGeneration = (int) (tier.getNum() * Config.solarGenMultiplier.get());
 		maxEnergyOutput = energyGeneration * 2;
 		maxEnergy = energyGeneration * 1000;
+		this.energyStorage = createEnergy();
 	}
 
 	private ModEnergyStorage createEnergy() {
@@ -69,26 +71,22 @@ public class CoalGeneratorTileEntity extends TileEntity implements ITickableTile
 			return;
 		}
 
-		if (counter <= 0) {
-			if (isItemValid(stack) && !energyStorage.isFullEnergy()) {
+		if (counter2 > 0) {
+			counter2--;
+			if (counter > 0) {
+				counter--;
+				energyStorage.generateEnergy(energyGeneration);
+			} else if (!itemHandler.getStackInSlot(0).isEmpty() && !energyStorage.isFullEnergy() && counter2 == 0) {
 				itemHandler.extractItem(0, 1, false);
-				counter = 20;
-				markDirty();
+				counter = ForgeHooks.getBurnTime(stack) / 100;
 			}
-		}
-
-		if (counter > 0) {
-			counter--;
-			if (counter <= 0) {
-				energyStorage.generateEnergy(currentAmountEnergyProduced());
-			}
-			System.out.println(energyStorage.getEnergyStored());
-			markDirty();
+		} else {
+			counter2 = 532;
 		}
 
 		BlockState blockState = world.getBlockState(pos);
-		if (blockState.get(BlockStateProperties.POWERED) != counter > 0) {
-			world.setBlockState(pos, blockState.with(BlockStateProperties.POWERED, counter > 0),
+		if (blockState.get(BlockStateProperties.LIT) != counter2 <= 0) {
+			world.setBlockState(pos, blockState.with(BlockStateProperties.LIT, counter2 <= 0),
 					Constants.BlockFlags.NOTIFY_NEIGHBORS + Constants.BlockFlags.BLOCK_UPDATE);
 		}
 
@@ -97,7 +95,7 @@ public class CoalGeneratorTileEntity extends TileEntity implements ITickableTile
 
 	public long currentAmountEnergyProduced() {
 		ItemStack stack = itemHandler.getStackInSlot(0);
-		long mult = ForgeHooks.getBurnTime(stack);
+		long mult = ForgeHooks.getBurnTime(stack) / 100;
 		energyGenerating = energyGeneration * mult;
 		return energyGenerating;
 	}
@@ -203,7 +201,7 @@ public class CoalGeneratorTileEntity extends TileEntity implements ITickableTile
 
 	@Override
 	public Container createMenu(int windowId, PlayerInventory playerInventory, PlayerEntity player) {
-		return new CoalGeneratorContainer(windowId, world, pos, playerInventory, player, this, tier);
+		return new FurnaceGeneratorContainer(windowId, world, pos, playerInventory, player, this, tier);
 	}
 
 	@Override

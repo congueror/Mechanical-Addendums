@@ -1,8 +1,8 @@
-package com.congueror.mechaddendums.blocks.coalgen;
+package com.congueror.mechaddendums.blocks.furnacegen;
 
 import com.congueror.mechaddendums.init.ContainerInit;
 import com.congueror.mechaddendums.util.energy.ModEnergyStorage;
-import com.congueror.mechaddendums.util.enums.CoalGenTier;
+import com.congueror.mechaddendums.util.enums.FurnaceGenTier;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -21,16 +21,16 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
 
-public class CoalGeneratorContainer extends Container {
+public class FurnaceGeneratorContainer extends Container {
 
 	private TileEntity tileEntity;
     private PlayerEntity playerEntity;
     private IItemHandler playerInventory;
     
-	public final CoalGeneratorTileEntity tile;
+	public final FurnaceGeneratorTileEntity tile;
 	
-	public CoalGeneratorContainer(int windowId, World world, BlockPos pos, PlayerInventory playerInventory, PlayerEntity player, CoalGeneratorTileEntity tile, CoalGenTier tier) {
-		super(ContainerInit.COAL_GENERATOR_CONTAINER.get(tier).get(), windowId);
+	public FurnaceGeneratorContainer(int windowId, World world, BlockPos pos, PlayerInventory playerInventory, PlayerEntity player, FurnaceGeneratorTileEntity tile, FurnaceGenTier tier) {
+		super(ContainerInit.FURNACE_GENERATOR_CONTAINER.get(tier).get(), windowId);
         tileEntity = world.getTileEntity(pos);
         this.playerEntity = player;
         this.playerInventory = new InvWrapper(playerInventory);

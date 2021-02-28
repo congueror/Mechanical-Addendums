@@ -440,6 +440,11 @@
 	"block.mechaddendums.machine_frame_industrial": "Industrial Machine Frame",
 	"block.mechaddendums.machine_frame_ultimate": "Ultimate Machine Frame",
 	
+	"block.mechaddendums.furnace_generator_basic": "Basic Furnace Generator",
+	"block.mechaddendums.furnace_generator_advanced": "Advanced Furnace Generator",
+	"block.mechaddendums.furnace_generator_industrial": "Industrial Furnace Generator",
+	"block.mechaddendums.furnace_generator_ultimate": "Ultimate Furnace Generator",
+	
 	"block.mechaddendums.fermenting_barrel": "Fermenting Barrel",
 	"item.mechaddendums.juicer": "Juicer",
 	"item.mechaddendums.rum": "Bottle of Rum",
@@ -498,11 +503,14 @@
 	"tooltip.mechaddendums.solargen_hold_shift": "@7Generation: @a%d @4FE/t\n@7Transfer: @a%d @4FE/t\n@7Capacity: @a%d @4FE",
 	"tooltip.mechaddendums.solargen_hold_shift2": "@7Energy stored: @a%d @4FE",
 	
-	"gui.mechaddendums.solargen.stored_energy": "Stored Energy:",
-	"gui.mechaddendums.solargen.max_capacity": "Max Capacity:",
-	"gui.mechaddendums.solargen.generation": "Generation:",
+	"gui.mechaddendums.solargen.title": "Solar Generator",
+	"tooltip.mechaddendums.solargen.energy": "Energy",
+	"tooltip.mechaddendums.solargen.generation": "Generation",
 	
-	"gui.mechaddendums.furnacegen.generation": "Generation:",
+	"gui.mechaddendums.furnacegen.title": "Furnace Generator",
+	"gui.mechaddendums.furnacegen.inv": "Inventory",
+	"tooltip.mechaddendums.furnacegen.energy_percent": "Energy",
+	"tooltip.mechaddendums.furnacegen.generation": "Generation",
 	
 	"tooltip.mechaddendums.aluminum_ore": "Spawns between Y= ",
 	"tooltip.mechaddendums.tin_ore": "Spawns between Y= ",

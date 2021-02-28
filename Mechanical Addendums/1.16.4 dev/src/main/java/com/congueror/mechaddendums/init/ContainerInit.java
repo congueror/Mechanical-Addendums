@@ -4,11 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.congueror.mechaddendums.MechAddendums;
-import com.congueror.mechaddendums.blocks.coalgen.CoalGeneratorContainer;
-import com.congueror.mechaddendums.blocks.coalgen.CoalGeneratorTileEntity;
+import com.congueror.mechaddendums.blocks.furnacegen.FurnaceGeneratorContainer;
+import com.congueror.mechaddendums.blocks.furnacegen.FurnaceGeneratorTileEntity;
 import com.congueror.mechaddendums.blocks.solargen.SolarGeneratorContainer;
 import com.congueror.mechaddendums.blocks.solargen.SolarGeneratorTileEntity;
-import com.congueror.mechaddendums.util.enums.CoalGenTier;
+import com.congueror.mechaddendums.util.enums.FurnaceGenTier;
 import com.congueror.mechaddendums.util.enums.SolarGenTier;
 
 import net.minecraft.inventory.container.ContainerType;
@@ -25,7 +25,7 @@ public class ContainerInit {
 	public static final DeferredRegister<ContainerType<?>> CONTAINERS = DeferredRegister.create(ForgeRegistries.CONTAINERS, MechAddendums.MOD_ID);
 	
     public static final Map<SolarGenTier, RegistryObject<ContainerType<SolarGeneratorContainer>>> SOLAR_GENERATOR_CONTAINER = new HashMap<>();
-    public static final Map<CoalGenTier, RegistryObject<ContainerType<CoalGeneratorContainer>>> COAL_GENERATOR_CONTAINER = new HashMap<>();
+    public static final Map<FurnaceGenTier, RegistryObject<ContainerType<FurnaceGeneratorContainer>>> FURNACE_GENERATOR_CONTAINER = new HashMap<>();
     public static void init() {
     	for(SolarGenTier tier : SolarGenTier.values()) {
     		SOLAR_GENERATOR_CONTAINER.put(tier, CONTAINERS.register(tier.getSolarGenName(), () -> IForgeContainerType.create((windowId, inv, data) -> {
@@ -40,13 +40,13 @@ public class ContainerInit {
                 return new SolarGeneratorContainer(windowId, inv.player, tile, tier);
             })));
     	}
-    	for(CoalGenTier tier : CoalGenTier.values()) {
-    		COAL_GENERATOR_CONTAINER.put(tier, CONTAINERS.register(tier.getCoalGenName(), () -> IForgeContainerType.create((windowId, inv, data) -> {
+    	for(FurnaceGenTier tier : FurnaceGenTier.values()) {
+    		FURNACE_GENERATOR_CONTAINER.put(tier, CONTAINERS.register(tier.getFurnaceGenName(), () -> IForgeContainerType.create((windowId, inv, data) -> {
     			BlockPos pos = data.readBlockPos();
                 TileEntity te = inv.player.getEntityWorld().getTileEntity(pos);
     	        World world = inv.player.getEntityWorld();
-    	        CoalGeneratorTileEntity tile = (CoalGeneratorTileEntity) te;
-    	        return new CoalGeneratorContainer(windowId, world, pos, inv, inv.player, tile, tier);
+    	        FurnaceGeneratorTileEntity tile = (FurnaceGeneratorTileEntity) te;
+    	        return new FurnaceGeneratorContainer(windowId, world, pos, inv, inv.player, tile, tier);
     	    })));
     	}
     }

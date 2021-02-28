@@ -1,8 +1,8 @@
-package com.congueror.mechaddendums.blocks.coalgen;
+package com.congueror.mechaddendums.blocks.furnacegen;
 
 import javax.annotation.Nullable;
 
-import com.congueror.mechaddendums.util.enums.CoalGenTier;
+import com.congueror.mechaddendums.util.enums.FurnaceGenTier;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -28,24 +28,24 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-public class CoalGeneratorBlock extends Block{
+public class FurnaceGeneratorBlock extends Block{
 
-	private final CoalGenTier tier;
+	private final FurnaceGenTier tier;
 	
-	public CoalGeneratorBlock(CoalGenTier tier) {
+	public FurnaceGeneratorBlock(FurnaceGenTier tier) {
 		super(Block.Properties.create(Material.IRON)
 				.hardnessAndResistance(5f, 6f)
 				.sound(SoundType.METAL)
 				.harvestTool(ToolType.PICKAXE)
 				.harvestLevel(2)
 				.setRequiresTool()
-				.setLightLevel(state -> state.get(BlockStateProperties.POWERED) ? 14 : 0));
+				.setLightLevel(state -> state.get(BlockStateProperties.LIT) ? 14 : 0));
 		this.tier = tier;
 	}
 	
 	@Override
 	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-		return new CoalGeneratorTileEntity(tier);
+		return new FurnaceGeneratorTileEntity(tier);
 	}
 	
 	@Override
@@ -63,7 +63,7 @@ public class CoalGeneratorBlock extends Block{
     public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult trace) {
         if (!world.isRemote) {
             TileEntity tileEntity = world.getTileEntity(pos);
-            if (tileEntity instanceof CoalGeneratorTileEntity) {
+            if (tileEntity instanceof FurnaceGeneratorTileEntity) {
                 INamedContainerProvider containerProvider = new INamedContainerProvider() {
                     @Override
                     public ITextComponent getDisplayName() {
@@ -72,8 +72,8 @@ public class CoalGeneratorBlock extends Block{
 
                     @Override
                     public Container createMenu(int i, PlayerInventory playerInventory, PlayerEntity playerEntity) {
-                    	CoalGeneratorTileEntity tile = (CoalGeneratorTileEntity) tileEntity;
-                        return new CoalGeneratorContainer(i, world, pos, playerInventory, playerEntity, tile, tier);
+                    	FurnaceGeneratorTileEntity tile = (FurnaceGeneratorTileEntity) tileEntity;
+                        return new FurnaceGeneratorContainer(i, world, pos, playerInventory, playerEntity, tile, tier);
                     }
                 };
                 NetworkHooks.openGui((ServerPlayerEntity) player, containerProvider, tileEntity.getPos());
@@ -86,7 +86,7 @@ public class CoalGeneratorBlock extends Block{
 
     @Override
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
-        builder.add(BlockStateProperties.FACING, BlockStateProperties.POWERED);
+        builder.add(BlockStateProperties.FACING, BlockStateProperties.LIT);
     }
 	
 //	@OnlyIn(Dist.CLIENT)

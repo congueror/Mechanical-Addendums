@@ -2,7 +2,7 @@ package com.congueror.mechaddendums.util.enums;
 
 import net.minecraft.util.text.TextFormatting;
 
-public enum CoalGenTier {
+public enum FurnaceGenTier {
 	BASIC("basic", 1, TextFormatting.GRAY, "gray"),
 	ADVANCED("advanced", 16, TextFormatting.RED, "red"),
 	INDUSTRIAL("industrial", 48, TextFormatting.BLUE, "blue"),
@@ -13,7 +13,7 @@ public enum CoalGenTier {
 	public final TextFormatting color;
 	public final String colorName;
 
-	private CoalGenTier(String name, int energyTier, TextFormatting color, String colorName) 
+	private FurnaceGenTier(String name, int energyTier, TextFormatting color, String colorName) 
 	{
 		this.name = name;
 		this.energyTier = energyTier;
@@ -34,8 +34,8 @@ public enum CoalGenTier {
 		return colorName;
 	}
 	
-	public String getCoalGenName()
+	public String getFurnaceGenName()
     {
-        return "coal_generator_" + name;
+        return "furnace_generator_" + name;
     }
 }

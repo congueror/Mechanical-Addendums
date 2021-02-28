@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.congueror.mechaddendums.MechAddendums;
-import com.congueror.mechaddendums.blocks.coalgen.CoalGeneratorScreen;
+import com.congueror.mechaddendums.blocks.furnacegen.FurnaceGeneratorScreen;
 import com.congueror.mechaddendums.blocks.solargen.SolarGeneratorScreen;
 import com.congueror.mechaddendums.config.Config;
 import com.congueror.mechaddendums.entities.wandering_florist.WanderingFloristRenderer;
@@ -12,7 +12,7 @@ import com.congueror.mechaddendums.init.BlockInit;
 import com.congueror.mechaddendums.init.ContainerInit;
 import com.congueror.mechaddendums.init.EntityInit;
 import com.congueror.mechaddendums.util.GuiCLibLoaded;
-import com.congueror.mechaddendums.util.enums.CoalGenTier;
+import com.congueror.mechaddendums.util.enums.FurnaceGenTier;
 import com.congueror.mechaddendums.util.enums.SolarGenTier;
 
 import net.minecraft.block.Block;
@@ -55,8 +55,8 @@ public class ClientEvents {
 	    	for(SolarGenTier tier : SolarGenTier.values()) {
 	            ScreenManager.registerFactory(ContainerInit.SOLAR_GENERATOR_CONTAINER.get(tier).get(), SolarGeneratorScreen::new);
 	    	}
-	    	for(CoalGenTier tier : CoalGenTier.values()) {
-	    		ScreenManager.registerFactory(ContainerInit.COAL_GENERATOR_CONTAINER.get(tier).get(), CoalGeneratorScreen::new);
+	    	for(FurnaceGenTier tier : FurnaceGenTier.values()) {
+	    		ScreenManager.registerFactory(ContainerInit.FURNACE_GENERATOR_CONTAINER.get(tier).get(), FurnaceGeneratorScreen::new);
 	    	}
 	    	
 			RenderingRegistry.registerEntityRenderingHandler(EntityInit.WANDERING_FLORIST.get(), WanderingFloristRenderer::new);
@@ -90,11 +90,11 @@ public class ClientEvents {
 					{
 						if (!blockTags.isEmpty()) {
 							lines.add(getTextComponent("tooltip.mechaddendums.block_tags").mergeStyle(TextFormatting.GRAY));
-							blockTags.stream().map(Object::toString).map(s -> "  " + s).map(t -> getTextComponent(t).mergeStyle(TextFormatting.DARK_GRAY)).forEach(lines::add);
+							blockTags.stream().map(Object::toString).map(a -> "  " + a).map(b -> getTextComponent(b).mergeStyle(TextFormatting.DARK_GRAY)).forEach(lines::add);
 						} 
 						if (!itemTags.isEmpty()) {
 							lines.add(getTextComponent("tooltip.mechaddendums.item_tags").mergeStyle(TextFormatting.GRAY));
-							itemTags.stream().map(Object::toString).map(s -> "  " + s).map(t -> getTextComponent(t).mergeStyle(TextFormatting.DARK_GRAY)).forEach(lines::add);
+							itemTags.stream().map(Object::toString).map(a -> "  " + a).map(b -> getTextComponent(b).mergeStyle(TextFormatting.DARK_GRAY)).forEach(lines::add);
 						} 
 					} else {
 						lines.add(new TranslationTextComponent("tooltip.mechaddendums.hold_ctrl_for_tags").mergeStyle(TextFormatting.GRAY));

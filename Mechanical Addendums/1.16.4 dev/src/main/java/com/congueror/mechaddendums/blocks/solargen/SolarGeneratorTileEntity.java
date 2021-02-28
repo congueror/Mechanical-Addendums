@@ -80,7 +80,7 @@ public class SolarGeneratorTileEntity extends TileEntity implements ITickableTil
         return getCapability(CapabilityEnergy.ENERGY).map(IEnergyStorage::getEnergyStored).orElse(0);
     }
 
-    private int currentAmountEnergyProduced()
+    public int currentAmountEnergyProduced()
     {
         return (int) (energyGeneration * SolarGenProduction.computeSunIntensity(world, pos));
     }

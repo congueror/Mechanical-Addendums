@@ -10,6 +10,7 @@ import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IIntArray;
 import net.minecraft.util.IWorldPosCallable;
 import net.minecraft.util.IntReferenceHolder;
 import net.minecraft.util.math.BlockPos;
@@ -26,7 +27,8 @@ public class FurnaceGeneratorContainer extends Container {
 	private TileEntity tileEntity;
     private PlayerEntity playerEntity;
     private IItemHandler playerInventory;
-    
+    public IIntArray furnaceData;
+        
 	public final FurnaceGeneratorTileEntity tile;
 	
 	public FurnaceGeneratorContainer(int windowId, World world, BlockPos pos, PlayerInventory playerInventory, PlayerEntity player, FurnaceGeneratorTileEntity tile, FurnaceGenTier tier) {
@@ -154,5 +156,17 @@ public class FurnaceGeneratorContainer extends Container {
         // Hotbar
         topRow += 58;
         addSlotRange(playerInventory, 0, leftCol, topRow, 9, 18);
+    }
+    
+    public int getBurnTime() {
+    	return tile.data.get(0);
+    }
+    
+    public int getTotalBurnTime() {
+    	return tile.data.get(1);
+    }
+    
+    public boolean isBurning() {
+    	return getBurnTime() > 0;
     }
 }

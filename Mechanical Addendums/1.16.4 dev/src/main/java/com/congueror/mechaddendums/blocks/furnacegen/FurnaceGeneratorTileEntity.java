@@ -10,6 +10,7 @@ import com.congueror.mechaddendums.init.TileEntityInit;
 import com.congueror.mechaddendums.util.energy.ModEnergyStorage;
 import com.congueror.mechaddendums.util.enums.FurnaceGenTier;
 
+import net.minecraft.block.AbstractFurnaceBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -17,15 +18,15 @@ import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
+import net.minecraft.util.IIntArray;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
@@ -42,12 +43,49 @@ public class FurnaceGeneratorTileEntity extends TileEntity implements ITickableT
 	private LazyOptional<IEnergyStorage> energy = LazyOptional.of(() -> energyStorage);
 
 	private FurnaceGenTier tier;
-	public int counter;
-	public int counter2 = 0;
+
+	private final NonNullList<ItemStack> items = NonNullList.withSize(1, ItemStack.EMPTY);
+	
+	private int burnTime;
+	private int totalBurnTime;
+    public static final int FIELDS_COUNT = 7;
 
 	private int energyGeneration, maxEnergyOutput;
-	public long energyGenerating;
+	public int energyGenerating;
 	public int maxEnergy;
+
+	protected final IIntArray data = new IIntArray() {
+
+		@Override
+		public int get(int index) {
+			switch (index) {
+			case 0:
+				return burnTime;
+			case 1:
+				return totalBurnTime;
+			default:
+				return 0;
+			}
+		}
+
+		@Override
+		public void set(int index, int value) {
+			switch(index) {
+			case 0:
+				burnTime = value;
+				break;
+			case 1:
+				totalBurnTime = value;
+				break;
+			}
+		}
+
+		@Override
+		public int size() {
+			return FIELDS_COUNT;
+		}
+
+	};
 
 	public FurnaceGeneratorTileEntity(FurnaceGenTier tier) {
 		super(TileEntityInit.FURNACE_GENERATOR_TILE_ENTITY.get(tier).get());
@@ -65,37 +103,67 @@ public class FurnaceGeneratorTileEntity extends TileEntity implements ITickableT
 	@Override
 	public void tick() {
 
-		ItemStack stack = itemHandler.getStackInSlot(0);
+		ItemStack stack = items.get(1);
 
 		if (world.isRemote) {
 			return;
 		}
 
-		if (counter2 > 0) {
-			counter2--;
-			if (counter > 0) {
-				counter--;
-				energyStorage.generateEnergy(energyGeneration);
-			} else if (!itemHandler.getStackInSlot(0).isEmpty() && !energyStorage.isFullEnergy() && counter2 == 0) {
-				itemHandler.extractItem(0, 1, false);
-				counter = ForgeHooks.getBurnTime(stack) / 100;
+		if (energyStorage.getEnergyStored() < energyStorage.getMaxEnergyStored()) {
+			if (burnTime <= 0 && isItemValid(stack)) {
+				burnTime = ForgeHooks.getBurnTime(stack) / 10;
+				if (burnTime > 0) {
+					totalBurnTime = burnTime;
+					if (stack.hasContainerItem()) {
+						setInventorySlotContents(0, stack.getContainerItem());
+					} else if (!stack.isEmpty()) {
+						stack.shrink(1);
+						if (stack.isEmpty()) {
+							setInventorySlotContents(0, stack.getContainerItem());
+						}
+					}
+				}
+				sendUpdate(getActiveState(), true);
 			}
-		} else {
-			counter2 = 532;
 		}
 
-		BlockState blockState = world.getBlockState(pos);
-		if (blockState.get(BlockStateProperties.LIT) != counter2 <= 0) {
-			world.setBlockState(pos, blockState.with(BlockStateProperties.LIT, counter2 <= 0),
-					Constants.BlockFlags.NOTIFY_NEIGHBORS + Constants.BlockFlags.BLOCK_UPDATE);
+		if (burnTime > 0) {
+			--burnTime;
+			energyStorage.generateEnergy(currentAmountEnergyProduced());
+		} else {
+			sendUpdate(getInactiveState(), false);
 		}
+
+//		if (counter2 > 0) {
+//			counter2--;
+//			if (counter > 0) {
+//				counter--;
+//				energyStorage.generateEnergy(energyGeneration);
+//			} else if (!itemHandler.getStackInSlot(0).isEmpty() && !energyStorage.isFullEnergy() && counter2 == 0) {
+//				itemHandler.extractItem(0, 1, false);
+//				counter = ForgeHooks.getBurnTime(stack) / 100;
+//			}
+//		} else {
+//			counter2 = 532;
+//		}
+
+//		BlockState blockState = world.getBlockState(pos);
+//		if (blockState.get(BlockStateProperties.LIT) != counter2 <= 0) {
+//			world.setBlockState(pos, blockState.with(BlockStateProperties.LIT, counter2 <= 0),
+//					Constants.BlockFlags.NOTIFY_NEIGHBORS + Constants.BlockFlags.BLOCK_UPDATE);
+//		}
 
 		sendOutPower();
 	}
 
-	public long currentAmountEnergyProduced() {
+	public void setInventorySlotContents(int index, ItemStack stack) {
+		this.items.set(0, stack);
+		this.markDirty();
+	}
+
+	public int currentAmountEnergyProduced() {
 		ItemStack stack = itemHandler.getStackInSlot(0);
-		long mult = ForgeHooks.getBurnTime(stack) / 100;
+		int mult = ForgeHooks.getBurnTime(stack) / 100;
 		energyGenerating = energyGeneration * mult;
 		return energyGenerating;
 	}
@@ -148,7 +216,8 @@ public class FurnaceGeneratorTileEntity extends TileEntity implements ITickableT
 		itemHandler.deserializeNBT(tag.getCompound("inv"));
 		energyStorage.deserializeNBT(tag.getCompound("energy"));
 
-		counter = tag.getInt("counter");
+		this.burnTime = tag.getInt("BurnTime");
+		this.totalBurnTime = tag.getInt("TotalBurnTime");
 		super.read(state, tag);
 	}
 
@@ -156,9 +225,29 @@ public class FurnaceGeneratorTileEntity extends TileEntity implements ITickableT
 	public CompoundNBT write(CompoundNBT tag) {
 		tag.put("inv", itemHandler.serializeNBT());
 		tag.put("energy", energyStorage.serializeNBT());
+		
+		tag.putInt("BurnTime", this.burnTime);
+		tag.putInt("TotalBurnTime", this.totalBurnTime);
 
-		tag.putInt("counter", counter);
 		return super.write(tag);
+	}
+
+	protected void sendUpdate(BlockState newState, boolean force) {
+		if (world == null)
+			return;
+		BlockState oldState = world.getBlockState(pos);
+		if (oldState != newState || force) {
+			world.setBlockState(pos, newState, 3);
+			world.notifyBlockUpdate(pos, oldState, newState, 3);
+		}
+	}
+
+	protected BlockState getActiveState() {
+		return getBlockState().with(AbstractFurnaceBlock.LIT, true);
+	}
+
+	protected BlockState getInactiveState() {
+		return getBlockState().with(AbstractFurnaceBlock.LIT, false);
 	}
 
 	private ItemStackHandler createHandler() {

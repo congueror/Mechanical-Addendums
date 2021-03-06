@@ -64,12 +64,18 @@ public class FurnaceGeneratorScreen extends ContainerScreen<FurnaceGeneratorCont
         this.blit(matrixStack, this.guiLeft + 8, this.guiTop + 10, this.xSize + 16, 0, 16, 60);
         
         //Burn
-        int j = this.getBurnScaled();
-        this.blit(matrixStack, this.guiLeft + 80, this.guiTop + 46 + j, this.xSize + 32, 0, 14, 14 - j);
+        if(container.isBurning()) {
+        	int j = this.getBurnScaled();
+            this.blit(matrixStack, this.guiLeft + 80, this.guiTop + 46 + j, this.xSize + 32, 0, 14, 14 - j);
+        }
     }
     
     private int getBurnScaled() {
-    	return tile.counter2 / 14; //idk what equation to put here so it actually works
+    	int total = container.getTotalBurnTime();
+    	if(total == 0) {
+    		total = 200;
+    	}
+    	return container.getBurnTime() * 13 / total;
     }
     
     private int getEnergyScaled(int pixels)

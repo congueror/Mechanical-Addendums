@@ -51,7 +51,7 @@ public class FurnaceGeneratorTileEntity extends TileEntity implements ITickableT
     public static final int FIELDS_COUNT = 7;
 
 	private int energyGeneration, maxEnergyOutput;
-	public int energyGenerating;
+	public int energyGenerating = 0;
 	public int maxEnergy;
 
 	protected final IIntArray data = new IIntArray() {
@@ -103,7 +103,7 @@ public class FurnaceGeneratorTileEntity extends TileEntity implements ITickableT
 	@Override
 	public void tick() {
 
-		ItemStack stack = items.get(1);
+		ItemStack stack = itemHandler.getStackInSlot(0);
 
 		if (world.isRemote) {
 			return;
@@ -111,7 +111,7 @@ public class FurnaceGeneratorTileEntity extends TileEntity implements ITickableT
 
 		if (energyStorage.getEnergyStored() < energyStorage.getMaxEnergyStored()) {
 			if (burnTime <= 0 && isItemValid(stack)) {
-				burnTime = ForgeHooks.getBurnTime(stack) / 10;
+				burnTime = ForgeHooks.getBurnTime(stack) / 100;
 				if (burnTime > 0) {
 					totalBurnTime = burnTime;
 					if (stack.hasContainerItem()) {
@@ -129,7 +129,8 @@ public class FurnaceGeneratorTileEntity extends TileEntity implements ITickableT
 
 		if (burnTime > 0) {
 			--burnTime;
-			energyStorage.generateEnergy(currentAmountEnergyProduced());
+			energyStorage.generateEnergy(energyGeneration);
+			System.out.println(data.get(0));
 		} else {
 			sendUpdate(getInactiveState(), false);
 		}
@@ -164,8 +165,7 @@ public class FurnaceGeneratorTileEntity extends TileEntity implements ITickableT
 	public int currentAmountEnergyProduced() {
 		ItemStack stack = itemHandler.getStackInSlot(0);
 		int mult = ForgeHooks.getBurnTime(stack) / 100;
-		energyGenerating = energyGeneration * mult;
-		return energyGenerating;
+		return (energyGeneration * mult);
 	}
 
 	public boolean isItemValid(ItemStack stack) {

@@ -65,19 +65,11 @@ public class FurnaceGeneratorScreen extends ContainerScreen<FurnaceGeneratorCont
         
         //Burn
         if(container.isBurning()) {
-        	int j = this.getBurnScaled();
-            this.blit(matrixStack, this.guiLeft + 80, this.guiTop + 46 + j, this.xSize + 32, 0, 14, 14 - j);
+            this.blit(matrixStack, this.guiLeft + 80, this.guiTop + 46, this.xSize + 32, 0, 14, 14);
         }
+        System.out.println(container.isBurning());
     }
-    
-    private int getBurnScaled() {
-    	int total = container.getTotalBurnTime();
-    	if(total == 0) {
-    		total = 200;
-    	}
-    	return container.getBurnTime() * 13 / total;
-    }
-    
+
     private int getEnergyScaled(int pixels)
     {
         return pixels - (pixels * getPercent() / 100);

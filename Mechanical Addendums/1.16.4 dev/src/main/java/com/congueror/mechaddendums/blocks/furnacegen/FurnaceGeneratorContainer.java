@@ -33,10 +33,10 @@ public class FurnaceGeneratorContainer extends Container {
 	
 	public FurnaceGeneratorContainer(int windowId, World world, BlockPos pos, PlayerInventory playerInventory, PlayerEntity player, FurnaceGeneratorTileEntity tile, FurnaceGenTier tier) {
 		super(ContainerInit.FURNACE_GENERATOR_CONTAINER.get(tier).get(), windowId);
-        tileEntity = world.getTileEntity(pos);
         this.playerEntity = player;
         this.playerInventory = new InvWrapper(playerInventory);
 		this.tile = tile;
+        tileEntity = world.getTileEntity(pos);
 
         if (tileEntity != null) {
             tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(h -> {
@@ -45,6 +45,8 @@ public class FurnaceGeneratorContainer extends Container {
         }
         layoutPlayerInventorySlots(8, 84);
         trackPower();
+        
+        trackIntArray(tile.data);
 	}
 	
 	// Setup syncing of power from server to client so that the GUI can show the amount of power in the block
@@ -80,6 +82,8 @@ public class FurnaceGeneratorContainer extends Container {
             }
         });
     }
+    
+    
     
     public int getEnergy() {
         return tileEntity.getCapability(CapabilityEnergy.ENERGY).map(IEnergyStorage::getEnergyStored).orElse(0);

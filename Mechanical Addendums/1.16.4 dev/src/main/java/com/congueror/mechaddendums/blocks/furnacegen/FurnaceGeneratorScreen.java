@@ -15,7 +15,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 
 public class FurnaceGeneratorScreen extends ContainerScreen<FurnaceGeneratorContainer> {
 
-    private ResourceLocation GUI = new ResourceLocation(MechAddendums.MOD_ID, "textures/gui/coal_gen.png");
+    private ResourceLocation GUI = new ResourceLocation(MechAddendums.MOD_ID, "textures/gui/furnace_gen.png");
     FurnaceGeneratorTileEntity tile;
     
 
@@ -67,7 +67,6 @@ public class FurnaceGeneratorScreen extends ContainerScreen<FurnaceGeneratorCont
         if(container.isBurning()) {
             this.blit(matrixStack, this.guiLeft + 80, this.guiTop + 46, this.xSize + 32, 0, 14, 14);
         }
-        System.out.println(container.isBurning());
     }
 
     private int getEnergyScaled(int pixels)

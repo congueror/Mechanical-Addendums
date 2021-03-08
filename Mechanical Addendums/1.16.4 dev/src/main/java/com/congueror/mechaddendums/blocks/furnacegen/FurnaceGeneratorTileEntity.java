@@ -130,7 +130,6 @@ public class FurnaceGeneratorTileEntity extends TileEntity implements ITickableT
 		if (burnTime > 0) {
 			--burnTime;
 			energyStorage.generateEnergy(energyGeneration);
-			System.out.println(data.get(0));
 		} else {
 			sendUpdate(getInactiveState(), false);
 		}

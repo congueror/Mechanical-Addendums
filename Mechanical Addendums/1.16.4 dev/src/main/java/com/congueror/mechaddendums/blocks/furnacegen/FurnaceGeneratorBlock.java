@@ -1,21 +1,31 @@
 package com.congueror.mechaddendums.blocks.furnacegen;
 
+import java.util.List;
 import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import com.congueror.mechaddendums.blocks.MachineBlock;
+import com.congueror.mechaddendums.blocks.solargen.SolarGeneratorTileEntity;
 import com.congueror.mechaddendums.util.enums.FurnaceGenTier;
+import com.congueror.mechaddendums.util.helpers.TooltipHelper;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.fluid.FluidState;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -23,6 +33,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
@@ -34,11 +45,15 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ToolType;
+import net.minecraftforge.energy.CapabilityEnergy;
+import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-public class FurnaceGeneratorBlock extends Block{
+public class FurnaceGeneratorBlock extends MachineBlock{
 
 	private final FurnaceGenTier tier;
+	
+    private static final ResourceLocation WRENCH = new ResourceLocation("forge", "wrench");
 	
 	public FurnaceGeneratorBlock(FurnaceGenTier tier) {
 		super(Block.Properties.create(Material.IRON)
@@ -49,6 +64,7 @@ public class FurnaceGeneratorBlock extends Block{
 				.setRequiresTool()
 				.setLightLevel(state -> state.get(BlockStateProperties.LIT) ? 14 : 0));
 		this.tier = tier;
+		this.setDefaultState(this.stateContainer.getBaseState().with(BlockStateProperties.LIT, false));
 	}
 	
 	@Override
@@ -70,6 +86,16 @@ public class FurnaceGeneratorBlock extends Block{
 	@Override
     public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult trace) {
         if (!world.isRemote) {
+        	
+        	if(player.isCrouching())
+            {
+                if(player.getHeldItemMainhand().getItem().getTags().contains(WRENCH))
+                {
+                    dismantleBlock(world, pos);
+                    return ActionResultType.SUCCESS;
+                }
+            }
+        	
             TileEntity tileEntity = world.getTileEntity(pos);
             if (tileEntity instanceof FurnaceGeneratorTileEntity) {
                 INamedContainerProvider containerProvider = new INamedContainerProvider() {
@@ -91,10 +117,77 @@ public class FurnaceGeneratorBlock extends Block{
         }
         return ActionResultType.SUCCESS;
     }
+	
+	private void dismantleBlock(World worldIn, BlockPos pos)
+    {
+        ItemStack itemStack = new ItemStack(this);
+
+        SolarGeneratorTileEntity localTileEntity = (SolarGeneratorTileEntity) worldIn.getTileEntity(pos);
+        int internalEnergy = localTileEntity.getCapability(CapabilityEnergy.ENERGY).map(IEnergyStorage::getEnergyStored).orElse(0);
+        if(internalEnergy > 0)
+        {
+            CompoundNBT energyValue = new CompoundNBT();
+            energyValue.putInt("value", internalEnergy);
+
+            CompoundNBT energy = new CompoundNBT();
+            energy.put("energy", energyValue);
+
+            CompoundNBT root = new CompoundNBT();
+            root.put("BlockEntityTag", energy);
+            itemStack.setTag(root);
+        }
+
+        worldIn.removeBlock(pos, false);
+
+        ItemEntity entityItem = new ItemEntity(worldIn, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, itemStack);
+
+        entityItem.setMotion(0, entityItem.getYOffset(), 0);
+        worldIn.addEntity(entityItem);
+    }
+	
+	@Override
+	public boolean removedByPlayer(BlockState state, World world, BlockPos pos, PlayerEntity player, boolean willHarvest, FluidState fluid)
+	{
+		
+	    return willHarvest || super.removedByPlayer(state, world, pos, player, willHarvest, fluid);
+	}
+
+	@Override
+	public void harvestBlock(World worldIn, PlayerEntity player, BlockPos pos, BlockState state, TileEntity te, ItemStack stack)
+	{
+	    super.harvestBlock(worldIn, player, pos, state, te, stack);
+	    worldIn.removeBlock(pos, false);
+	}
+	
+	@SuppressWarnings("deprecation")
+	@Override
+	public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
+		if (state.getBlock() != newState.getBlock()) {
+	         TileEntity tileentity = worldIn.getTileEntity(pos);
+	         if (tileentity instanceof FurnaceGeneratorTileEntity) {
+	            InventoryHelper.dropItems(worldIn, pos, ((FurnaceGeneratorTileEntity)tileentity).getDrops());
+	            worldIn.updateComparatorOutputLevel(pos, this);
+	         }
+	         super.onReplaced(state, worldIn, pos, newState, isMoving);
+	      }
+	}
 
     @Override
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(BlockStateProperties.HORIZONTAL_FACING, BlockStateProperties.LIT);
+    }
+    
+    @OnlyIn(Dist.CLIENT)
+    @Override
+    public void addInformation(ItemStack stack, IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn)
+    {
+    	CompoundNBT compoundnbt = stack.getChildTag("BlockEntityTag");
+        int energy = 0;
+        if(compoundnbt != null)
+            if(compoundnbt.contains("energy"))
+                energy = compoundnbt.getCompound("energy").getInt("value");
+
+        TooltipHelper.showInfoShiftFurnaceGen(this.tier, tooltip, energy);
     }
 	
 	@OnlyIn(Dist.CLIENT)

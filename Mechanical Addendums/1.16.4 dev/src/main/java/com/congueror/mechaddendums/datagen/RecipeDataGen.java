@@ -5,6 +5,7 @@ import java.util.function.Consumer;
 import com.congueror.mechaddendums.MechAddendums;
 import com.congueror.mechaddendums.init.BlockInit;
 import com.congueror.mechaddendums.init.ItemInit;
+import com.congueror.mechaddendums.util.enums.FurnaceGenTier;
 import com.congueror.mechaddendums.util.enums.MachineFrameTier;
 import com.congueror.mechaddendums.util.enums.SolarGenTier;
 
@@ -3646,9 +3647,10 @@ public class RecipeDataGen extends RecipeProvider
 				ShapedRecipeBuilder.shapedRecipe(BlockInit.SOLAR_GENERATOR.get(SolarGenTier.ADVANCED).get(), 1)
 		        .patternLine("ggg")
 		        .patternLine("sfs")
-		        .patternLine("iii")
+		        .patternLine("ipi")
 		        .key('g', ItemInit.ADVANCED_PHOTOVOLTAIC_CELL.get())
 		        .key('f', BlockInit.MACHINE_FRAME_TIERED.get(MachineFrameTier.ADVANCED).get())
+		        .key('p', BlockInit.SOLAR_GENERATOR.get(SolarGenTier.BASIC).get())
 		        .key('s', ModTags.Items.INGOTS_STEEL)
 		        .key('i', ModTags.Items.INGOTS_SIGNALUM)
 		        .addCriterion("machine_frame_advanced", hasItem(BlockInit.MACHINE_FRAME_TIERED.get(MachineFrameTier.ADVANCED).get()))
@@ -3656,9 +3658,10 @@ public class RecipeDataGen extends RecipeProvider
 				ShapedRecipeBuilder.shapedRecipe(BlockInit.SOLAR_GENERATOR.get(SolarGenTier.INDUSTRIAL).get(), 1)
 		        .patternLine("ggg")
 		        .patternLine("sfs")
-		        .patternLine("iii")
+		        .patternLine("ipi")
 		        .key('g', ItemInit.INDUSTRIAL_PHOTOVOLTAIC_CELL.get())
 		        .key('f', BlockInit.MACHINE_FRAME_TIERED.get(MachineFrameTier.INDUSTRIAL).get())
+		        .key('p', BlockInit.SOLAR_GENERATOR.get(SolarGenTier.ADVANCED).get())
 		        .key('s', ModTags.Items.INGOTS_STEEL)
 		        .key('i', ModTags.Items.INGOTS_COBALT)
 		        .addCriterion("machine_frame_industrial", hasItem(BlockInit.MACHINE_FRAME_TIERED.get(MachineFrameTier.INDUSTRIAL).get()))
@@ -3666,9 +3669,10 @@ public class RecipeDataGen extends RecipeProvider
 				ShapedRecipeBuilder.shapedRecipe(BlockInit.SOLAR_GENERATOR.get(SolarGenTier.ULTIMATE).get(), 1)
 		        .patternLine("ggg")
 		        .patternLine("sfs")
-		        .patternLine("iii")
+		        .patternLine("ipi")
 		        .key('g', ItemInit.ULTIMATE_PHOTOVOLTAIC_CELL.get())
 		        .key('f', BlockInit.MACHINE_FRAME_TIERED.get(MachineFrameTier.ULTIMATE).get())
+		        .key('p', BlockInit.SOLAR_GENERATOR.get(SolarGenTier.INDUSTRIAL).get())
 		        .key('s', ModTags.Items.INGOTS_STEEL)
 		        .key('i', ModTags.Items.INGOTS_ENDERIUM)
 		        .addCriterion("machine_frame_ultimate", hasItem(BlockInit.MACHINE_FRAME_TIERED.get(MachineFrameTier.ULTIMATE).get()))
@@ -3784,6 +3788,46 @@ public class RecipeDataGen extends RecipeProvider
 				
 				cookingRecipesForMethod(recipe, "smoking", IRecipeSerializer.SMOKING, 100);
 				cookingRecipesForMethod(recipe, "campfire_cooking", IRecipeSerializer.CAMPFIRE_COOKING, 600);
+				
+				ShapedRecipeBuilder.shapedRecipe(BlockInit.FURNACE_GENERATOR.get(FurnaceGenTier.BASIC).get(), 1)
+		        .patternLine("iii")
+		        .patternLine("sfs")
+		        .patternLine("sss")
+		        .key('f', BlockInit.MACHINE_FRAME_TIERED.get(MachineFrameTier.BASIC).get())
+		        .key('s', ModTags.Items.INGOTS_STEEL)
+		        .key('i', ModTags.Items.INGOTS_BRASS)
+		        .addCriterion("machine_frame_basic", hasItem(BlockInit.MACHINE_FRAME_TIERED.get(MachineFrameTier.BASIC).get()))
+		        .build(recipe);
+				ShapedRecipeBuilder.shapedRecipe(BlockInit.FURNACE_GENERATOR.get(FurnaceGenTier.ADVANCED).get(), 1)
+		        .patternLine("iii")
+		        .patternLine("sfs")
+		        .patternLine("sps")
+		        .key('f', BlockInit.MACHINE_FRAME_TIERED.get(MachineFrameTier.ADVANCED).get())
+		        .key('p', BlockInit.FURNACE_GENERATOR.get(FurnaceGenTier.BASIC).get())
+		        .key('s', ModTags.Items.INGOTS_STEEL)
+		        .key('i', ModTags.Items.INGOTS_SIGNALUM)
+		        .addCriterion("machine_frame_advanced", hasItem(BlockInit.MACHINE_FRAME_TIERED.get(MachineFrameTier.ADVANCED).get()))
+		        .build(recipe);
+				ShapedRecipeBuilder.shapedRecipe(BlockInit.FURNACE_GENERATOR.get(FurnaceGenTier.INDUSTRIAL).get(), 1)
+		        .patternLine("iii")
+		        .patternLine("sfs")
+		        .patternLine("sps")
+		        .key('f', BlockInit.MACHINE_FRAME_TIERED.get(MachineFrameTier.INDUSTRIAL).get())
+		        .key('p', BlockInit.FURNACE_GENERATOR.get(FurnaceGenTier.ADVANCED).get())
+		        .key('s', ModTags.Items.INGOTS_STEEL)
+		        .key('i', ModTags.Items.INGOTS_COBALT)
+		        .addCriterion("machine_frame_industrial", hasItem(BlockInit.MACHINE_FRAME_TIERED.get(MachineFrameTier.INDUSTRIAL).get()))
+		        .build(recipe);
+				ShapedRecipeBuilder.shapedRecipe(BlockInit.FURNACE_GENERATOR.get(FurnaceGenTier.ULTIMATE).get(), 1)
+		        .patternLine("iii")
+		        .patternLine("sfs")
+		        .patternLine("sps")
+		        .key('f', BlockInit.MACHINE_FRAME_TIERED.get(MachineFrameTier.ULTIMATE).get())
+		        .key('p', BlockInit.FURNACE_GENERATOR.get(FurnaceGenTier.INDUSTRIAL).get())
+		        .key('s', ModTags.Items.INGOTS_STEEL)
+		        .key('i', ModTags.Items.INGOTS_ENDERIUM)
+		        .addCriterion("machine_frame_ultimate", hasItem(BlockInit.MACHINE_FRAME_TIERED.get(MachineFrameTier.ULTIMATE).get()))
+		        .build(recipe);
 	}
 	
 	private static void cookingRecipesForMethod(Consumer<IFinishedRecipe> recipeConsumer, String recipeConsumerIn, CookingRecipeSerializer<?> cookingMethod, int serializerIn) {

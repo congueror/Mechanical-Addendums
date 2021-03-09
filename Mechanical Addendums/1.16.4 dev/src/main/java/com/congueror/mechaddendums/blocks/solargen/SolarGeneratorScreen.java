@@ -29,7 +29,7 @@ public class SolarGeneratorScreen extends ContainerScreen<SolarGeneratorContaine
         super.render(mStack, mouseX, mouseY, partialTicks);
         
         List<ITextComponent> energy_bar = new ArrayList<>();
-        energy_bar.add(new TranslationTextComponent("tooltip.mechaddendums.solargen.energy").appendString(": " + getPercent() + "%"));
+        energy_bar.add(new TranslationTextComponent("tooltip.mechaddendums.solargen.energy").appendString(": " + getPercent() + "%" + " (" + tile.energyClient + "FE)"));
         energy_bar.add(new TranslationTextComponent("tooltip.mechaddendums.solargen.generation").appendString(": " + tile.energyProductionClient + "FE"));
         
         this.renderHoveredTooltip(mStack, mouseX, mouseY);

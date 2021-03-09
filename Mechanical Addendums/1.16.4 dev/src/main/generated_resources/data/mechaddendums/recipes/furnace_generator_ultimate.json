@@ -1,19 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "ggg",
+    "iii",
     "sfs",
-    "ipi"
+    "sps"
   ],
   "key": {
-    "g": {
-      "item": "mechaddendums:photovoltaic_cell_ultimate"
-    },
     "f": {
       "item": "mechaddendums:machine_frame_ultimate"
     },
     "p": {
-      "item": "mechaddendums:solar_generator_industrial"
+      "item": "mechaddendums:furnace_generator_industrial"
     },
     "s": {
       "tag": "forge:ingots/steel"
@@ -23,6 +20,6 @@
     }
   },
   "result": {
-    "item": "mechaddendums:solar_generator_ultimate"
+    "item": "mechaddendums:furnace_generator_ultimate"
   }
 }

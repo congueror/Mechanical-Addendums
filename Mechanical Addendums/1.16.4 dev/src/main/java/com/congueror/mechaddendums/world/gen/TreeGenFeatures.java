@@ -74,17 +74,17 @@ public class TreeGenFeatures {
 		public static final BaseTreeFeatureConfig RUBBER_TREE_CONFIG = (new BaseTreeFeatureConfig.Builder(
 				new SimpleBlockStateProvider(BlockInit.RUBBER_LOG.get().getDefaultState()),
 				new SimpleBlockStateProvider(BlockInit.RUBBER_LEAVES.get().getDefaultState()),
-				new FancyFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0), 3),
+				new FancyFoliagePlacer(FeatureSpread.create(2), FeatureSpread.create(0), 3),
 				new StraightTrunkPlacer(4, 2, 0), new TwoLayerFeature(1, 0, 1))).setIgnoreVines().build();
 		public static final BaseTreeFeatureConfig COCONUT_TREE_CONFIG = (new BaseTreeFeatureConfig.Builder(
 				new SimpleBlockStateProvider(Blocks.JUNGLE_LOG.getDefaultState()),
 				new SimpleBlockStateProvider(BlockInit.COCONUT_LEAVES.get().getDefaultState()),
-				new AcaciaFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0)),
+				new AcaciaFoliagePlacer(FeatureSpread.create(2), FeatureSpread.create(0)),
 				new ForkyTrunkPlacer(5, 2, 2), new TwoLayerFeature(1, 0, 1))).setIgnoreVines().build();
 		public static final BaseTreeFeatureConfig CANDLENUT_TREE_CONFIG = (new BaseTreeFeatureConfig.Builder(
 				new SimpleBlockStateProvider(Blocks.OAK_LOG.getDefaultState()),
 				new SimpleBlockStateProvider(BlockInit.CANDLENUT_LEAVES.get().getDefaultState()),
-				new BlobFoliagePlacer(FeatureSpread.func_242252_a(2), FeatureSpread.func_242252_a(0), 3),
+				new BlobFoliagePlacer(FeatureSpread.create(2), FeatureSpread.create(0), 3),
 				new StraightTrunkPlacer(4, 2, 0), new TwoLayerFeature(1, 0, 1))).setIgnoreVines().build();
 	}
 }

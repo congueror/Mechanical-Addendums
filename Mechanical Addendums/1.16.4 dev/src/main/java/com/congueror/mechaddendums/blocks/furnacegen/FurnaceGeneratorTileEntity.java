@@ -296,4 +296,12 @@ public class FurnaceGeneratorTileEntity extends TileEntity implements ITickableT
 	public ITextComponent getDisplayName() {
 		return new TranslationTextComponent(this.getBlockState().getBlock().getTranslationKey());
 	}
+	
+	public NonNullList<ItemStack> getDrops() {
+		ItemStack stack = itemHandler.getStackInSlot(0);
+		NonNullList<ItemStack> drops = NonNullList.create();
+		if (!stack.isEmpty())
+            drops.add(stack);
+        return drops;
+	}
 }

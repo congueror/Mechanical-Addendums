@@ -4,8 +4,9 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import com.congueror.mechaddendums.util.Tooltip;
+import com.congueror.mechaddendums.blocks.MachineBlock;
 import com.congueror.mechaddendums.util.enums.SolarGenTier;
+import com.congueror.mechaddendums.util.helpers.TooltipHelper;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -36,7 +37,7 @@ import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-public class SolarGeneratorBlock extends Block
+public class SolarGeneratorBlock extends MachineBlock
 {
 	private final SolarGenTier tier;
     private static final ResourceLocation WRENCH = new ResourceLocation("forge", "wrench");
@@ -136,7 +137,7 @@ public class SolarGeneratorBlock extends Block
             if(compoundnbt.contains("energy"))
                 energy = compoundnbt.getCompound("energy").getInt("value");
 
-        Tooltip.showInfoShift(this.tier, tooltip, energy);
+        TooltipHelper.showInfoShiftSolarGen(this.tier, tooltip, energy);
     }
     
     @Override

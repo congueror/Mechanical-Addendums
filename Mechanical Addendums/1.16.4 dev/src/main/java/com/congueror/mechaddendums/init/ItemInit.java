@@ -659,7 +659,7 @@ public class ItemInit
     new CustomSpawnEgg(EntityInit.WANDERING_FLORIST, 0x2FFF00, 15377456, new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     
     public static final RegistryObject<CustomMusicDisc> PINA_COLADA_SONG_MUSIC_DISC = ITEMS.register("pina_colada_song_music_disc", () ->
-    new CustomMusicDisc(12, SoundInit.PINA_COLADA_SONG_LAZY.get(), new Item.Properties().group(ModItemGroups.ItemsIG.instance).maxStackSize(1)));
+    new CustomMusicDisc(12, SoundInit.PINA_COLADA_SONG_LAZY.get(), new Item.Properties().group(ModItemGroups.ItemsIG.instance).maxStackSize(1).rarity(Rarity.RARE)));
     
     public static final RegistryObject<EmeraldHornItem> EMERALD_HORN = ITEMS.register("emerald_horn", () ->
     new EmeraldHornItem(new Item.Properties().group(ModItemGroups.ItemsIG.instance).maxStackSize(1).defaultMaxDamage(5000).rarity(Rarity.EPIC)));

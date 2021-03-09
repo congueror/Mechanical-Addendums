@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "iii",
+    "sfs",
+    "sss"
+  ],
+  "key": {
+    "f": {
+      "item": "mechaddendums:machine_frame_basic"
+    },
+    "s": {
+      "tag": "forge:ingots/steel"
+    },
+    "i": {
+      "tag": "forge:ingots/brass"
+    }
+  },
+  "result": {
+    "item": "mechaddendums:furnace_generator_basic"
+  }
+}

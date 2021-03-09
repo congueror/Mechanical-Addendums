@@ -2,6 +2,7 @@ package com.congueror.mechaddendums.datagen;
 
 import com.congueror.mechaddendums.MechAddendums;
 import com.congueror.mechaddendums.init.BlockInit;
+import com.congueror.mechaddendums.util.enums.FurnaceGenTier;
 import com.congueror.mechaddendums.util.enums.MachineFrameTier;
 import com.congueror.mechaddendums.util.enums.SolarGenTier;
 
@@ -194,6 +195,9 @@ public class BlockModelDataGen extends BlockStateProvider
 		for(MachineFrameTier tier : MachineFrameTier.values()) {
 		simpleBlock(BlockInit.MACHINE_FRAME_TIERED.get(tier).get());
 		basicBlockItem(BlockInit.MACHINE_FRAME_TIERED.get(tier).get());
+		}
+		for(FurnaceGenTier tier : FurnaceGenTier.values()) {
+			basicBlockItem(BlockInit.FURNACE_GENERATOR.get(tier).get());
 		}
 		
 		basicBlockItem(BlockInit.COCONUT_LEAVES.get());

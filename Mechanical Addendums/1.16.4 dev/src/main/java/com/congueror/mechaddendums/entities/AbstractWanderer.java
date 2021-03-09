@@ -97,31 +97,31 @@ public class AbstractWanderer extends AbstractVillagerEntity {
         this.goalSelector.addGoal(9, new LookAtWithoutMovingGoal(this, PlayerEntity.class, 3.0F, 1.0F));
         this.goalSelector.addGoal(10, new LookAtGoal(this, MobEntity.class, 8.0F));
     }
-
+    
     @Override
-	public AgeableEntity func_241840_a(ServerWorld p_241840_1_, AgeableEntity p_241840_2_) {
+	public AgeableEntity createChild(ServerWorld world, AgeableEntity mate) {
 		return null;
-    }
+	}
 
     @Override
-    public ActionResultType func_230254_b_(PlayerEntity p_230254_1_, Hand p_230254_2_) {
+    public ActionResultType getEntityInteractionResult(PlayerEntity playerIn, Hand hand) {
         if (this.isAlive() && !this.hasCustomer() && !this.isChild()) {
-            if (p_230254_2_ == Hand.MAIN_HAND) {
-            	p_230254_1_.addStat(Stats.TALKED_TO_VILLAGER);
+            if (hand == Hand.MAIN_HAND) {
+            	playerIn.addStat(Stats.TALKED_TO_VILLAGER);
             }
 
             if (this.getOffers().isEmpty()) {
-                return super.func_230254_b_(p_230254_1_, p_230254_2_);
+                return super.getEntityInteractionResult(playerIn, hand);
             } else {
                 if (!this.world.isRemote) {
-                    this.setCustomer(p_230254_1_);
-                    this.openMerchantContainer(p_230254_1_, this.getDisplayName(), 1);
+                    this.setCustomer(playerIn);
+                    this.openMerchantContainer(playerIn, this.getDisplayName(), 1);
                 }
 
                 return ActionResultType.func_233537_a_(this.world.isRemote);
             }
         } else {
-            return super.func_230254_b_(p_230254_1_, p_230254_2_);
+            return super.getEntityInteractionResult(playerIn, hand);
         }
     }
 

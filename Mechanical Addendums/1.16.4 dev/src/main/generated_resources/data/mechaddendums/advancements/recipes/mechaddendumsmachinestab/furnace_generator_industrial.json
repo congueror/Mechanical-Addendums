@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "mechaddendums:furnace_generator_industrial"
+    ]
+  },
+  "criteria": {
+    "machine_frame_industrial": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "mechaddendums:machine_frame_industrial"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "mechaddendums:furnace_generator_industrial"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "machine_frame_industrial",
+      "has_the_recipe"
+    ]
+  ]
+}

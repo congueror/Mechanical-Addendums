@@ -73,17 +73,17 @@ public class OreGenFeatures {
 	
 	public static void registerOverworldConfiguredOre(int veinCount, int veinSize, int minY, int maxY, Block ore){
         if(ore.getRegistryName() != null)
-         Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, ore.getRegistryName(), Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD, ore.getDefaultState(), veinSize)).withPlacement(Placement.RANGE.configure(new TopSolidRangeConfig(minY, minY, maxY))).square().func_242731_b(veinCount));
+         Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, ore.getRegistryName(), Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD, ore.getDefaultState(), veinSize)).withPlacement(Placement.RANGE.configure(new TopSolidRangeConfig(minY, minY, maxY))).square().count(veinCount));
     }
 	
 	public static void registerNetherConfiguredOre(int veinCount, int veinSize, int minY, int maxY, Block ore){
         if(ore.getRegistryName() != null)
-         Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, ore.getRegistryName(), Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.BASE_STONE_NETHER, ore.getDefaultState(), veinSize)).withPlacement(Placement.RANGE.configure(new TopSolidRangeConfig(minY, minY, maxY))).square().func_242731_b(veinCount));
+         Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, ore.getRegistryName(), Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.BASE_STONE_NETHER, ore.getDefaultState(), veinSize)).withPlacement(Placement.RANGE.configure(new TopSolidRangeConfig(minY, minY, maxY))).square().count(veinCount));
     }
 	
 	public static void registerConfiguredDisk(Block block) {
 		Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, block.getRegistryName(), Feature.DISK
-				.withConfiguration(new SphereReplaceConfig(block.getDefaultState(),FeatureSpread.func_242253_a(2, 1), 1,ImmutableList.of(Blocks.DIRT.getDefaultState(), block.getDefaultState())))
+				.withConfiguration(new SphereReplaceConfig(block.getDefaultState(),FeatureSpread.create(2, 1), 1,ImmutableList.of(Blocks.DIRT.getDefaultState(), block.getDefaultState())))
 				.withPlacement(Features.Placements.SEAGRASS_DISK_PLACEMENT));
 	}
 	

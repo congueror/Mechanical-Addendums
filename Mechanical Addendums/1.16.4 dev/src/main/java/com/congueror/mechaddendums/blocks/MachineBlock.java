@@ -19,6 +19,7 @@ import net.minecraftforge.energy.IEnergyStorage;
 
 public class MachineBlock extends Block{
 
+	//TODO Finish the abstract class
     private static final ResourceLocation WRENCH = new ResourceLocation("forge", "wrench");
 	
 	public MachineBlock(Properties properties) {

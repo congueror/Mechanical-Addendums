@@ -9,6 +9,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
+@SuppressWarnings("deprecation")
 public class ModItemGroups
 {
 	public static class BlocksIG extends ItemGroup
@@ -141,7 +142,7 @@ public class ModItemGroups
 		private MachinesIG(int index, String label) 
 		{
 			super(index, label);
-			this.setBackgroundImageName("mechaddendums_item_search.png");
+			this.setBackgroundImage(new ResourceLocation("mechaddendums_item_search.png"));
 		}
 	
 		@Override

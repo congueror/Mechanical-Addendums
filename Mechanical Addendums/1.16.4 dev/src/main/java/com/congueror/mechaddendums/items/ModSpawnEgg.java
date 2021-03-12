@@ -19,19 +19,19 @@ import net.minecraftforge.common.util.NonNullSupplier;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 
-public class CustomSpawnEgg extends SpawnEggItem
+public class ModSpawnEgg extends SpawnEggItem
 {
 	
-	protected static final List<CustomSpawnEgg> UNADDED_EGGS = new ArrayList<CustomSpawnEgg>();
+	protected static final List<ModSpawnEgg> UNADDED_EGGS = new ArrayList<ModSpawnEgg>();
 	private final Lazy<? extends EntityType<?>> entityTypeSupplier;
 
-	public CustomSpawnEgg(final NonNullSupplier<? extends EntityType<?>> entityTypeSupplier, final int primaryColour, final int secondaryColour, final Item.Properties properties) {
+	public ModSpawnEgg(final NonNullSupplier<? extends EntityType<?>> entityTypeSupplier, final int primaryColour, final int secondaryColour, final Item.Properties properties) {
 		super(null, primaryColour, secondaryColour, properties);
 		this.entityTypeSupplier = Lazy.of(entityTypeSupplier::get);
 		UNADDED_EGGS.add(this);
 	}
 	
-	public CustomSpawnEgg(final RegistryObject<? extends EntityType<?>> entityTypeSupplier, final int primaryColour, final int secondaryColour, final Item.Properties properties) {
+	public ModSpawnEgg(final RegistryObject<? extends EntityType<?>> entityTypeSupplier, final int primaryColour, final int secondaryColour, final Item.Properties properties) {
 		super(null, primaryColour, secondaryColour, properties);
 		this.entityTypeSupplier = Lazy.of(entityTypeSupplier::get);
 		UNADDED_EGGS.add(this);

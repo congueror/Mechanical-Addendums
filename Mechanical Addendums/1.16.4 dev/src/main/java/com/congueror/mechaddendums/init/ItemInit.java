@@ -5,15 +5,15 @@ import java.util.Map;
 
 import com.congueror.mechaddendums.MechAddendums;
 import com.congueror.mechaddendums.items.CoalNuggetItem;
-import com.congueror.mechaddendums.items.CustomMusicDisc;
-import com.congueror.mechaddendums.items.CustomSpawnEgg;
 import com.congueror.mechaddendums.items.EmeraldHornItem;
 import com.congueror.mechaddendums.items.FermentingBarrelBlockItem;
 import com.congueror.mechaddendums.items.HammerItem;
 import com.congueror.mechaddendums.items.HazmatSuitItem;
-import com.congueror.mechaddendums.items.LeadDustItem;
 import com.congueror.mechaddendums.items.ModContainerItem;
 import com.congueror.mechaddendums.items.ModDrinkItem;
+import com.congueror.mechaddendums.items.ModItem;
+import com.congueror.mechaddendums.items.ModMusicDisc;
+import com.congueror.mechaddendums.items.ModSpawnEgg;
 import com.congueror.mechaddendums.items.RadioactiveMetalItem;
 import com.congueror.mechaddendums.items.UraniumDustItem;
 import com.congueror.mechaddendums.util.ModItemGroups;
@@ -33,6 +33,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.Rarity;
 import net.minecraft.item.ShovelItem;
+import net.minecraft.item.SignItem;
 import net.minecraft.item.SwordItem;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -114,7 +115,7 @@ public class ItemInit
     //Lead
     public static final RegistryObject<Item> LEAD_INGOT = ITEMS.register("lead_ingot", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> LEAD_NUGGET = ITEMS.register("lead_nugget", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
-	public static final RegistryObject<Item> LEAD_DUST = ITEMS.register("lead_dust", ()-> new LeadDustItem(new Item.Properties().group(ModItemGroups.ItemsIG.instance).food(MAFoods.LEAD_DUST)));
+	public static final RegistryObject<Item> LEAD_DUST = ITEMS.register("lead_dust", ()-> new ModItem(new Item.Properties().group(ModItemGroups.ItemsIG.instance).food(MAFoods.LEAD_DUST)));
     public static final RegistryObject<Item> LEAD_GEAR = ITEMS.register("lead_gear", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<BlockItem> LEAD_BLOCK = ITEMS.register("lead_block", () -> new BlockItem(BlockInit.LEAD_BLOCK.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     public static final RegistryObject<BlockItem> LEAD_ORE = ITEMS.register("lead_ore", () -> new BlockItem(BlockInit.LEAD_ORE.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
@@ -583,7 +584,7 @@ public class ItemInit
     public static final RegistryObject<BlockItem> RUBBER_SLAB = ITEMS.register("rubber_slab", () -> new BlockItem(BlockInit.RUBBER_SLAB.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     public static final RegistryObject<BlockItem> RUBBER_FENCE_GATE = ITEMS.register("rubber_fence_gate", () -> new BlockItem(BlockInit.RUBBER_FENCE_GATE.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     public static final RegistryObject<BlockItem> RUBBER_BUTTON = ITEMS.register("rubber_button", () -> new BlockItem(BlockInit.RUBBER_BUTTON.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
-    //public static final RegistryObject<BlockItem> RUBBER_SIGN = ITEMS.register("rubber_sign", () -> new SignItem(new Item.Properties().group(ModItemGroups.BlocksIG.instance), BlockInit.RUBBER_SIGN.get(), BlockInit.RUBBER_WALL_SIGN.get()));
+    public static final RegistryObject<Item> RUBBER_SIGN = ITEMS.register("rubber_sign", () -> new SignItem(new Item.Properties().group(ModItemGroups.BlocksIG.instance).maxStackSize(16), BlockInit.RUBBER_SIGN.get(), BlockInit.RUBBER_WALL_SIGN.get()));
     
     public static final RegistryObject<Item> HAZMAT_HELM = ITEMS.register("hazmat_scuba_helmet", ()-> new HazmatSuitItem(ModArmorMaterial.HAZMAT, EquipmentSlotType.HEAD, new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> HAZMAT_CHEST = ITEMS.register("hazmat_suit", ()-> new HazmatSuitItem(ModArmorMaterial.HAZMAT, EquipmentSlotType.CHEST, new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
@@ -646,7 +647,7 @@ public class ItemInit
     public static final RegistryObject<Item> COCONUT_MILK = ITEMS.register("coconut_milk", () -> new ModDrinkItem(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.BASIC_DRINKS)));
     public static final RegistryObject<Item> CANDLENUT = ITEMS.register("candlenut", () -> new Item(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.BASIC_FOOD)));
     public static final RegistryObject<Item> COOKED_CANDLENUT = ITEMS.register("cooked_candlenut", () -> new Item(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.COOKED_BASIC_FOOD)));
-    public static final RegistryObject<Item> INAMONA = ITEMS.register("inamona", () -> new Item(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.INAMONA)));
+    public static final RegistryObject<Item> INAMONA = ITEMS.register("inamona", () -> new ModItem(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.INAMONA)));
     public static final RegistryObject<Item> PINA_COLADA = ITEMS.register("pina_colada", () -> new ModDrinkItem(new Item.Properties().group(ModItemGroups.FoodIG.instance).food(MAFoods.PINA_COLADA).rarity(Rarity.RARE)));
 
     public static final RegistryObject<BlockItem> COCONUT_LEAVES = ITEMS.register("coconut_leaves", () -> new BlockItem(BlockInit.COCONUT_LEAVES.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
@@ -655,11 +656,11 @@ public class ItemInit
     public static final RegistryObject<BlockItem> CANDLENUT_SAPLING = ITEMS.register("candlenut_sapling", () -> new BlockItem(BlockInit.CANDLENUT_SAPLING.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     
     //Misc
-    public static final RegistryObject<CustomSpawnEgg> WANDERING_FLORIST_SPAWN_EGG = ITEMS.register("wandering_florist_spawn_egg", () -> 
-    new CustomSpawnEgg(EntityInit.WANDERING_FLORIST, 0x2FFF00, 15377456, new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
+    public static final RegistryObject<ModSpawnEgg> WANDERING_FLORIST_SPAWN_EGG = ITEMS.register("wandering_florist_spawn_egg", () -> 
+    new ModSpawnEgg(EntityInit.WANDERING_FLORIST, 0x2FFF00, 15377456, new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     
-    public static final RegistryObject<CustomMusicDisc> PINA_COLADA_SONG_MUSIC_DISC = ITEMS.register("pina_colada_song_music_disc", () ->
-    new CustomMusicDisc(12, SoundInit.PINA_COLADA_SONG_LAZY.get(), new Item.Properties().group(ModItemGroups.ItemsIG.instance).maxStackSize(1).rarity(Rarity.RARE)));
+    public static final RegistryObject<ModMusicDisc> PINA_COLADA_SONG_MUSIC_DISC = ITEMS.register("pina_colada_song_music_disc", () ->
+    new ModMusicDisc(12, SoundInit.PINA_COLADA_SONG_LAZY.get(), new Item.Properties().group(ModItemGroups.ItemsIG.instance).maxStackSize(1).rarity(Rarity.RARE)));
     
     public static final RegistryObject<EmeraldHornItem> EMERALD_HORN = ITEMS.register("emerald_horn", () ->
     new EmeraldHornItem(new Item.Properties().group(ModItemGroups.ItemsIG.instance).maxStackSize(1).defaultMaxDamage(5000).rarity(Rarity.EPIC)));

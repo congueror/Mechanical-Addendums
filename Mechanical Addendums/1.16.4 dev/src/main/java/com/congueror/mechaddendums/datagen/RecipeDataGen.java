@@ -1535,6 +1535,26 @@ public class RecipeDataGen extends RecipeProvider
 		.addCriterion("rubber_planks", hasItem(BlockInit.RUBBER_PLANKS.get()))
 		.build(recipe);
 		
+		//rubber_button
+		ShapelessRecipeBuilder.shapelessRecipe(ItemInit.RUBBER_BUTTON.get(), 1)
+		.addIngredient(BlockInit.RUBBER_PLANKS.get())
+		.addCriterion("rubber_planks", hasItem(BlockInit.RUBBER_PLANKS.get()))
+		.build(recipe);
+		
+		//rubber_sapling
+		ShapelessRecipeBuilder.shapelessRecipe(BlockInit.RUBBER_SAPLING.get(), 1)
+		.addIngredient(ItemTags.SAPLINGS)
+		.addIngredient(ModTags.Items.RUBBER)
+		.addIngredient(ModTags.Items.RUBBER)
+		.addIngredient(ModTags.Items.RUBBER)
+		.addIngredient(ModTags.Items.RUBBER)
+		.addIngredient(ModTags.Items.RUBBER)
+		.addIngredient(ModTags.Items.RUBBER)
+		.addIngredient(ModTags.Items.RUBBER)
+		.addIngredient(ModTags.Items.RUBBER)
+		.addCriterion("rubber", hasItem(ModTags.Items.RUBBER))
+		.build(recipe);
+		
 		//rubber
 		ShapelessRecipeBuilder.shapelessRecipe(ItemInit.RUBBER.get(), 1)
 		.addIngredient(ModTags.Items.RUBBER_LOGS)

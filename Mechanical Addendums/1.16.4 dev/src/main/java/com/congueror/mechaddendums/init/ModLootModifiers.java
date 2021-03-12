@@ -1,6 +1,7 @@
 package com.congueror.mechaddendums.init;
 
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 import com.google.gson.JsonObject;
@@ -17,6 +18,7 @@ import net.minecraftforge.common.loot.LootModifier;
 public class ModLootModifiers {
 	public static class DungeonLoot extends LootModifier {
 		public final int multiplicationFactor;
+		public Random random = new Random();
 
 		public DungeonLoot(final ILootCondition[] conditionsIn, final int multiplicationFactor) {
 			super(conditionsIn);
@@ -29,12 +31,17 @@ public class ModLootModifiers {
 
 		@Override
 		public List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
-			generatedLoot.add(new ItemStack(ItemInit.EMERALD_HORN.get()));
-			return generatedLoot.stream().map(ItemStack::copy)
-					.peek(stack -> stack.setCount(Math.min(stack.getMaxStackSize(), stack.getCount() * this.multiplicationFactor)))
-					.collect(Collectors.toList());
+			if (random.nextDouble() < 0.1) {
+				generatedLoot.add(new ItemStack(ItemInit.EMERALD_HORN.get()));
+				return generatedLoot.stream().map(ItemStack::copy)
+						.peek(stack -> stack.setCount(
+								Math.min(stack.getMaxStackSize(), stack.getCount() * this.multiplicationFactor)))
+						.collect(Collectors.toList());
+			} else {
+				return generatedLoot;
+			}
 		}
-		
+
 		public static class Serializer extends GlobalLootModifierSerializer<DungeonLoot> {
 			@Override
 			public DungeonLoot read(ResourceLocation location, JsonObject object, ILootCondition[] conditions) {
@@ -53,5 +60,4 @@ public class ModLootModifiers {
 		}
 	}
 
-	
 }

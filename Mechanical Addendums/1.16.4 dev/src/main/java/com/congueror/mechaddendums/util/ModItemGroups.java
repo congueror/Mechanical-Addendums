@@ -142,7 +142,7 @@ public class ModItemGroups
 		private MachinesIG(int index, String label) 
 		{
 			super(index, label);
-			this.setBackgroundImage(new ResourceLocation("mechaddendums_item_search.png"));
+			this.setBackgroundImageName("mechaddendums_item_search.png");
 		}
 	
 		@Override

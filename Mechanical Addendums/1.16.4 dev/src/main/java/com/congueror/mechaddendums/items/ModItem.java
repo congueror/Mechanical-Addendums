@@ -2,6 +2,8 @@ package com.congueror.mechaddendums.items;
 
 import java.util.List;
 
+import com.congueror.mechaddendums.init.ItemInit;
+
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -10,16 +12,22 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
-public class LeadDustItem extends Item
+public class ModItem extends Item
 {
 
-	public LeadDustItem(Properties properties) {
+	public ModItem(Properties properties) {
 		super(properties);
 	}
 	
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-		tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.leaddust").mergeStyle(TextFormatting.GRAY));
+		if(this == ItemInit.INAMONA.get()) {
+			tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.inamona"));
+		}
+		
+		if(this == ItemInit.LEAD_DUST.get()) {
+			tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.leaddust").mergeStyle(TextFormatting.GRAY));
+		}
 	}
 
 }

@@ -1,9 +1,9 @@
 package com.congueror.mechaddendums.items;
 
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.ForgeHooks;
 
-public class HammerItem extends Item {	
+public class HammerItem extends ModContainerItem {	
 	public HammerItem(Properties properties) {
 		super(properties);
 	}
@@ -11,13 +11,9 @@ public class HammerItem extends Item {
 	@Override
 	public ItemStack getContainerItem(ItemStack stack) {
 		 ItemStack stack1 = stack.copy();
-	     stack1.setDamage(stack.getDamage() + 1);
+		 if (stack1.attemptDamageItem(1, ForgeHooks.getCraftingPlayer().world.rand, null)) {
+			 stack1.shrink(1);
+		 }
 	     return stack1;
-	}
-	
-	@Override 
-	public boolean hasContainerItem(ItemStack stack) 
-	{ 
-		return true;
 	}
 }

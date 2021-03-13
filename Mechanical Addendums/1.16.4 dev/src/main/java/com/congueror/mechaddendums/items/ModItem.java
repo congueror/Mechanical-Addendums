@@ -21,13 +21,40 @@ public class ModItem extends Item
 	
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+		if(this == ItemInit.PINA_COLADA.get()) {
+			tooltip(tooltip, "tooltip.mechaddendums.pinacolada");
+		}
+		
 		if(this == ItemInit.INAMONA.get()) {
-			tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.inamona"));
+			tooltip(tooltip, "tooltip.mechaddendums.inamona");
 		}
 		
 		if(this == ItemInit.LEAD_DUST.get()) {
-			tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.leaddust").mergeStyle(TextFormatting.GRAY));
+			tooltip(tooltip, "tooltip.mechaddendums.leaddust");
+		}
+		
+		if(this == ItemInit.COAL_NUGGET.get()) {
+			tooltip(tooltip, "tooltip.mechaddendums.coalnugget");
+		}
+		
+		if(this == ItemInit.EMERALD_HORN.get()) {
+			tooltip(tooltip, "tooltip.mechaddendums.emeraldhorn");
+		}
+		
+		if(this == ItemInit.TREE_TAP.get()) {
+			tooltip(tooltip, "tooltip.mechaddendums.treetap");
+		}
+		
+		if(this == ItemInit.JUICER.get()) {
+			tooltip(tooltip, "tooltip.mechaddendums.juicer");
+		}
+		
+		if(this instanceof RadioactiveMetalItem) {
+			tooltip(tooltip, "tooltip.mechaddendums.uraniumdamage");
 		}
 	}
 
+	public void tooltip(List<ITextComponent> tooltip, String translation) {
+		tooltip.add(new TranslationTextComponent(translation).mergeStyle(TextFormatting.GRAY));
+	}
 }

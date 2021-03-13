@@ -14,7 +14,6 @@ import com.congueror.mechaddendums.blocks.solargen.SolarGeneratorBlock;
 import com.congueror.mechaddendums.blocks.trees.CandlenutTree;
 import com.congueror.mechaddendums.blocks.trees.CoconutTree;
 import com.congueror.mechaddendums.blocks.trees.RubberTree;
-import com.congueror.mechaddendums.util.ModWoodType;
 import com.congueror.mechaddendums.util.enums.FurnaceGenTier;
 import com.congueror.mechaddendums.util.enums.MachineFrameTier;
 import com.congueror.mechaddendums.util.enums.SolarGenTier;
@@ -28,8 +27,6 @@ import net.minecraft.block.SaplingBlock;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.StairsBlock;
-import net.minecraft.block.StandingSignBlock;
-import net.minecraft.block.WallSignBlock;
 import net.minecraft.block.WoodButtonBlock;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.common.ToolType;
@@ -186,10 +183,6 @@ public class BlockInit
 			(Block.Properties.from(BlockInit.RUBBER_PLANKS.get())));
 	public static final RegistryObject<Block> RUBBER_BUTTON = BLOCKS.register("rubber_button", () -> new WoodButtonBlock
 			(Block.Properties.from(Blocks.OAK_BUTTON)));
-	public static final RegistryObject<Block> RUBBER_SIGN = BLOCKS.register("rubber_sign", () -> new StandingSignBlock
-			(Block.Properties.from(Blocks.OAK_SIGN), ModWoodType.RUBBER));
-	public static final RegistryObject<Block> RUBBER_WALL_SIGN = BLOCKS.register("rubber_wall_sign", () -> new WallSignBlock
-			(Block.Properties.from(Blocks.OAK_WALL_SIGN), ModWoodType.RUBBER));
 	
 	
 	public static final RegistryObject<Block> FERMENTING_BARREL = BLOCKS.register("fermenting_barrel", () -> new FermentingBarrelBlock

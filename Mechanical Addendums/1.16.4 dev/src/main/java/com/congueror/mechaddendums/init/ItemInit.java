@@ -33,7 +33,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.Rarity;
 import net.minecraft.item.ShovelItem;
-import net.minecraft.item.SignItem;
 import net.minecraft.item.SwordItem;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -584,7 +583,6 @@ public class ItemInit
     public static final RegistryObject<BlockItem> RUBBER_SLAB = ITEMS.register("rubber_slab", () -> new BlockItem(BlockInit.RUBBER_SLAB.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     public static final RegistryObject<BlockItem> RUBBER_FENCE_GATE = ITEMS.register("rubber_fence_gate", () -> new BlockItem(BlockInit.RUBBER_FENCE_GATE.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
     public static final RegistryObject<BlockItem> RUBBER_BUTTON = ITEMS.register("rubber_button", () -> new BlockItem(BlockInit.RUBBER_BUTTON.get(), new Item.Properties().group(ModItemGroups.BlocksIG.instance)));
-    public static final RegistryObject<Item> RUBBER_SIGN = ITEMS.register("rubber_sign", () -> new SignItem(new Item.Properties().group(ModItemGroups.BlocksIG.instance).maxStackSize(16), BlockInit.RUBBER_SIGN.get(), BlockInit.RUBBER_WALL_SIGN.get()));
     
     public static final RegistryObject<Item> HAZMAT_HELM = ITEMS.register("hazmat_scuba_helmet", ()-> new HazmatSuitItem(ModArmorMaterial.HAZMAT, EquipmentSlotType.HEAD, new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> HAZMAT_CHEST = ITEMS.register("hazmat_suit", ()-> new HazmatSuitItem(ModArmorMaterial.HAZMAT, EquipmentSlotType.CHEST, new Item.Properties().group(ModItemGroups.ItemsIG.instance)));

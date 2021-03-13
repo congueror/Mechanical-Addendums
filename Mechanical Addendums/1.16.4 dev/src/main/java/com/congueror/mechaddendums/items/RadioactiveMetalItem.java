@@ -1,33 +1,21 @@
 package com.congueror.mechaddendums.items;
 
-import java.util.List;
-
 import com.congueror.mechaddendums.init.EffectInit;
 import com.congueror.mechaddendums.init.ItemInit;
 
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.SoundEvents;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
-public class RadioactiveMetalItem extends Item {
+public class RadioactiveMetalItem extends ModItem {
 	
 	public RadioactiveMetalItem(Properties properties) {
 		super(properties);
-	}
-	
-	@Override
-	public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-		tooltip.add(new TranslationTextComponent("tooltip.mechaddendums.uraniumdamage").mergeStyle(TextFormatting.GRAY));
 	}
 	
 	@Override

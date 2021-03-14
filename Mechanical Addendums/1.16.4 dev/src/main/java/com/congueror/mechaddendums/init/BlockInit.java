@@ -193,6 +193,7 @@ public class BlockInit
 			(Block.Properties.from(BlockInit.STEEL_BLOCK.get())));
 	public static final Map<MachineFrameTier, RegistryObject<Block>> MACHINE_FRAME_TIERED = new HashMap<>();
 	public static final Map<SolarGenTier, RegistryObject<SolarGeneratorBlock>> SOLAR_GENERATOR = new HashMap<>();
+	public static final Map<SolarGenTier, RegistryObject<SolarGeneratorBlock>> SOLAR_GENERATOR_DIRTY = new HashMap<>();
 	public static final Map<FurnaceGenTier, RegistryObject<FurnaceGeneratorBlock>> FURNACE_GENERATOR = new HashMap<>();
 	public static void init() {
 		for(MachineFrameTier tier : MachineFrameTier.values()) {
@@ -200,6 +201,7 @@ public class BlockInit
 		}
 		for(SolarGenTier tier : SolarGenTier.values()) {
 			SOLAR_GENERATOR.put(tier, BLOCKS.register(tier.getSolarGenName(), () -> new SolarGeneratorBlock(tier)));
+			SOLAR_GENERATOR_DIRTY.put(tier, BLOCKS.register(tier.getSolarGenName() + "dirty", () -> new SolarGeneratorBlock(tier)));
 		}
 		for(FurnaceGenTier tier : FurnaceGenTier.values()) {
 			FURNACE_GENERATOR.put(tier, BLOCKS.register(tier.getFurnaceGenName(), () -> new FurnaceGeneratorBlock(tier)));
@@ -216,7 +218,4 @@ public class BlockInit
     		(Block.Properties.from(Blocks.OAK_LEAVES)));
 	public static final RegistryObject<Block> CANDLENUT_SAPLING = BLOCKS.register("candlenut_sapling", () -> new SaplingBlock
     		(new CandlenutTree(), Block.Properties.from(Blocks.OAK_SAPLING)));
-	
-    
-    //public static final RegistryObject<Block> ALLOY_SMELTER = BLOCKS.register("alloy_smelter", () -> new AlloySmelterBlock(Block.Properties.create(Material.IRON).hardnessAndResistance(5.5f, 6.5f).sound(SoundType.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(1).setRequiresTool()));
 }

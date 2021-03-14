@@ -37,6 +37,7 @@ public class Config {
     public static ForgeConfigSpec.DoubleValue solarGenMultiplier;
     
     public static ForgeConfigSpec.BooleanValue enableCLibScreen;
+    public static ForgeConfigSpec.BooleanValue enableDebug;
     
     static {
     	ForgeConfigSpec.Builder COMMON_BUILDER = new ForgeConfigSpec.Builder();
@@ -53,9 +54,10 @@ public class Config {
         solarGenMultiplier = energyGen(COMMON_BUILDER, "SolarGen", 1);
         COMMON_BUILDER.pop();
         
-        COMMON_BUILDER.comment("Miscellaneous Config").push(CATEGORY_MISC);
-        enableCLibScreen = COMMON_BUILDER.comment("Enable or disable the CLib warning screen that pops up when CLib is installed").define("enableScreen", true);
-        COMMON_BUILDER.pop();
+        CLIENT_BUILDER.comment("Miscellaneous Config").push(CATEGORY_MISC);
+        enableCLibScreen = CLIENT_BUILDER.comment("Enable or disable the CLib warning screen that pops up when CLib is installed").define("enableScreen", true);
+        enableDebug = CLIENT_BUILDER.comment("Enable or disable item tag and nbt data tootltip").define("enableDebug", false);
+        CLIENT_BUILDER.pop();
         
         COMMON_CONFIG = COMMON_BUILDER.build();
         SERVER_CONFIG = SERVER_BUILDER.build();

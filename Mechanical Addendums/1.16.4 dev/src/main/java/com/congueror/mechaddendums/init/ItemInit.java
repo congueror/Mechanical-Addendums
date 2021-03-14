@@ -620,6 +620,7 @@ public class ItemInit
     public static final RegistryObject<Item> INDUSTRIAL_PHOTOVOLTAIC_CELL = ITEMS.register("photovoltaic_cell_industrial", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final RegistryObject<Item> ULTIMATE_PHOTOVOLTAIC_CELL = ITEMS.register("photovoltaic_cell_ultimate", ()-> new Item(new Item.Properties().group(ModItemGroups.ItemsIG.instance)));
     public static final Map<SolarGenTier, RegistryObject<Item>> SOLAR_GENERATOR = new HashMap<>();
+    public static final Map<SolarGenTier, RegistryObject<Item>> SOLAR_GENERATOR_DIRTY = new HashMap<>();
     public static final Map<FurnaceGenTier, RegistryObject<Item>> FURNACE_GENERATOR = new HashMap<>();
     public static void init() {
     	for(MachineFrameTier tier : MachineFrameTier.values()) {
@@ -627,6 +628,7 @@ public class ItemInit
     	}
     	for(SolarGenTier tier : SolarGenTier.values()) {
     		SOLAR_GENERATOR.put(tier, ITEMS.register(tier.getSolarGenName(), () -> new BlockItem(BlockInit.SOLAR_GENERATOR.get(tier).get(), new Item.Properties().group(ModItemGroups.MachinesIG.instance).rarity(Rarity.create(tier.getNameColor(), tier.getColor())))));
+    		SOLAR_GENERATOR_DIRTY.put(tier, ITEMS.register(tier.getSolarGenName() + "dirty", () -> new BlockItem(BlockInit.SOLAR_GENERATOR_DIRTY.get(tier).get(), new Item.Properties().group(ModItemGroups.MachinesIG.instance).rarity(Rarity.create(tier.getNameColor(), tier.getColor())))));
     	}
     	for(FurnaceGenTier tier : FurnaceGenTier.values()) {
     		FURNACE_GENERATOR.put(tier, ITEMS.register(tier.getFurnaceGenName(), () -> new BlockItem(BlockInit.FURNACE_GENERATOR.get(tier).get(), new Item.Properties().group(ModItemGroups.MachinesIG.instance).rarity(Rarity.create(tier.getNameColor(), tier.getColor())))));

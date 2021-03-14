@@ -25,6 +25,7 @@ import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.IFormattableTextComponent;
 import net.minecraft.util.text.ITextComponent;
@@ -77,13 +78,14 @@ public class ClientEvents {
 		}
 		
 		@SubscribeEvent
-		public static void tagSetup(ItemTooltipEvent event) 
+		public static void tooltipSetup(ItemTooltipEvent event) 
 		{
 			if(event.getFlags().isAdvanced()) {
 				Item item = event.getItemStack().getItem();
+				CompoundNBT nbt = event.getItemStack().getTag();
 				Set<ResourceLocation> blockTags = Block.getBlockFromItem(item).getTags();
 				Set<ResourceLocation> itemTags = item.getTags();
-				if (!blockTags.isEmpty() || !itemTags.isEmpty())
+				if (!blockTags.isEmpty() || !itemTags.isEmpty() || nbt != null)
 				{
 					List<ITextComponent> lines = event.getToolTip();
 					if (Screen.hasControlDown()) 
@@ -95,7 +97,11 @@ public class ClientEvents {
 						if (!itemTags.isEmpty()) {
 							lines.add(getTextComponent("tooltip.mechaddendums.item_tags").mergeStyle(TextFormatting.GRAY));
 							itemTags.stream().map(Object::toString).map(a -> "  " + a).map(b -> getTextComponent(b).mergeStyle(TextFormatting.DARK_GRAY)).forEach(lines::add);
-						} 
+						}
+						if(nbt != null) {//nbt.isEmpty() crashes game
+							lines.add(getTextComponent("tooltip.mechaddendums.nbt_tags").mergeStyle(TextFormatting.GRAY));
+							lines.add(new StringTextComponent("  ").appendString(nbt.toString()).mergeStyle(TextFormatting.DARK_GRAY));
+						}
 					} else {
 						lines.add(new TranslationTextComponent("tooltip.mechaddendums.hold_ctrl_for_tags").mergeStyle(TextFormatting.GRAY));
 					}
@@ -112,7 +118,6 @@ public class ClientEvents {
 		public World getClientWorld() {
 			return Minecraft.getInstance().world;
 		}
-		
 		
 	}
 	

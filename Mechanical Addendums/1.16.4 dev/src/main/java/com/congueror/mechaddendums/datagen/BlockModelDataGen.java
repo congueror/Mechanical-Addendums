@@ -190,8 +190,10 @@ public class BlockModelDataGen extends BlockStateProvider
 		
 		simpleBlock(BlockInit.MACHINE_FRAME.get());
 		basicBlockItem(BlockInit.MACHINE_FRAME.get());
-		for(SolarGenTier tier : SolarGenTier.values()) 
+		for(SolarGenTier tier : SolarGenTier.values()) {
 		basicBlockItem(BlockInit.SOLAR_GENERATOR.get(tier).get());
+		basicBlockItem(BlockInit.SOLAR_GENERATOR_DIRTY.get(tier).get());
+		}
 		for(MachineFrameTier tier : MachineFrameTier.values()) {
 		simpleBlock(BlockInit.MACHINE_FRAME_TIERED.get(tier).get());
 		basicBlockItem(BlockInit.MACHINE_FRAME_TIERED.get(tier).get());

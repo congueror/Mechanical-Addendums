@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mechaddendums:rubber_planks"
+    }
+  ],
+  "result": {
+    "item": "mechaddendums:rubber_button"
+  }
+}

@@ -498,6 +498,7 @@
 	
 	"tooltip.mechaddendums.block_tags": "Block Tags",
 	"tooltip.mechaddendums.item_tags": "Item Tags",
+	"tooltip.mechaddendums.nbt_tags": "NBT Tags",
 	"tooltip.mechaddendums.hold_ctrl_for_tags": "Hold §c§oCtrl§7 for Tags",
 	
 	"tooltip.mechaddendums.solargen_shift_info": "@7Hold @c@oShift @7for details",

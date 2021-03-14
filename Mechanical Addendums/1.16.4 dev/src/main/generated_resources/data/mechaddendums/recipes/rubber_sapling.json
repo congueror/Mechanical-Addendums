@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "minecraft:saplings"
+    },
+    {
+      "tag": "forge:rubber"
+    },
+    {
+      "tag": "forge:rubber"
+    },
+    {
+      "tag": "forge:rubber"
+    },
+    {
+      "tag": "forge:rubber"
+    },
+    {
+      "tag": "forge:rubber"
+    },
+    {
+      "tag": "forge:rubber"
+    },
+    {
+      "tag": "forge:rubber"
+    },
+    {
+      "tag": "forge:rubber"
+    }
+  ],
+  "result": {
+    "item": "mechaddendums:rubber_sapling"
+  }
+}

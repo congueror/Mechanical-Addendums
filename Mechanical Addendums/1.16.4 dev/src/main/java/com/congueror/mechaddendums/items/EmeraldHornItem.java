@@ -3,7 +3,6 @@ package com.congueror.mechaddendums.items;
 import java.util.Objects;
 import java.util.Random;
 
-import com.congueror.mechaddendums.entities.wandering_florist.WanderingFloristEntity;
 import com.congueror.mechaddendums.init.EntityInit;
 import com.congueror.mechaddendums.init.SoundInit;
 
@@ -11,6 +10,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.merchant.villager.AbstractVillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.UseAction;
@@ -22,7 +22,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
 public class EmeraldHornItem extends ModItem {
-
+	
 	public EmeraldHornItem(Properties properties) {
 		super(properties);
 	}
@@ -74,8 +74,8 @@ public class EmeraldHornItem extends ModItem {
 				double deltaZ = -Math.sin(Math.toRadians(degrees)) * radius;
 				double finalX = x + deltaX;
 				double finalZ = z + deltaZ;
-
-				EntityType<? extends WanderingFloristEntity> animal = EntityInit.WANDERING_FLORIST.get();
+				
+				EntityType<? extends AbstractVillagerEntity> animal = EntityInit.WANDERING_FLORIST.get();
 				for (int i = 0; i < 255; i++) {
 					BlockPos pos1 = new BlockPos(finalX, pos.getY() + i, finalZ);
 					if (worldIn.getBlockState(pos.down()).getBlock() != Blocks.STRUCTURE_VOID) {
